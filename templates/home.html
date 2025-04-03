@@ -1,97 +1,195 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}SAFENET.AI - AI and Quantum Research Community{% endblock %}
 
 {% block content %}
-<div class="jumbotron bg-light p-5 rounded">
-    <h1 class="display-4">Welcome to SAFENET.AI</h1>
-    <p class="lead">A community platform for AI and Quantum Computing researchers to collaborate, share papers, and explore new topics.</p>
-    <hr class="my-4">
-    <p>Join our growing community of researchers, contribute your work, and discover groundbreaking research in AI and Quantum Computing.</p>
-    {% if not user.is_authenticated %}
-        <a class="btn btn-primary btn-lg" href="{% url 'register' %}" role="button">Join Now</a>
-    {% else %}
-        <a class="btn btn-primary btn-lg" href="{% url 'research_paper_create' %}" role="button">Submit Research</a>
-    {% endif %}
-</div>
-
-<div class="row mt-5">
-    <div class="col-12">
-        <h2 class="text-center mb-4">Research Dashboard</h2>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-3">
-        <div class="stats-card">
-            <div class="icon">
-                <i class="far fa-file-alt"></i>
+<!-- Hero Section with Dark Background -->
+<div class="hero-section text-light position-relative overflow-hidden">
+    <div class="container py-5">
+        <div class="row py-lg-5 align-items-center">
+            <div class="col-lg-6">
+                <div class="hero-content">
+                    <h1 class="display-5 fw-bold">
+                        <span class="text-warning">Empowering</span> Research,<br>
+                        <span class="text-warning">Enabling</span> Innovation
+                    </h1>
+                    <p class="lead my-4">
+                        Join a collaborative platform for AI, NLP, and Computer Vision research and projects.
+                        Whether you're a student, researcher, or industry professional, there's a place for
+                        you here.
+                    </p>
+                    <div class="hero-buttons">
+                        {% if not user.is_authenticated %}
+                            <a href="{% url 'register' %}" class="btn btn-purple me-2">Get Started</a>
+                            <a href="{% url 'login' %}" class="btn btn-outline-light">Sign In</a>
+                        {% else %}
+                            <a href="{% url 'research_paper_create' %}" class="btn btn-purple me-2">Submit Research</a>
+                            <a href="{% url 'profile' %}" class="btn btn-outline-light">My Dashboard</a>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
-            <div class="count">{{ research_papers_count }}</div>
-            <div class="label">Research Papers</div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="stats-card">
-            <div class="icon">
-                <i class="fas fa-rss"></i>
+            <div class="col-lg-6 d-none d-lg-block position-relative">
+                <img src="{% static 'img/research/quantum_ai_graphic.svg' %}" class="img-fluid hero-graphic" alt="Quantum & AI Research Illustration">
             </div>
-            <div class="count">{{ blog_count }}</div>
-            <div class="label">Blog Articles</div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="stats-card">
-            <div class="icon">
-                <i class="fas fa-brain"></i>
-            </div>
-            <div class="count">2</div>
-            <div class="label">Research Fields</div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="stats-card">
-            <div class="icon">
-                <i class="fas fa-book"></i>
-            </div>
-            <div class="count">{{ topics_count }}</div>
-            <div class="label">Expert Topics</div>
         </div>
     </div>
 </div>
 
-<div class="row mt-5">
-    <div class="col-12">
-        <h2 class="mb-4">Recent Research Papers</h2>
+<!-- Research Focus Areas -->
+<div class="research-focus-container container my-5 py-4">
+    <div class="text-center mb-4">
+        <h2 class="section-title">Research Focus Areas</h2>
+        <div class="title-underline"></div>
+        <p class="lead mt-3">
+            We focus on <span class="text-primary">cutting-edge technologies</span> and 
+            <span class="text-success">emerging fields</span> in AI research, including:
+        </p>
     </div>
-</div>
-
-<div class="row">
-    {% for paper in recent_papers %}
-    <div class="col-md-4 mb-4">
-        <div class="card h-100">
-            <div class="card-body">
-                <span class="category-tag {{ paper.category }}">{{ paper.category }}</span>
-                <h5 class="card-title mt-2">{{ paper.title }}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">By {{ paper.author.get_full_name|default:paper.author.username }}{% if paper.co_authors %} & {{ paper.co_authors }}{% endif %}</h6>
-                <p class="card-text">{{ paper.abstract|truncatewords:30 }}</p>
+    
+    <div class="row g-4 mt-2">
+        <!-- AI Card -->
+        <div class="col-md-4">
+            <div class="research-card h-100 p-4 border rounded shadow-sm">
+                <div class="d-flex">
+                    <img src="{% static 'img/research/ai_icon.svg' %}" class="research-icon me-3" alt="AI">
+                    <h3 class="research-card-title">Artificial Intelligence</h3>
+                </div>
+                <p class="mt-3">Advanced machine learning algorithms and neural networks development</p>
             </div>
-            <div class="card-footer bg-transparent">
-                <a href="{% url 'research_paper_detail' paper.slug %}" class="btn btn-sm btn-outline-primary">Read More</a>
+        </div>
+        
+        <!-- ML Card -->
+        <div class="col-md-4">
+            <div class="research-card h-100 p-4 border rounded shadow-sm">
+                <div class="d-flex">
+                    <img src="{% static 'img/research/ml_icon.svg' %}" class="research-icon me-3" alt="Machine Learning">
+                    <h3 class="research-card-title">Machine Learning (ML)</h3>
+                </div>
+                <p class="mt-3">Predictive analytics and adaptive pattern recognition systems</p>
+            </div>
+        </div>
+        
+        <!-- Agentic AI Card -->
+        <div class="col-md-4">
+            <div class="research-card h-100 p-4 border rounded shadow-sm">
+                <div class="d-flex">
+                    <img src="{% static 'img/research/agent_icon.svg' %}" class="research-icon me-3" alt="Agentic AI">
+                    <h3 class="research-card-title">Agentic AI</h3>
+                </div>
+                <p class="mt-3">Autonomous decision-making systems with ethical AI frameworks</p>
             </div>
         </div>
     </div>
-    {% empty %}
-    <div class="col-12">
-        <div class="alert alert-info">
-            No research papers have been published yet. Be the first to submit your research!
-        </div>
-    </div>
-    {% endfor %}
 </div>
 
-<div class="text-center mt-3">
-    <a href="{% url 'research_paper_list' %}" class="btn btn-outline-primary">View All Papers <i class="fas fa-arrow-right"></i></a>
+<!-- Research Dashboard Stats -->
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-12">
+            <h2 class="text-center mb-4">Research Dashboard</h2>
+            <div class="title-underline mx-auto"></div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-3">
+            <div class="stats-card">
+                <div class="icon">
+                    <i class="far fa-file-alt"></i>
+                </div>
+                <div class="count">{{ research_papers_count }}</div>
+                <div class="label">Research Papers</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stats-card">
+                <div class="icon">
+                    <i class="fas fa-rss"></i>
+                </div>
+                <div class="count">{{ blog_count }}</div>
+                <div class="label">Blog Articles</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stats-card">
+                <div class="icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="count">2</div>
+                <div class="label">Research Fields</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stats-card">
+                <div class="icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="count">{{ topics_count }}</div>
+                <div class="label">Expert Topics</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Research Papers -->
+<div class="container mt-5 pt-3">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2 class="section-title">Recent Research Papers</h2>
+            <div class="title-underline mx-auto"></div>
+            <p class="lead mt-3">Must Read for AI and Quantum Researchers</p>
+        </div>
+    </div>
+
+    <div class="row g-4 mt-2">
+        {% for paper in recent_papers %}
+        <div class="col-md-4 mb-4">
+            <div class="paper-card h-100 shadow-sm rounded overflow-hidden">
+                <div class="paper-header p-3" style="background-color: rgba(74, 111, 220, 0.1);">
+                    <span class="category-badge rounded-pill px-3 py-1 {% if paper.category == 'ai' %}bg-primary{% elif paper.category == 'quantum' %}bg-purple{% else %}bg-info{% endif %} text-white">
+                        {{ paper.category|upper }}
+                    </span>
+                </div>
+                <div class="paper-body p-4">
+                    <h5 class="paper-title fw-bold mb-3">{{ paper.title }}</h5>
+                    <div class="author-info d-flex align-items-center mb-3">
+                        <div class="author-avatar me-2">
+                            {% if paper.author.profile.profile_picture %}
+                            <img src="{{ paper.author.profile.profile_picture.url }}" alt="{{ paper.author.username }}" class="rounded-circle" width="32" height="32">
+                            {% else %}
+                            <div class="avatar-placeholder rounded-circle d-flex align-items-center justify-content-center" style="width:32px;height:32px;background-color:#4a6fdc;color:white;">
+                                {{ paper.author.username|first|upper }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <span class="author-name">
+                            {{ paper.author.get_full_name|default:paper.author.username }}{% if paper.co_authors %} & {{ paper.co_authors }}{% endif %}
+                        </span>
+                    </div>
+                    <p class="paper-abstract">{{ paper.abstract|truncatewords:25 }}</p>
+                </div>
+                <div class="paper-footer p-3 d-flex justify-content-between align-items-center" style="background-color: #f8f9fa;">
+                    <small class="text-muted">{{ paper.created_at|date:"M d, Y" }}</small>
+                    <a href="{% url 'research_paper_detail' paper.slug %}" class="btn btn-sm btn-primary rounded-pill px-3">Read Paper</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle me-2"></i> No research papers have been published yet. Be the first to submit your research!
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{% url 'research_paper_list' %}" class="btn btn-outline-primary rounded-pill px-4">
+            Browse All Papers <i class="fas fa-arrow-right ms-2"></i>
+        </a>
+    </div>
 </div>
 
 {% if user.is_authenticated %}

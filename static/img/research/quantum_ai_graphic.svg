@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <!-- Blue Quantum Box -->
+  <rect x="400" y="220" width="240" height="240" rx="30" fill="url(#quantum-gradient)" />
+  
+  <!-- AI Circle -->
+  <circle cx="520" cy="260" r="60" fill="#3498db" />
+  <text x="520" y="275" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="32" fill="white">AI</text>
+  
+  <!-- Quantum Capsule -->
+  <rect x="320" y="350" width="200" height="80" rx="40" fill="#4169e1" />
+  <text x="420" y="395" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="32" fill="white">Quantum</text>
+  
+  <!-- Connecting Lines -->
+  <line x1="360" y1="350" x2="410" y2="300" stroke="#7B68EE" stroke-width="6" />
+  <line x1="480" y1="350" x2="430" y2="300" stroke="#7B68EE" stroke-width="6" />
+  
+  <!-- Decorative Elements -->
+  <rect x="580" y="280" width="10" height="60" fill="#00BFFF" opacity="0.8" />
+  <rect x="600" y="310" width="10" height="100" fill="#4169e1" opacity="0.8" />
+  <rect x="620" y="290" width="10" height="80" fill="#9370DB" opacity="0.8" />
+  <rect x="640" y="340" width="10" height="70" fill="#8A2BE2" opacity="0.8" />
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="quantum-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4a6fdc" />
+      <stop offset="100%" stop-color="#6747c7" />
+    </linearGradient>
+  </defs>
+</svg>
