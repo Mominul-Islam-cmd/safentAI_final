@@ -55,6 +55,9 @@
                                 <a href="#topicModal{{ topic.id }}" class="btn btn-primary btn-sm" data-bs-toggle="modal">
                                     <i class="fas fa-eye me-1"></i> View
                                 </a>
+                                <a href="{% url 'research_topic_delete' slug=topic.slug %}" class="btn btn-dark btn-sm">
+                                    <i class="fas fa-trash-alt me-1"></i> Delete
+                                </a>
                             </div>
                             
                             <!-- Modal for viewing topic details -->
@@ -97,6 +100,9 @@
                                                     data-bs-dismiss="modal">
                                                 <i class="fas fa-times me-1"></i> Reject
                                             </button>
+                                            <a href="{% url 'research_topic_delete' slug=topic.slug %}" class="btn btn-dark">
+                                                <i class="fas fa-trash-alt me-1"></i> Delete
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

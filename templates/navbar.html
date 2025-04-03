@@ -24,6 +24,21 @@
                 <li class="nav-item">
                     <a class="nav-link {% if request.path == '/accounts/contact/' %}active{% endif %}" href="{% url 'contact' %}">Contact</a>
                 </li>
+                {% if user.is_authenticated and user.profile.is_superuser %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle {% if 'approval' in request.path %}active{% endif %}" href="#" id="adminDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-shield-alt me-1"></i> Admin
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="adminDropdownMenuLink">
+                        <li><h6 class="dropdown-header">Content Approvals</h6></li>
+                        <li><a class="dropdown-item" href="{% url 'research_paper_approval_list' %}">Research Paper Approvals</a></li>
+                        <li><a class="dropdown-item" href="{% url 'research_topic_approval_list' %}">Expert Topic Approvals</a></li>
+                        <li><a class="dropdown-item" href="{% url 'blog_approval_list' %}">Blog Post Approvals</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/admin/">Django Admin Panel</a></li>
+                    </ul>
+                </li>
+                {% endif %}
             </ul>
             <ul class="navbar-nav ms-auto">
                 {% if user.is_authenticated %}
@@ -38,10 +53,7 @@
                             <li><a class="dropdown-item" href="{% url 'my_blog_posts' %}">My Blog Posts</a></li>
                             {% if user.is_superuser %}
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="{% url 'research_paper_approval_list' %}">Paper Approvals</a></li>
-                                <li><a class="dropdown-item" href="{% url 'research_topic_approval_list' %}">Topic Approvals</a></li>
-                                <li><a class="dropdown-item" href="{% url 'blog_approval_list' %}">Blog Approvals</a></li>
-                                <li><a class="dropdown-item" href="/admin/">Admin Panel</a></li>
+                                <li><a class="dropdown-item" href="/admin/">Django Admin</a></li>
                             {% endif %}
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
