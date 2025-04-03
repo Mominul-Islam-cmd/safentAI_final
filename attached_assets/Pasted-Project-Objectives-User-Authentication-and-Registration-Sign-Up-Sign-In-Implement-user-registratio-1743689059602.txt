@@ -1,0 +1,69 @@
+Project Objectives
+User Authentication and Registration
+
+Sign Up/Sign In: Implement user registration and login functionalities.
+
+Extended Registration Form: Collect additional information during registration, including:
+
+Institution Name
+
+Profile Picture
+
+Phone Number
+
+Password Management: Include a "Forgot Password" feature that sends a reset link via email (supporting both hot user and app password flows).
+
+Contact Section: Provide a contact form that allows users to send messages via email.
+
+Research Publication Section
+
+Upload Research Papers: Enable users to upload their recent research papers related to AI and Quantum topics.
+
+Paper Details: Each upload should include the title, abstract, and a link to the paper.
+
+User Permissions:
+
+Regular users can edit their uploads.
+
+Main or super users have the authority to edit and delete any uploads.
+
+Approval Process: Implement an approval system where uploads require review and approval (or rejection) by main or super users.
+
+Become an Expert Section
+
+Guidelines and Topics: Provide detailed guidelines on how to become an expert in AI and Quantum research.
+
+Upload Research Topics: Allow users to contribute research topics, which should include:
+
+Title
+
+Subject
+
+Date
+
+User Permissions:
+
+Regular users can edit their own topics.
+
+Main or super users have the authority to edit and delete any topics.
+
+Approval Process: New submissions require approval (or rejection) by main or super users.
+
+Blog Section
+
+Medium-Style Blog: Create a blogging platform where users can post their best blog entries on AI and Quantum subjects.
+
+User Permissions:
+
+Regular users can edit their own posts.
+
+Main or super users have the authority to edit and delete any posts.
+
+Approval Process: Blog posts must go through an approval process before publication.
+
+Technologies Used
+Backend: Django
+
+Frontend: HTML, CSS, Bootstrap
+
+Styling: Ensure that CSS classes and IDs are uniquely named to avoid conflicts and maintain a consistent design throughout the application.
