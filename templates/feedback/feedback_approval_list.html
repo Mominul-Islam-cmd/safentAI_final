@@ -1,0 +1,213 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Feedback Approvals - SafeNet AI{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-primary mb-4">
+                <i class="fas fa-tasks me-2"></i>Feedback Approval Management
+            </h2>
+            
+            <div class="card">
+                <div class="card-header bg-light">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link feedback-filter-tab active" href="#all" data-status="all">All</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link feedback-filter-tab" href="#pending" data-status="pending">Pending</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link feedback-filter-tab" href="#approved" data-status="approved">Approved</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link feedback-filter-tab" href="#rejected" data-status="rejected">Rejected</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    {% if feedbacks %}
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover align-middle" id="feedbackTable">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Type</th>
+                                        <th>Author</th>
+                                        <th>Rating</th>
+                                        <th>Status</th>
+                                        <th>Created</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for feedback in feedbacks %}
+                                        <tr data-status="{{ feedback.status }}">
+                                            <td class="fw-bold">{{ feedback.title }}</td>
+                                            <td>
+                                                <span class="badge {% if feedback.feedback_type == 'student' %}bg-info{% else %}bg-secondary{% endif %}">
+                                                    {{ feedback.get_feedback_type_display }}
+                                                </span>
+                                            </td>
+                                            <td>{{ feedback.user.username }}</td>
+                                            <td>
+                                                {% for i in "12345" %}
+                                                    {% if forloop.counter <= feedback.rating %}
+                                                        <i class="fas fa-star text-warning"></i>
+                                                    {% else %}
+                                                        <i class="far fa-star text-muted"></i>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </td>
+                                            <td>
+                                                {% if feedback.status == 'approved' %}
+                                                    <span class="badge bg-success">Approved</span>
+                                                {% elif feedback.status == 'rejected' %}
+                                                    <span class="badge bg-danger">Rejected</span>
+                                                {% else %}
+                                                    <span class="badge bg-warning text-dark">Pending</span>
+                                                {% endif %}
+                                            </td>
+                                            <td>{{ feedback.created_at|date:"M d, Y" }}</td>
+                                            <td>
+                                                <div class="btn-group" role="group">
+                                                    <button type="button" class="btn btn-sm btn-outline-primary view-feedback" 
+                                                            data-bs-toggle="modal" data-bs-target="#feedbackModal"
+                                                            data-title="{{ feedback.title }}"
+                                                            data-content="{{ feedback.content }}"
+                                                            data-type="{{ feedback.get_feedback_type_display }}"
+                                                            data-rating="{{ feedback.rating }}"
+                                                            data-author="{{ feedback.user.username }}"
+                                                            data-date="{{ feedback.created_at|date:"M d, Y" }}">
+                                                        <i class="fas fa-eye"></i> View
+                                                    </button>
+                                                    <a href="{% url 'feedback_approve' feedback.pk %}" class="btn btn-sm btn-outline-success">
+                                                        <i class="fas fa-check"></i> Review
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="text-center my-5">
+                            <i class="fas fa-clipboard-check fa-4x text-muted mb-3"></i>
+                            <h4 class="text-muted">No feedback submissions to review</h4>
+                            <p>All feedback submissions have been processed.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Feedback View Modal -->
+<div class="modal fade" id="feedbackModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="feedbackModalTitle"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex justify-content-between mb-2">
+                    <span class="badge bg-secondary" id="feedbackModalType"></span>
+                    <div id="feedbackModalRating"></div>
+                </div>
+                <p id="feedbackModalContent" class="border-top border-bottom py-3"></p>
+                <div class="d-flex justify-content-between text-muted small">
+                    <span id="feedbackModalAuthor"></span>
+                    <span id="feedbackModalDate"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    $(document).ready(function() {
+        // Add row animation on page load
+        $('#feedbackTable tbody tr').each(function(index) {
+            const $row = $(this);
+            setTimeout(function() {
+                $row.css('opacity', 0).css('transform', 'translateY(20px)');
+                setTimeout(function() {
+                    $row.css('transition', 'all 0.5s ease')
+                       .css('opacity', 1)
+                       .css('transform', 'translateY(0)');
+                }, 50);
+            }, index * 100);
+        });
+        
+        // View feedback modal
+        $('.view-feedback').click(function() {
+            var title = $(this).data('title');
+            var content = $(this).data('content');
+            var type = $(this).data('type');
+            var rating = $(this).data('rating');
+            var author = $(this).data('author');
+            var date = $(this).data('date');
+            
+            // Set modal content
+            $('#feedbackModalTitle').text(title);
+            $('#feedbackModalContent').text(content);
+            $('#feedbackModalType').text(type);
+            $('#feedbackModalAuthor').html('<i class="fas fa-user me-1"></i> ' + author);
+            $('#feedbackModalDate').html('<i class="far fa-calendar-alt me-1"></i> ' + date);
+            
+            // Set rating stars
+            var ratingHtml = '';
+            for (var i = 1; i <= 5; i++) {
+                if (i <= rating) {
+                    ratingHtml += '<i class="fas fa-star text-warning"></i> ';
+                } else {
+                    ratingHtml += '<i class="far fa-star text-muted"></i> ';
+                }
+            }
+            $('#feedbackModalRating').html(ratingHtml);
+        });
+        
+        // Filter table by status
+        $('.nav-link').click(function(e) {
+            e.preventDefault();
+            
+            // Update active tab
+            $('.nav-link').removeClass('active');
+            $(this).addClass('active');
+            
+            var status = $(this).data('status');
+            
+            // Show/hide rows based on status
+            if (status === 'all') {
+                $('#feedbackTable tbody tr').show();
+            } else {
+                $('#feedbackTable tbody tr').hide();
+                $('#feedbackTable tbody tr[data-status="' + status + '"]').show();
+            }
+            
+            // Re-animate rows when filter changes
+            $('#feedbackTable tbody tr:visible').each(function(index) {
+                const $row = $(this);
+                $row.css('opacity', 0).css('transform', 'translateY(20px)');
+                
+                setTimeout(function() {
+                    $row.css('transition', 'all 0.5s ease')
+                       .css('opacity', 1)
+                       .css('transform', 'translateY(0)');
+                }, index * 100);
+            });
+        });
+    });
+</script>
+{% endblock %}

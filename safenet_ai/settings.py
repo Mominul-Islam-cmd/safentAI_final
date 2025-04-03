@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'expert_topics',
     'blog',
     'core',
+    'feedback',
 ]
 
 MIDDLEWARE = [

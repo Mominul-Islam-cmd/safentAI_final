@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Setup delete confirmations
     setupDeleteConfirmations();
+    
+    // Animate feedback cards
+    animateFeedbackCards();
 });
 
 // Function to handle approval/rejection of content
@@ -169,4 +172,48 @@ function getCookie(name) {
         }
     }
     return cookieValue;
+}
+
+// Function to animate feedback cards when they appear
+function animateFeedbackCards() {
+    const feedbackCards = document.querySelectorAll('.feedback-card');
+    
+    if (feedbackCards.length === 0) return;
+    
+    // Add intersection observer to animate cards when they come into view
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add a small delay for each card to create a cascade effect
+                setTimeout(() => {
+                    entry.target.classList.add('show');
+                }, 100 * Array.from(feedbackCards).indexOf(entry.target));
+                
+                // Unobserve after animation
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 }); // Trigger when at least 10% of the card is visible
+    
+    // Observe each feedback card
+    feedbackCards.forEach(card => {
+        observer.observe(card);
+    });
+    
+    // Also handle filter tab clicks to animate newly visible cards
+    const filterTabs = document.querySelectorAll('.feedback-filter-tab');
+    filterTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            // Reset all cards (wait a bit for the filter to take effect)
+            setTimeout(() => {
+                document.querySelectorAll('.feedback-card:not(.show)').forEach(card => {
+                    if (card.style.display !== 'none') {
+                        setTimeout(() => {
+                            card.classList.add('show');
+                        }, 100 * Array.from(document.querySelectorAll('.feedback-card:not(.show)')).indexOf(card));
+                    }
+                });
+            }, 100);
+        });
+    });
 }

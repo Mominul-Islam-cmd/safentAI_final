@@ -312,3 +312,55 @@ a:hover {
 .accordion-button:not(.collapsed)::after {
     transform: rotate(180deg);
 }
+
+/* Feedback Styles */
+.feedback-card {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.feedback-card.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.feedback-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+}
+
+.feedback-card .card-body {
+    padding: 1.25rem;
+}
+
+.feedback-card .card-footer {
+    padding: 0.75rem 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Rating stars */
+.text-warning {
+    color: #f1c40f !important;
+}
+
+/* Approval filters */
+.nav-tabs .nav-link {
+    color: var(--dark-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--primary-color);
+    background-color: transparent;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.nav-tabs .nav-link:hover:not(.active) {
+    color: var(--primary-dark);
+    border-bottom: 3px solid rgba(52, 152, 219, 0.5);
+}

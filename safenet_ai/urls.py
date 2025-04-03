@@ -10,6 +10,7 @@ urlpatterns = [
     path('research/', include('research_papers.urls')),
     path('expert-topics/', include('expert_topics.urls')),
     path('blog/', include('blog.urls')),
+    path('feedback/', include('feedback.urls')),
 ]
 
 # Serve media files in development

@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Feedback - SafeNet AI{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="text-primary">
+                    <i class="fas fa-comment-dots me-2"></i>Feedback
+                </h2>
+                {% if user.is_authenticated %}
+                <a href="{% url 'feedback_create' %}" class="btn btn-success">
+                    <i class="fas fa-plus me-1"></i> Share Your Feedback
+                </a>
+                {% endif %}
+            </div>
+            <div class="card mb-4">
+                <div class="card-header bg-light">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link feedback-filter-tab {% if not current_type %}active{% endif %}" href="{% url 'feedback_list' %}">All</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link feedback-filter-tab {% if current_type == 'student' %}active{% endif %}" href="{% url 'feedback_list' %}?type=student">Student</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link feedback-filter-tab {% if current_type == 'client' %}active{% endif %}" href="{% url 'feedback_list' %}?type=client">Client</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    {% if page_obj %}
+                        <div class="row">
+                            {% for feedback in page_obj %}
+                                <div class="col-md-6 col-lg-4 mb-4">
+                                    <div class="card h-100 feedback-card">
+                                        <div class="card-header d-flex justify-content-between">
+                                            <span class="badge {% if feedback.feedback_type == 'student' %}bg-info{% else %}bg-secondary{% endif %}">
+                                                {{ feedback.get_feedback_type_display }}
+                                            </span>
+                                            <div>
+                                                {% for i in "12345" %}
+                                                    {% if forloop.counter <= feedback.rating %}
+                                                        <i class="fas fa-star text-warning"></i>
+                                                    {% else %}
+                                                        <i class="far fa-star text-muted"></i>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ feedback.title }}</h5>
+                                            <p class="card-text text-muted">{{ feedback.content|truncatewords:30 }}</p>
+                                        </div>
+                                        <div class="card-footer bg-white text-muted">
+                                            <small>
+                                                <i class="fas fa-user me-1"></i> {{ feedback.user.username }} 
+                                                <span class="ms-2">
+                                                    <i class="far fa-calendar-alt me-1"></i> {{ feedback.created_at|date:"M d, Y" }}
+                                                </span>
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        
+                        <!-- Pagination -->
+                        {% if page_obj.paginator.num_pages > 1 %}
+                        <nav aria-label="Page navigation" class="mt-4">
+                            <ul class="pagination justify-content-center">
+                                {% if page_obj.has_previous %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?{% if current_type %}type={{ current_type }}&{% endif %}page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                
+                                {% for num in page_obj.paginator.page_range %}
+                                    {% if page_obj.number == num %}
+                                        <li class="page-item active">
+                                            <a class="page-link" href="?{% if current_type %}type={{ current_type }}&{% endif %}page={{ num }}">{{ num }}</a>
+                                        </li>
+                                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?{% if current_type %}type={{ current_type }}&{% endif %}page={{ num }}">{{ num }}</a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                                
+                                {% if page_obj.has_next %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?{% if current_type %}type={{ current_type }}&{% endif %}page={{ page_obj.next_page_number }}" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                        {% endif %}
+                    {% else %}
+                        <div class="text-center my-5">
+                            <i class="fas fa-comment-slash fa-4x text-muted mb-3"></i>
+                            <h4 class="text-muted">No feedback available</h4>
+                            <p>Be the first to share your experience!</p>
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'feedback_create' %}" class="btn btn-primary">
+                                    <i class="fas fa-plus me-1"></i> Share Your Feedback
+                                </a>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    $(document).ready(function() {
+        // Add a class to show transition effects for feedback cards
+        setTimeout(function() {
+            $('.feedback-card').addClass('show');
+        }, 100);
+    });
+</script>
+{% endblock %}

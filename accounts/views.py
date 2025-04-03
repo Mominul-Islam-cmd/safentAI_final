@@ -4,12 +4,27 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.core.mail import send_mail
 from django.conf import settings
+from django.contrib.auth.models import User
+from .models import UserLoginActivity
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, ContactForm, ProfileRegisterForm, EmailAuthenticationForm
 
 
 class CustomLoginView(LoginView):
     template_name = 'accounts/login.html'
     authentication_form = EmailAuthenticationForm
+    
+    def form_valid(self, form):
+        # Call the parent class's form_valid method first
+        response = super().form_valid(form)
+        
+        # Record the login activity
+        if hasattr(self.request, 'user') and self.request.user.is_authenticated:
+            UserLoginActivity.objects.create(
+                user=self.request.user,
+                ip_address=self.request.META.get('REMOTE_ADDR')
+            )
+        
+        return response
 
 
 class CustomLogoutView(LogoutView):
@@ -79,6 +94,30 @@ def profile(request):
         'p_form': p_form
     }
     return render(request, 'accounts/profile.html', context)
+
+
+@login_required
+def user_list(request):
+    # Only staff/admin can access this view
+    if not request.user.is_staff:
+        messages.error(request, 'You do not have permission to access this page.')
+        return redirect('home')
+    
+    # Get all users ordered by last login date
+    users = User.objects.all().order_by('-last_login')
+    
+    # Get the latest login activity for each user
+    user_activities = {}
+    for user in users:
+        activities = UserLoginActivity.objects.filter(user=user).order_by('-login_datetime')
+        if activities.exists():
+            user_activities[user.id] = activities.first()
+    
+    context = {
+        'users': users,
+        'user_activities': user_activities,
+    }
+    return render(request, 'accounts/user_list.html', context)
 
 
 def contact(request):

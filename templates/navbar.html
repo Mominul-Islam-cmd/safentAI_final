@@ -24,6 +24,9 @@
                 <li class="nav-item">
                     <a class="nav-link {% if request.path == '/accounts/contact/' %}active{% endif %}" href="{% url 'contact' %}">Contact</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if 'feedback' in request.path %}active{% endif %}" href="{% url 'feedback_list' %}">Feedback</a>
+                </li>
                 {% if user.is_authenticated and user.is_superuser %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle {% if 'approval' in request.path %}active{% endif %}" href="#" id="adminDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,6 +37,7 @@
                         <li><a class="dropdown-item" href="{% url 'research_paper_approval_list' %}">Research Paper Approvals</a></li>
                         <li><a class="dropdown-item" href="{% url 'research_topic_approval_list' %}">Expert Topic Approvals</a></li>
                         <li><a class="dropdown-item" href="{% url 'blog_approval_list' %}">Blog Post Approvals</a></li>
+                        <li><a class="dropdown-item" href="{% url 'feedback_approval_list' %}">Feedback Approvals</a></li>
                     </ul>
                 </li>
                 {% endif %}
@@ -49,6 +53,7 @@
                             <li><a class="dropdown-item" href="{% url 'my_research_papers' %}">My Research Papers</a></li>
                             <li><a class="dropdown-item" href="{% url 'my_research_topics' %}">My Expert Topics</a></li>
                             <li><a class="dropdown-item" href="{% url 'my_blog_posts' %}">My Blog Posts</a></li>
+                            <li><a class="dropdown-item" href="{% url 'my_feedbacks' %}">My Feedbacks</a></li>
 
                             <li><hr class="dropdown-divider"></li>
                             <li>
