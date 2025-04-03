@@ -31,8 +31,18 @@ class Feedback(models.Model):
     
     def save(self, *args, **kwargs):
         if not self.slug:
-            # Create a unique slug by appending timestamp to title
-            self.slug = slugify(self.title + '-' + str(self.created_at))
+            # Generate the initial slug
+            slug = slugify(self.title)
+            
+            # Check for existing slugs and make this one unique
+            unique_slug = slug
+            num = 1
+            while Feedback.objects.filter(slug=unique_slug).exists():
+                unique_slug = f"{slug}-{num}"
+                num += 1
+            
+            self.slug = unique_slug
+            
         super().save(*args, **kwargs)
     
     def __str__(self):

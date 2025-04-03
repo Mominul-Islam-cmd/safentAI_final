@@ -65,15 +65,15 @@ def feedback_edit(request, slug):
         if form.is_valid():
             updated_feedback = form.save(commit=False)
             
-            # Set status back to pending if it was previously approved or rejected
-            if original_status in ['approved', 'rejected']:
+            # Only set back to pending if not admin
+            if not request.user.is_superuser:
                 updated_feedback.status = 'pending'
                 if was_approved:
                     messages.info(request, 'Your feedback has been updated and is now awaiting admin approval again.')
                 else:
-                    messages.info(request, 'Your rejected feedback has been updated and is now awaiting admin review.')
+                    messages.info(request, 'Your feedback has been updated and is awaiting admin review.')
             else:
-                messages.success(request, 'Your feedback has been updated successfully and is pending approval.')
+                messages.success(request, 'Your feedback has been updated successfully.')
             
             updated_feedback.save()
             return redirect('my_feedbacks')
@@ -93,7 +93,7 @@ def feedback_delete(request, slug):
     feedback = get_object_or_404(Feedback, slug=slug)
     
     # Only admin users can delete feedback
-    if not request.user.is_staff:
+    if not request.user.is_superuser:
         messages.error(request, "Only administrators can delete feedback.")
         return redirect('my_feedbacks')
     
@@ -124,8 +124,8 @@ def my_feedbacks(request):
 
 @login_required
 def feedback_approval_list(request):
-    # Only staff members can access this view
-    if not request.user.is_staff:
+    # Only superuser can access this view
+    if not request.user.is_superuser:
         messages.warning(request, "You don't have permission to view this page.")
         return redirect('home')
     
@@ -139,8 +139,8 @@ def feedback_approval_list(request):
 
 @login_required
 def feedback_approve(request, pk):
-    # Only staff members can access this view
-    if not request.user.is_staff:
+    # Only superuser can access this view
+    if not request.user.is_superuser:
         messages.warning(request, "You don't have permission to perform this action.")
         return redirect('home')
     

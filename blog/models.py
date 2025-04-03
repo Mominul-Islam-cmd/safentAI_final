@@ -31,7 +31,18 @@ class BlogPost(models.Model):
     
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title)
+            # Generate the initial slug
+            slug = slugify(self.title)
+            
+            # Check for existing slugs and make this one unique
+            unique_slug = slug
+            num = 1
+            while BlogPost.objects.filter(slug=unique_slug).exists():
+                unique_slug = f"{slug}-{num}"
+                num += 1
+            
+            self.slug = unique_slug
+            
         super().save(*args, **kwargs)
     
     def __str__(self):
