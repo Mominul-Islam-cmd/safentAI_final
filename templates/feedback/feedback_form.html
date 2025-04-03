@@ -79,7 +79,15 @@
                         
                         <div class="alert alert-info">
                             <i class="fas fa-info-circle me-2"></i> 
-                            Your feedback will be reviewed by our administrators before being published on the site.
+                            {% if feedback %}
+                                {% if feedback.status == 'approved' %}
+                                Your edited feedback will need to be approved again by administrators before being published.
+                                {% else %}
+                                Your feedback will be reviewed by administrators before being published on the site.
+                                {% endif %}
+                            {% else %}
+                            Your feedback will be reviewed by administrators before being published on the site.
+                            {% endif %}
                         </div>
                         
                         <div class="d-flex justify-content-between mt-4">

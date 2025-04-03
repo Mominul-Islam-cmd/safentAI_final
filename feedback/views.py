@@ -56,16 +56,22 @@ def feedback_edit(request, slug):
     if feedback.user != request.user:
         return HttpResponseForbidden("You don't have permission to edit this feedback.")
     
-    # Check if feedback is already approved
-    if feedback.status == 'approved':
-        messages.warning(request, "You cannot edit feedback that has already been approved.")
-        return redirect('my_feedbacks')
+    # Allow editing approved feedback (we'll set it back to pending)
+    original_status = feedback.status
     
     if request.method == 'POST':
         form = FeedbackForm(request.POST, instance=feedback)
         if form.is_valid():
-            form.save()
-            messages.success(request, 'Your feedback has been updated successfully.')
+            updated_feedback = form.save(commit=False)
+            
+            # Set status back to pending if it was previously approved or rejected
+            if original_status in ['approved', 'rejected']:
+                updated_feedback.status = 'pending'
+                messages.info(request, 'Your feedback has been updated and is now awaiting admin approval again.')
+            else:
+                messages.success(request, 'Your feedback has been updated successfully.')
+            
+            updated_feedback.save()
             return redirect('my_feedbacks')
     else:
         form = FeedbackForm(instance=feedback)
@@ -73,6 +79,7 @@ def feedback_edit(request, slug):
     context = {
         'form': form,
         'feedback': feedback,
+        'is_edit': True,
     }
     return render(request, 'feedback/feedback_form.html', context)
 
@@ -83,11 +90,6 @@ def feedback_delete(request, slug):
     # Check if the user is the owner of the feedback
     if feedback.user != request.user:
         return HttpResponseForbidden("You don't have permission to delete this feedback.")
-    
-    # Check if feedback is already approved
-    if feedback.status == 'approved':
-        messages.warning(request, "You cannot delete feedback that has already been approved.")
-        return redirect('my_feedbacks')
     
     if request.method == 'POST':
         feedback.delete()

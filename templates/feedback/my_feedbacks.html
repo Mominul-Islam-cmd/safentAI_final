@@ -60,20 +60,19 @@
                                             </td>
                                             <td>{{ feedback.created_at|date:"M d, Y" }}</td>
                                             <td>
-                                                {% if feedback.status != 'approved' %}
-                                                    <div class="btn-group" role="group">
-                                                        <a href="{% url 'feedback_edit' feedback.slug %}" class="btn btn-sm btn-outline-primary">
-                                                            <i class="fas fa-edit"></i> Edit
-                                                        </a>
-                                                        <a href="{% url 'feedback_delete' feedback.slug %}" class="btn btn-sm btn-outline-danger">
-                                                            <i class="fas fa-trash"></i> Delete
-                                                        </a>
-                                                    </div>
-                                                {% else %}
-                                                    <span class="text-muted small">
-                                                        <i class="fas fa-info-circle me-1"></i> 
-                                                        Approved feedback cannot be edited
-                                                    </span>
+                                                <div class="btn-group" role="group">
+                                                    <a href="{% url 'feedback_edit' feedback.slug %}" class="btn btn-sm btn-outline-primary">
+                                                        <i class="fas fa-edit"></i> Edit
+                                                    </a>
+                                                    <a href="{% url 'feedback_delete' feedback.slug %}" class="btn btn-sm btn-outline-danger">
+                                                        <i class="fas fa-trash"></i> Delete
+                                                    </a>
+                                                </div>
+                                                {% if feedback.status == 'approved' %}
+                                                <div class="text-info small mt-1">
+                                                    <i class="fas fa-info-circle me-1"></i> 
+                                                    Editing will require re-approval
+                                                </div>
                                                 {% endif %}
                                             </td>
                                         </tr>
@@ -97,7 +96,7 @@
             <div class="alert alert-info mt-4">
                 <i class="fas fa-info-circle me-2"></i>
                 <strong>Note:</strong> Your feedback will be reviewed by our administrators before being published on the site. 
-                You can edit or delete your feedback while it's still pending approval.
+                You can edit or delete your feedback at any time. If you edit approved feedback, it will need to be re-approved.
             </div>
         </div>
     </div>
