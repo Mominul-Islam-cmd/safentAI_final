@@ -21,6 +21,8 @@ class CustomPasswordResetView(PasswordResetView):
     template_name = 'accounts/password_reset.html'
     email_template_name = 'accounts/password_reset_email.html'
     subject_template_name = 'accounts/password_reset_subject.txt'
+    from_email = settings.EMAIL_HOST_USER
+    success_url = '/accounts/password-reset/done/'
 
 
 class CustomPasswordResetDoneView(PasswordResetDoneView):
@@ -93,7 +95,7 @@ def contact(request):
                 f'Contact Form: {subject}',
                 f'From: {name} <{email}>\n\n{message}',
                 settings.EMAIL_HOST_USER,
-                ['contact@safenet.ai'],  # Replace with your actual email
+                [settings.EMAIL_HOST_USER],  # Send to the same Gmail account
                 fail_silently=False,
             )
             
