@@ -13,6 +13,7 @@ class CustomLoginView(LoginView):
 
 class CustomLogoutView(LogoutView):
     template_name = 'accounts/logout.html'
+    http_method_names = ['get', 'post']  # Allow both GET and POST methods
 
 
 class CustomPasswordResetView(PasswordResetView):
