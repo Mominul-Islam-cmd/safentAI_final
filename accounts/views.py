@@ -90,12 +90,21 @@ def contact(request):
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
             
-            # Send email
+            # Send email to admin
             send_mail(
                 f'Contact Form: {subject}',
                 f'From: {name} <{email}>\n\n{message}',
                 settings.EMAIL_HOST_USER,
                 [settings.EMAIL_HOST_USER],  # Send to the same Gmail account
+                fail_silently=False,
+            )
+            
+            # Send auto-reply email to user
+            send_mail(
+                'Thank you for contacting SafeNet AI',
+                f'Dear {name},\n\nThank you for reaching out to us. We have received your message about "{subject}" and our team will contact you soon.\n\nBest regards,\nThe SafeNet AI Team',
+                settings.EMAIL_HOST_USER,
+                [email],  # Send to user's email
                 fail_silently=False,
             )
             

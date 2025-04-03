@@ -22,6 +22,14 @@ class ProfileRegisterForm(forms.ModelForm):
             'institution_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your institution name'}),
             'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your phone number'})
         }
+        
+    def clean_profile_picture(self):
+        profile_picture = self.cleaned_data.get('profile_picture')
+        if profile_picture:
+            # 256KB = 262,144 bytes
+            if profile_picture.size > 262144:
+                raise forms.ValidationError("Profile picture must be less than 256KB in size.")
+        return profile_picture
 
 
 class UserUpdateForm(forms.ModelForm):
@@ -36,6 +44,14 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['institution_name', 'profile_picture', 'phone_number']
+        
+    def clean_profile_picture(self):
+        profile_picture = self.cleaned_data.get('profile_picture')
+        if profile_picture:
+            # 256KB = 262,144 bytes
+            if profile_picture.size > 262144:
+                raise forms.ValidationError("Profile picture must be less than 256KB in size.")
+        return profile_picture
 
 
 class ContactForm(forms.Form):
