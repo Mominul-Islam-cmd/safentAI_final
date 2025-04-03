@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">SAFENET.AI</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if 'research' in request.path %}active{% endif %}" href="{% url 'research_paper_list' %}">Research Papers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if 'expert-topics' in request.path %}active{% endif %}" href="{% url 'research_topic_list' %}">Expert Topics</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if 'blog' in request.path %}active{% endif %}" href="{% url 'blog_list' %}">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="{% url 'about' %}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/accounts/contact/' %}active{% endif %}" href="{% url 'contact' %}">Contact</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user-circle me-1"></i> {{ user.username }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="{% url 'profile' %}">My Profile</a></li>
+                            <li><a class="dropdown-item" href="{% url 'my_research_papers' %}">My Research Papers</a></li>
+                            <li><a class="dropdown-item" href="{% url 'my_research_topics' %}">My Expert Topics</a></li>
+                            <li><a class="dropdown-item" href="{% url 'my_blog_posts' %}">My Blog Posts</a></li>
+                            {% if user.is_superuser %}
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{% url 'research_paper_approval_list' %}">Paper Approvals</a></li>
+                                <li><a class="dropdown-item" href="{% url 'research_topic_approval_list' %}">Topic Approvals</a></li>
+                                <li><a class="dropdown-item" href="{% url 'blog_approval_list' %}">Blog Approvals</a></li>
+                                <li><a class="dropdown-item" href="/admin/">Admin Panel</a></li>
+                            {% endif %}
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/accounts/login/' %}active{% endif %}" href="{% url 'login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/accounts/register/' %}active{% endif %}" href="{% url 'register' %}">Register</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

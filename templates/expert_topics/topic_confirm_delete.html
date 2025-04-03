@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Research Topic - SAFENET.AI{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card border-danger">
+            <div class="card-header bg-danger text-white">
+                <h3 class="mb-0">Confirm Deletion</h3>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle me-2"></i> Warning: This action cannot be undone!
+                </div>
+                
+                <h4 class="mb-3">Are you sure you want to delete the following research topic?</h4>
+                
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ topic.title }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Subject: {{ topic.subject }}</h6>
+                        <p class="card-text">{{ topic.description|truncatewords:50 }}</p>
+                        <p><span class="category-tag {{ topic.category }}">{{ topic.category }}</span></p>
+                    </div>
+                </div>
+                
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'research_topic_detail' topic.slug %}" class="btn btn-outline-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-danger">Delete Topic</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

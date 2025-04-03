@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Logged Out - SAFENET.AI{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h3 class="mb-0">Logged Out Successfully</h3>
+            </div>
+            <div class="card-body text-center">
+                <div class="mb-4">
+                    <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+                </div>
+                <h4 class="mb-3">You have been logged out successfully.</h4>
+                <p>Thank you for visiting SAFENET.AI. We hope to see you again soon!</p>
+                
+                <div class="d-grid gap-2 mt-4">
+                    <a href="{% url 'login' %}" class="btn btn-primary">Log in again</a>
+                    <a href="{% url 'home' %}" class="btn btn-outline-secondary">Return to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

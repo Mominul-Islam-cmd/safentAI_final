@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block title %}About SAFENET.AI{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="page-header">About SAFENET.AI</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2>Our Mission</h2>
+                <p>At SAFENET.AI, we're dedicated to pioneering ethical AI solutions through innovative research and quantum computing advancements. Our platform brings together researchers, practitioners, and enthusiasts in the fields of Artificial Intelligence and Quantum Computing.</p>
+                
+                <h2 class="mt-4">What We Do</h2>
+                <p>We provide a collaborative environment where:</p>
+                <ul>
+                    <li>Researchers can share their latest papers and findings</li>
+                    <li>Experts can contribute to emerging research topics</li>
+                    <li>Community members can publish insightful blog articles</li>
+                    <li>Everyone can learn from and collaborate with peers in the field</li>
+                </ul>
+                
+                <h2 class="mt-4">Our Focus Areas</h2>
+                <div class="row mt-3">
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100 border-primary">
+                            <div class="card-body text-center">
+                                <i class="fas fa-robot fa-3x mb-3 text-primary"></i>
+                                <h5>Artificial Intelligence</h5>
+                                <p>Machine learning, neural networks, NLP, computer vision, and ethical AI systems</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100 border-danger">
+                            <div class="card-body text-center">
+                                <i class="fas fa-atom fa-3x mb-3 text-danger"></i>
+                                <h5>Quantum Computing</h5>
+                                <p>Quantum algorithms, error correction, quantum machine learning, and hardware advancements</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100 border-purple">
+                            <div class="card-body text-center">
+                                <i class="fas fa-code-branch fa-3x mb-3 text-purple"></i>
+                                <h5>Hybrid Systems</h5>
+                                <p>Integration of classical and quantum computing for practical applications</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4>Join Our Community</h4>
+            </div>
+            <div class="card-body">
+                <p>Become a part of our growing network of researchers and enthusiasts:</p>
+                <ul>
+                    <li>Share your research papers</li>
+                    <li>Contribute to research topics</li>
+                    <li>Write blog articles</li>
+                    <li>Connect with peers</li>
+                </ul>
+                {% if not user.is_authenticated %}
+                <div class="d-grid gap-2">
+                    <a href="{% url 'register' %}" class="btn btn-primary">Register Now</a>
+                    <a href="{% url 'login' %}" class="btn btn-outline-primary">Login</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h4>Contact Us</h4>
+            </div>
+            <div class="card-body">
+                <p><i class="fas fa-envelope me-2"></i> <a href="mailto:contact@safenet.ai">contact@safenet.ai</a></p>
+                <p><i class="fas fa-map-marker-alt me-2"></i> Dhanmondi-15, Dhaka</p>
+                <p><i class="far fa-clock me-2"></i> 9 AM - 5 PM PST</p>
+                <a href="{% url 'contact' %}" class="btn btn-outline-primary">Send us a message</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

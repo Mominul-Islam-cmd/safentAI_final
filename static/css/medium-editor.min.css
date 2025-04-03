@@ -1,0 +1,106 @@
+/**
+ * Medium Editor v5.23.3 - Lightweight editor
+ * Simplified version for SAFENET.AI
+ */
+
+.medium-editor-hidden {
+    display: none;
+}
+
+.medium-editor-element {
+    word-break: break-word;
+    min-height: 30px;
+    outline: none;
+    background-color: #fff;
+}
+
+.medium-editor-element:focus {
+    outline: none;
+}
+
+.medium-editor-element p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.medium-editor-element h2 {
+    font-size: 1.75rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.medium-editor-element h3 {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.medium-editor-element blockquote {
+    padding-left: 1rem;
+    border-left: 4px solid #eee;
+    color: #6c757d;
+}
+
+.medium-editor-element a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.medium-editor-element a:hover {
+    text-decoration: underline;
+}
+
+.medium-editor-element ul, .medium-editor-element ol {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+}
+
+.medium-editor-element code {
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    background-color: #f8f9fa;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-size: 87.5%;
+    color: #e83e8c;
+}
+
+.medium-editor-element pre {
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+    white-space: pre-wrap;
+}
+
+.medium-editor-placeholder {
+    position: relative;
+}
+
+.medium-editor-placeholder:after {
+    content: attr(data-placeholder);
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-style: italic;
+    color: #6c757d;
+    white-space: pre;
+    pointer-events: none;
+}
+
+.medium-editor-placeholder-relative {
+    position: relative;
+}
+
+.medium-editor-placeholder-relative:after {
+    content: attr(data-placeholder);
+    font-style: italic;
+    color: #6c757d;
+    position: relative;
+    white-space: pre;
+}
+
+.medium-editor-toolbar-active {
+    visibility: visible;
+}

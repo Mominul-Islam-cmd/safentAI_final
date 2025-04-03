@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block title %}Research Topic Approvals - SAFENET.AI{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="page-header">Research Topic Approvals</h1>
+        <p class="lead">Review and approve pending research topic submissions.</p>
+    </div>
+</div>
+
+<div id="alert-container">
+    <!-- JavaScript will populate alerts here -->
+</div>
+
+{% if topics %}
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>Title</th>
+                    <th>Subject</th>
+                    <th>Author</th>
+                    <th>Category</th>
+                    <th>Submitted</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for topic in topics %}
+                    <tr id="topic-{{ topic.id }}">
+                        <td>
+                            <strong>{{ topic.title }}</strong>
+                            <div class="text-muted small">{{ topic.description|truncatechars:100 }}</div>
+                        </td>
+                        <td>{{ topic.subject }}</td>
+                        <td>{{ topic.author.get_full_name|default:topic.author.username }}</td>
+                        <td><span class="category-tag {{ topic.category }}">{{ topic.category }}</span></td>
+                        <td>{{ topic.created_at|date:"M d, Y" }}</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-success btn-sm approval-btn" 
+                                        data-id="{{ topic.id }}" 
+                                        data-status="approved" 
+                                        data-type="topic">
+                                    <i class="fas fa-check me-1"></i> Approve
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm approval-btn" 
+                                        data-id="{{ topic.id }}" 
+                                        data-status="rejected" 
+                                        data-type="topic">
+                                    <i class="fas fa-times me-1"></i> Reject
+                                </button>
+                                <a href="#topicModal{{ topic.id }}" class="btn btn-primary btn-sm" data-bs-toggle="modal">
+                                    <i class="fas fa-eye me-1"></i> View
+                                </a>
+                            </div>
+                            
+                            <!-- Modal for viewing topic details -->
+                            <div class="modal fade" id="topicModal{{ topic.id }}" tabindex="-1" aria-labelledby="topicModalLabel{{ topic.id }}" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="topicModalLabel{{ topic.id }}">{{ topic.title }}</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="mb-3">
+                                                <span class="category-tag {{ topic.category }}">{{ topic.category }}</span>
+                                                <span class="ms-2 text-muted">Submitted by {{ topic.author.get_full_name|default:topic.author.username }} on {{ topic.created_at|date:"F j, Y" }}</span>
+                                            </div>
+                                            
+                                            <div class="mb-3">
+                                                <h5>Subject Area</h5>
+                                                <p>{{ topic.subject }}</p>
+                                            </div>
+                                            
+                                            <div>
+                                                <h5>Description</h5>
+                                                <p>{{ topic.description|linebreaks }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-success approval-btn" 
+                                                    data-id="{{ topic.id }}" 
+                                                    data-status="approved" 
+                                                    data-type="topic" 
+                                                    data-bs-dismiss="modal">
+                                                <i class="fas fa-check me-1"></i> Approve
+                                            </button>
+                                            <button type="button" class="btn btn-danger approval-btn" 
+                                                    data-id="{{ topic.id }}" 
+                                                    data-status="rejected" 
+                                                    data-type="topic" 
+                                                    data-bs-dismiss="modal">
+                                                <i class="fas fa-times me-1"></i> Reject
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <div class="alert alert-info">
+        <i class="fas fa-info-circle me-2"></i> There are no pending research topics to approve at this time.
+    </div>
+{% endif %}
+{% endblock %}

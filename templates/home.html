@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+
+{% block title %}SAFENET.AI - AI and Quantum Research Community{% endblock %}
+
+{% block content %}
+<div class="jumbotron bg-light p-5 rounded">
+    <h1 class="display-4">Welcome to SAFENET.AI</h1>
+    <p class="lead">A community platform for AI and Quantum Computing researchers to collaborate, share papers, and explore new topics.</p>
+    <hr class="my-4">
+    <p>Join our growing community of researchers, contribute your work, and discover groundbreaking research in AI and Quantum Computing.</p>
+    {% if not user.is_authenticated %}
+        <a class="btn btn-primary btn-lg" href="{% url 'register' %}" role="button">Join Now</a>
+    {% else %}
+        <a class="btn btn-primary btn-lg" href="{% url 'research_paper_create' %}" role="button">Submit Research</a>
+    {% endif %}
+</div>
+
+<div class="row mt-5">
+    <div class="col-12">
+        <h2 class="text-center mb-4">Research Dashboard</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="stats-card">
+            <div class="icon">
+                <i class="far fa-file-alt"></i>
+            </div>
+            <div class="count">{{ research_papers_count }}</div>
+            <div class="label">Research Papers</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stats-card">
+            <div class="icon">
+                <i class="fas fa-rss"></i>
+            </div>
+            <div class="count">{{ blog_count }}</div>
+            <div class="label">Blog Articles</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stats-card">
+            <div class="icon">
+                <i class="fas fa-brain"></i>
+            </div>
+            <div class="count">2</div>
+            <div class="label">Research Fields</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stats-card">
+            <div class="icon">
+                <i class="fas fa-book"></i>
+            </div>
+            <div class="count">{{ topics_count }}</div>
+            <div class="label">Expert Topics</div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-12">
+        <h2 class="mb-4">Recent Research Papers</h2>
+    </div>
+</div>
+
+<div class="row">
+    {% for paper in recent_papers %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <span class="category-tag {{ paper.category }}">{{ paper.category }}</span>
+                <h5 class="card-title mt-2">{{ paper.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">By {{ paper.author.get_full_name|default:paper.author.username }}{% if paper.co_authors %} & {{ paper.co_authors }}{% endif %}</h6>
+                <p class="card-text">{{ paper.abstract|truncatewords:30 }}</p>
+            </div>
+            <div class="card-footer bg-transparent">
+                <a href="{% url 'research_paper_detail' paper.slug %}" class="btn btn-sm btn-outline-primary">Read More</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <div class="alert alert-info">
+            No research papers have been published yet. Be the first to submit your research!
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="text-center mt-3">
+    <a href="{% url 'research_paper_list' %}" class="btn btn-outline-primary">View All Papers <i class="fas fa-arrow-right"></i></a>
+</div>
+
+{% if user.is_authenticated %}
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Contribute to the Community</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-file-upload fa-3x mb-3 text-primary"></i>
+                            <h5>Share Your Research</h5>
+                            <p>Upload your latest papers on AI and Quantum computing.</p>
+                            <a href="{% url 'research_paper_create' %}" class="btn btn-sm btn-outline-primary">Upload Paper</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-lightbulb fa-3x mb-3 text-primary"></i>
+                            <h5>Propose Research Topics</h5>
+                            <p>Suggest new areas of exploration for the community.</p>
+                            <a href="{% url 'research_topic_create' %}" class="btn btn-sm btn-outline-primary">Add Topic</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-edit fa-3x mb-3 text-primary"></i>
+                            <h5>Write a Blog Post</h5>
+                            <p>Share your insights and perspectives with the community.</p>
+                            <a href="{% url 'blog_create' %}" class="btn btn-sm btn-outline-primary">Write Post</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ action }} Research Paper - SAFENET.AI{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="page-header">{{ action }} Research Paper</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Paper Details</h4>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <div class="form-group mb-3">
+                        <label for="{{ form.title.id_for_label }}" class="form-label">Paper Title</label>
+                        <input type="text" name="{{ form.title.name }}" id="{{ form.title.id_for_label }}" class="form-control {% if form.title.errors %}is-invalid{% endif %}" value="{{ form.title.value|default:'' }}" required>
+                        {% if form.title.errors %}
+                            <div class="invalid-feedback">
+                                {{ form.title.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                        <label for="{{ form.co_authors.id_for_label }}" class="form-label">Co-Authors (optional)</label>
+                        <input type="text" name="{{ form.co_authors.name }}" id="{{ form.co_authors.id_for_label }}" class="form-control {% if form.co_authors.errors %}is-invalid{% endif %}" value="{{ form.co_authors.value|default:'' }}">
+                        {% if form.co_authors.errors %}
+                            <div class="invalid-feedback">
+                                {{ form.co_authors.errors }}
+                            </div>
+                        {% endif %}
+                        <div class="form-text">Comma-separated list of co-authors, if any.</div>
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                        <label for="{{ form.abstract.id_for_label }}" class="form-label">Abstract</label>
+                        <textarea name="{{ form.abstract.name }}" id="{{ form.abstract.id_for_label }}" class="form-control {% if form.abstract.errors %}is-invalid{% endif %}" rows="5" required>{{ form.abstract.value|default:'' }}</textarea>
+                        {% if form.abstract.errors %}
+                            <div class="invalid-feedback">
+                                {{ form.abstract.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                        <label for="{{ form.paper_link.id_for_label }}" class="form-label">Link to Paper</label>
+                        <input type="url" name="{{ form.paper_link.name }}" id="{{ form.paper_link.id_for_label }}" class="form-control {% if form.paper_link.errors %}is-invalid{% endif %}" value="{{ form.paper_link.value|default:'' }}" required>
+                        {% if form.paper_link.errors %}
+                            <div class="invalid-feedback">
+                                {{ form.paper_link.errors }}
+                            </div>
+                        {% endif %}
+                        <div class="form-text">URL to access the full paper (e.g., arXiv, research gate, institutional repository).</div>
+                    </div>
+                    
+                    <div class="form-group mb-4">
+                        <label for="{{ form.category.id_for_label }}" class="form-label">Category</label>
+                        <select name="{{ form.category.name }}" id="{{ form.category.id_for_label }}" class="form-select {% if form.category.errors %}is-invalid{% endif %}" required>
+                            <option value="" {% if not form.category.value %}selected{% endif %}>Select Category</option>
+                            <option value="AI" {% if form.category.value == 'AI' %}selected{% endif %}>AI</option>
+                            <option value="Quantum" {% if form.category.value == 'Quantum' %}selected{% endif %}>Quantum</option>
+                            <option value="Hybrid" {% if form.category.value == 'Hybrid' %}selected{% endif %}>Hybrid</option>
+                        </select>
+                        {% if form.category.errors %}
+                            <div class="invalid-feedback">
+                                {{ form.category.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="alert alert-info mb-4">
+                        <i class="fas fa-info-circle me-2"></i> Your submission will be reviewed by moderators before being published.
+                    </div>
+                    
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'research_paper_list' %}" class="btn btn-outline-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary">Submit Paper</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

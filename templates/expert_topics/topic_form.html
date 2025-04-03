@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ action }} Research Topic - SAFENET.AI{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="page-header">{{ action }} Research Topic</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Topic Details</h4>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <div class="form-group mb-3">
+                        <label for="{{ form.title.id_for_label }}" class="form-label">Topic Title</label>
+                        <input type="text" name="{{ form.title.name }}" id="{{ form.title.id_for_label }}" class="form-control {% if form.title.errors %}is-invalid{% endif %}" value="{{ form.title.value|default:'' }}" required>
+                        {% if form.title.errors %}
+                            <div class="invalid-feedback">
+                                {{ form.title.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                        <label for="{{ form.subject.id_for_label }}" class="form-label">Subject Area</label>
+                        <input type="text" name="{{ form.subject.name }}" id="{{ form.subject.id_for_label }}" class="form-control {% if form.subject.errors %}is-invalid{% endif %}" value="{{ form.subject.value|default:'' }}" required>
+                        {% if form.subject.errors %}
+                            <div class="invalid-feedback">
+                                {{ form.subject.errors }}
+                            </div>
+                        {% endif %}
+                        <div class="form-text">Specify the specific subject area within AI or Quantum computing.</div>
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                        <label for="{{ form.description.id_for_label }}" class="form-label">Description</label>
+                        <textarea name="{{ form.description.name }}" id="{{ form.description.id_for_label }}" class="form-control {% if form.description.errors %}is-invalid{% endif %}" rows="5" required>{{ form.description.value|default:'' }}</textarea>
+                        {% if form.description.errors %}
+                            <div class="invalid-feedback">
+                                {{ form.description.errors }}
+                            </div>
+                        {% endif %}
+                        <div class="form-text">Provide a detailed explanation of the research topic, including key challenges and potential directions.</div>
+                    </div>
+                    
+                    <div class="form-group mb-4">
+                        <label for="{{ form.category.id_for_label }}" class="form-label">Category</label>
+                        <select name="{{ form.category.name }}" id="{{ form.category.id_for_label }}" class="form-select {% if form.category.errors %}is-invalid{% endif %}" required>
+                            <option value="" {% if not form.category.value %}selected{% endif %}>Select Category</option>
+                            <option value="AI" {% if form.category.value == 'AI' %}selected{% endif %}>AI</option>
+                            <option value="Quantum" {% if form.category.value == 'Quantum' %}selected{% endif %}>Quantum</option>
+                            <option value="Hybrid" {% if form.category.value == 'Hybrid' %}selected{% endif %}>Hybrid</option>
+                        </select>
+                        {% if form.category.errors %}
+                            <div class="invalid-feedback">
+                                {{ form.category.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="alert alert-info mb-4">
+                        <i class="fas fa-info-circle me-2"></i> Your submission will be reviewed by moderators before being published.
+                    </div>
+                    
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'research_topic_list' %}" class="btn btn-outline-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary">Submit Topic</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ action }} Blog Post - SAFENET.AI{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="/static/css/medium-editor.min.css">
+<style>
+    .medium-editor-element {
+        min-height: 300px;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    .medium-editor-element:focus {
+        border-color: #80bdff;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="page-header">{{ action }} Blog Post</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-10 mx-auto">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Post Details</h4>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <div class="form-group mb-3">
+                        <label for="{{ form.title.id_for_label }}" class="form-label">Title</label>
+                        <input type="text" name="{{ form.title.name }}" id="{{ form.title.id_for_label }}" class="form-control {% if form.title.errors %}is-invalid{% endif %}" value="{{ form.title.value|default:'' }}" required placeholder="Enter a compelling title...">
+                        {% if form.title.errors %}
+                            <div class="invalid-feedback">
+                                {{ form.title.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                        <label for="{{ form.category.id_for_label }}" class="form-label">Category</label>
+                        <select name="{{ form.category.name }}" id="{{ form.category.id_for_label }}" class="form-select {% if form.category.errors %}is-invalid{% endif %}" required>
+                            <option value="" {% if not form.category.value %}selected{% endif %}>Select Category</option>
+                            <option value="AI" {% if form.category.value == 'AI' %}selected{% endif %}>AI</option>
+                            <option value="Quantum" {% if form.category.value == 'Quantum' %}selected{% endif %}>Quantum</option>
+                            <option value="Hybrid" {% if form.category.value == 'Hybrid' %}selected{% endif %}>Hybrid</option>
+                        </select>
+                        {% if form.category.errors %}
+                            <div class="invalid-feedback">
+                                {{ form.category.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                        <label for="{{ form.content.id_for_label }}" class="form-label">Content</label>
+                        <div class="medium-editor-toolbar">
+                            <button type="button" class="btn btn-sm btn-outline-primary me-1" data-command="bold" title="Bold"><i class="fas fa-bold"></i></button>
+                            <button type="button" class="btn btn-sm btn-outline-primary me-1" data-command="italic" title="Italic"><i class="fas fa-italic"></i></button>
+                            <button type="button" class="btn btn-sm btn-outline-primary me-1" data-command="underline" title="Underline"><i class="fas fa-underline"></i></button>
+                            <button type="button" class="btn btn-sm btn-outline-primary me-1" data-command="h2" title="Heading 2">H2</button>
+                            <button type="button" class="btn btn-sm btn-outline-primary me-1" data-command="h3" title="Heading 3">H3</button>
+                            <button type="button" class="btn btn-sm btn-outline-primary me-1" data-command="createlink" title="Link"><i class="fas fa-link"></i></button>
+                            <button type="button" class="btn btn-sm btn-outline-primary me-1" data-command="insertUnorderedList" title="Bullet List"><i class="fas fa-list-ul"></i></button>
+                            <button type="button" class="btn btn-sm btn-outline-primary me-1" data-command="insertOrderedList" title="Numbered List"><i class="fas fa-list-ol"></i></button>
+                            <button type="button" class="btn btn-sm btn-outline-primary me-1" data-command="code" title="Code"><i class="fas fa-code"></i></button>
+                            <button type="button" class="btn btn-sm btn-outline-primary me-1" data-command="removeFormat" title="Clear Formatting"><i class="fas fa-eraser"></i></button>
+                        </div>
+                        <div id="editor-container" class="medium-editor-element" contenteditable="true">{{ form.content.value|safe|default:'' }}</div>
+                        <textarea name="{{ form.content.name }}" id="{{ form.content.id_for_label }}" style="display: none;"></textarea>
+                        {% if form.content.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.content.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="alert alert-info mb-4">
+                        <i class="fas fa-info-circle me-2"></i> Your blog post will be reviewed by moderators before being published.
+                    </div>
+                    
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'blog_list' %}" class="btn btn-outline-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary" id="submit-post">Submit Post</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="/static/js/medium-editor.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Basic WYSIWYG editor functionality
+        const buttons = document.querySelectorAll('.medium-editor-toolbar button[data-command]');
+        const editorContainer = document.getElementById('editor-container');
+        const hiddenTextarea = document.getElementById('{{ form.content.id_for_label }}');
+        
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                const command = this.dataset.command;
+                
+                if (command === 'h2' || command === 'h3') {
+                    document.execCommand('formatBlock', false, command);
+                } else if (command === 'createlink') {
+                    const url = prompt('Enter the link URL:');
+                    if (url) document.execCommand(command, false, url);
+                } else if (command === 'code') {
+                    const selection = window.getSelection();
+                    if (selection.rangeCount) {
+                        const range = selection.getRangeAt(0);
+                        const selectedText = range.toString();
+                        const codeElement = document.createElement('code');
+                        codeElement.textContent = selectedText;
+                        range.deleteContents();
+                        range.insertNode(codeElement);
+                    }
+                } else {
+                    document.execCommand(command, false, null);
+                }
+                
+                // Update the hidden textarea with the HTML content
+                hiddenTextarea.value = editorContainer.innerHTML;
+            });
+        });
+        
+        // Update hidden textarea before form submission
+        document.getElementById('submit-post').addEventListener('click', function() {
+            hiddenTextarea.value = editorContainer.innerHTML;
+        });
+        
+        // Update on input events too
+        editorContainer.addEventListener('input', function() {
+            hiddenTextarea.value = this.innerHTML;
+        });
+        
+        // Initialize with content if editing
+        hiddenTextarea.value = editorContainer.innerHTML;
+    });
+</script>
+{% endblock %}

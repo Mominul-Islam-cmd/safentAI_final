@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}My Blog Posts - SAFENET.AI{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h1 class="page-header">My Blog Posts</h1>
+    </div>
+    <div class="col-md-4 text-end">
+        <a href="{% url 'blog_create' %}" class="btn btn-primary">
+            <i class="fas fa-edit me-2"></i> Write New Post
+        </a>
+    </div>
+</div>
+
+{% if posts %}
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Created</th>
+                    <th>Status</th>
+                    <th>Likes</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for post in posts %}
+                    <tr>
+                        <td>
+                            {% if post.status == 'approved' %}
+                                <a href="{% url 'blog_detail' post.slug %}">{{ post.title }}</a>
+                            {% else %}
+                                {{ post.title }}
+                            {% endif %}
+                        </td>
+                        <td><span class="category-tag {{ post.category }}">{{ post.category }}</span></td>
+                        <td>{{ post.created_at|date:"M d, Y" }}</td>
+                        <td>
+                            {% if post.status == 'pending' %}
+                                <span class="badge bg-warning">Pending</span>
+                            {% elif post.status == 'approved' %}
+                                <span class="badge bg-success">Approved</span>
+                            {% else %}
+                                <span class="badge bg-danger">Rejected</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ post.total_likes }}</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a href="{% url 'blog_edit' post.slug %}" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="{% url 'blog_delete' post.slug %}" class="btn btn-outline-danger btn-sm">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <div class="alert alert-info">
+        <i class="fas fa-info-circle me-2"></i> You haven't written any blog posts yet.
+        <a href="{% url 'blog_create' %}" class="alert-link">Write your first post now</a>!
+    </div>
+{% endif %}
+{% endblock %}
