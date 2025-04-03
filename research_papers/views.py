@@ -78,9 +78,20 @@ def research_paper_edit(request, slug):
     if request.method == 'POST':
         form = ResearchPaperForm(request.POST, instance=paper)
         if form.is_valid():
-            form.save()
-            messages.success(request, 'Your research paper has been updated.')
-            return redirect('research_paper_detail', slug=paper.slug)
+            edited_paper = form.save(commit=False)
+            # Only set back to pending if not admin
+            if not request.user.is_superuser:
+                edited_paper.status = 'pending'
+                messages.info(request, 'Your research paper has been updated and submitted for approval.')
+            else:
+                messages.success(request, 'Your research paper has been updated successfully.')
+            edited_paper.save()
+            
+            # Redirect to my papers list if it's pending again, otherwise to the detail page
+            if edited_paper.status == 'pending':
+                return redirect('my_research_papers')
+            else:
+                return redirect('research_paper_detail', slug=paper.slug)
     else:
         form = ResearchPaperForm(instance=paper)
     

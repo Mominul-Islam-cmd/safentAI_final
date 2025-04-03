@@ -4,11 +4,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.core.mail import send_mail
 from django.conf import settings
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, ContactForm, ProfileRegisterForm
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, ContactForm, ProfileRegisterForm, EmailAuthenticationForm
 
 
 class CustomLoginView(LoginView):
     template_name = 'accounts/login.html'
+    authentication_form = EmailAuthenticationForm
 
 
 class CustomLogoutView(LogoutView):

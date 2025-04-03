@@ -69,9 +69,20 @@ def research_topic_edit(request, slug):
     if request.method == 'POST':
         form = ResearchTopicForm(request.POST, instance=topic)
         if form.is_valid():
-            form.save()
-            messages.success(request, 'Your research topic has been updated.')
-            return redirect('research_topic_detail', slug=topic.slug)
+            edited_topic = form.save(commit=False)
+            # Only set back to pending if not admin
+            if not request.user.is_superuser:
+                edited_topic.status = 'pending'
+                messages.info(request, 'Your research topic has been updated and submitted for approval.')
+            else:
+                messages.success(request, 'Your research topic has been updated successfully.')
+            edited_topic.save()
+            
+            # Redirect to my topics list if it's pending again, otherwise to the detail page
+            if edited_topic.status == 'pending':
+                return redirect('my_research_topics')
+            else:
+                return redirect('research_topic_detail', slug=topic.slug)
     else:
         form = ResearchTopicForm(instance=topic)
     

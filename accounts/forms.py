@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import authenticate
 from .models import Profile
 
 
@@ -42,3 +43,28 @@ class ContactForm(forms.Form):
     email = forms.EmailField()
     subject = forms.CharField(max_length=200)
     message = forms.CharField(widget=forms.Textarea)
+
+
+class EmailAuthenticationForm(AuthenticationForm):
+    username = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Enter your email'}))
+    password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Enter your password'}))
+    
+    def clean(self):
+        email = self.cleaned_data.get('username')
+        password = self.cleaned_data.get('password')
+        
+        if email and password:
+            # Find a user with the provided email
+            try:
+                user = User.objects.get(email=email)
+                # Update username field with the found user's username for authentication
+                self.cleaned_data['username'] = user.username
+            except User.DoesNotExist:
+                raise forms.ValidationError("Invalid email or password.")
+                
+            # Authenticate with the username and password
+            user = authenticate(username=self.cleaned_data['username'], password=password)
+            if user is None:
+                raise forms.ValidationError("Invalid email or password.")
+            
+        return super().clean()

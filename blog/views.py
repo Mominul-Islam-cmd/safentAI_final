@@ -83,9 +83,20 @@ def blog_edit(request, slug):
     if request.method == 'POST':
         form = BlogPostForm(request.POST, instance=post)
         if form.is_valid():
-            form.save()
-            messages.success(request, 'Your blog post has been updated.')
-            return redirect('blog_detail', slug=post.slug)
+            edited_post = form.save(commit=False)
+            # Only set back to pending if not admin
+            if not request.user.is_superuser:
+                edited_post.status = 'pending'
+                messages.info(request, 'Your blog post has been updated and submitted for approval.')
+            else:
+                messages.success(request, 'Your blog post has been updated successfully.')
+            edited_post.save()
+            
+            # Redirect to my posts list if it's pending again, otherwise to the detail page
+            if edited_post.status == 'pending':
+                return redirect('my_blog_posts')
+            else:
+                return redirect('blog_detail', slug=post.slug)
     else:
         form = BlogPostForm(instance=post)
     

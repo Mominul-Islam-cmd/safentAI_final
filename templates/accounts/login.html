@@ -14,8 +14,8 @@
                     {% csrf_token %}
                     
                     <div class="form-group mb-3">
-                        <label for="{{ form.username.id_for_label }}" class="form-label">Username</label>
-                        <input type="text" name="{{ form.username.name }}" id="{{ form.username.id_for_label }}" class="form-control {% if form.username.errors %}is-invalid{% endif %}" placeholder="Enter your username" required>
+                        <label for="{{ form.username.id_for_label }}" class="form-label">Email</label>
+                        <input type="email" name="{{ form.username.name }}" id="{{ form.username.id_for_label }}" class="form-control {% if form.username.errors %}is-invalid{% endif %}" placeholder="Enter your email" required>
                         {% if form.username.errors %}
                             <div class="invalid-feedback">
                                 {{ form.username.errors }}
