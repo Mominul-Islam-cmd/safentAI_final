@@ -52,8 +52,8 @@ def feedback_create(request):
 def feedback_edit(request, slug):
     feedback = get_object_or_404(Feedback, slug=slug)
     
-    # Check if the user is the owner of the feedback
-    if feedback.user != request.user:
+    # Check if the user is the owner of the feedback or an admin
+    if feedback.user != request.user and not request.user.is_staff:
         return HttpResponseForbidden("You don't have permission to edit this feedback.")
     
     # Store the original feedback status
@@ -92,14 +92,21 @@ def feedback_edit(request, slug):
 def feedback_delete(request, slug):
     feedback = get_object_or_404(Feedback, slug=slug)
     
-    # Check if the user is the owner of the feedback
-    if feedback.user != request.user:
-        return HttpResponseForbidden("You don't have permission to delete this feedback.")
+    # Only admin users can delete feedback
+    if not request.user.is_staff:
+        messages.error(request, "Only administrators can delete feedback.")
+        return redirect('my_feedbacks')
     
     if request.method == 'POST':
         feedback.delete()
-        messages.success(request, 'Your feedback has been deleted successfully.')
-        return redirect('my_feedbacks')
+        messages.success(request, 'Feedback has been deleted successfully.')
+        
+        # Redirect to appropriate page based on where the admin came from
+        referer = request.META.get('HTTP_REFERER', '')
+        if 'approval' in referer:
+            return redirect('feedback_approval_list')
+        else:
+            return redirect('my_feedbacks')
     
     context = {
         'feedback': feedback,

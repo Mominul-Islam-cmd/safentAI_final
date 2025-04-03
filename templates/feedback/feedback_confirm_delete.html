@@ -1,61 +1,57 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Delete Feedback - SafeNet AI{% endblock %}
+{% block title %}Confirm Delete - SafeNet AI{% endblock %}
 
 {% block content %}
-<div class="container my-5">
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <div class="card shadow">
-                <div class="card-header bg-danger text-white">
-                    <h4 class="mb-0">
-                        <i class="fas fa-exclamation-triangle me-2"></i> Delete Feedback
-                    </h4>
-                </div>
-                <div class="card-body">
-                    <div class="alert alert-warning">
-                        <i class="fas fa-exclamation-circle me-2"></i>
-                        <strong>Warning:</strong> You are about to delete your feedback. This action cannot be undone.
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-5">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-exclamation-triangle fa-3x text-danger mb-3"></i>
+                        <h2 class="text-danger">Confirm Deletion</h2>
                     </div>
                     
-                    <div class="card mb-4">
-                        <div class="card-header d-flex justify-content-between">
-                            <span class="badge {% if feedback.feedback_type == 'student' %}bg-info{% else %}bg-secondary{% endif %}">
-                                {{ feedback.get_feedback_type_display }}
-                            </span>
-                            <div>
-                                {% for i in "12345" %}
-                                    {% if forloop.counter <= feedback.rating %}
-                                        <i class="fas fa-star text-warning"></i>
-                                    {% else %}
-                                        <i class="far fa-star text-muted"></i>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-                        </div>
+                    <div class="alert alert-warning mb-4">
+                        <p class="mb-0">Are you sure you want to delete the feedback <strong>"{{ feedback.title }}"</strong> by <strong>{{ feedback.user.username }}</strong>?</p>
+                        <p class="mb-0 mt-2"><small>This action cannot be undone.</small></p>
+                    </div>
+                    
+                    <div class="card bg-light mb-4">
                         <div class="card-body">
-                            <h5 class="card-title">{{ feedback.title }}</h5>
-                            <p class="card-text">{{ feedback.content }}</p>
-                        </div>
-                        <div class="card-footer bg-white text-muted">
-                            <small>
-                                <i class="fas fa-user me-1"></i> {{ feedback.user.username }}
-                                <span class="ms-2">
-                                    <i class="far fa-calendar-alt me-1"></i> {{ feedback.created_at|date:"M d, Y" }}
+                            <h5 class="card-title mb-3">{{ feedback.title }}</h5>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="badge {% if feedback.feedback_type == 'student' %}bg-info{% else %}bg-secondary{% endif %}">
+                                    {{ feedback.get_feedback_type_display }}
                                 </span>
-                            </small>
+                                <div>
+                                    {% for i in "12345" %}
+                                        {% if forloop.counter <= feedback.rating %}
+                                            <i class="fas fa-star text-warning"></i>
+                                        {% else %}
+                                            <i class="far fa-star text-muted"></i>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <p class="card-text border-top border-bottom py-3">{{ feedback.content }}</p>
+                            <div class="d-flex justify-content-between text-muted small">
+                                <span><i class="fas fa-user me-1"></i> {{ feedback.user.username }}</span>
+                                <span><i class="far fa-calendar-alt me-1"></i> {{ feedback.created_at|date:"M d, Y" }}</span>
+                            </div>
                         </div>
                     </div>
                     
                     <form method="post">
                         {% csrf_token %}
                         <div class="d-flex justify-content-between">
-                            <a href="{% url 'my_feedbacks' %}" class="btn btn-outline-secondary">
-                                <i class="fas fa-arrow-left me-1"></i> Cancel
+                            <a href="{% url 'feedback_approval_list' %}" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left me-2"></i>Cancel
                             </a>
                             <button type="submit" class="btn btn-danger">
-                                <i class="fas fa-trash me-1"></i> Confirm Delete
+                                <i class="fas fa-trash me-2"></i>Delete Feedback
                             </button>
                         </div>
                     </form>

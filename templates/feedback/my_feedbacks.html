@@ -64,9 +64,11 @@
                                                     <a href="{% url 'feedback_edit' feedback.slug %}" class="btn btn-sm btn-outline-primary">
                                                         <i class="fas fa-edit"></i> Edit
                                                     </a>
+                                                    {% if user.is_staff %}
                                                     <a href="{% url 'feedback_delete' feedback.slug %}" class="btn btn-sm btn-outline-danger">
                                                         <i class="fas fa-trash"></i> Delete
                                                     </a>
+                                                    {% endif %}
                                                 </div>
                                                 {% if feedback.status == 'approved' %}
                                                 <div class="text-info small mt-1">
@@ -101,7 +103,8 @@
             <div class="alert alert-info mt-4">
                 <i class="fas fa-info-circle me-2"></i>
                 <strong>Note:</strong> Your feedback will be reviewed by our administrators before being published on the site. 
-                You can edit or delete your feedback at any time. If you edit approved feedback, it will need to be re-approved.
+                You can edit your feedback at any time. If you edit approved feedback, it will need to be re-approved.
+                Only administrators can delete feedback for content moderation purposes.
             </div>
         </div>
     </div>
