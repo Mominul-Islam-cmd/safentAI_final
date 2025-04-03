@@ -56,8 +56,9 @@ def feedback_edit(request, slug):
     if feedback.user != request.user:
         return HttpResponseForbidden("You don't have permission to edit this feedback.")
     
-    # Allow editing approved feedback (we'll set it back to pending)
+    # Store the original feedback status
     original_status = feedback.status
+    was_approved = original_status == 'approved'
     
     if request.method == 'POST':
         form = FeedbackForm(request.POST, instance=feedback)
@@ -67,9 +68,12 @@ def feedback_edit(request, slug):
             # Set status back to pending if it was previously approved or rejected
             if original_status in ['approved', 'rejected']:
                 updated_feedback.status = 'pending'
-                messages.info(request, 'Your feedback has been updated and is now awaiting admin approval again.')
+                if was_approved:
+                    messages.info(request, 'Your feedback has been updated and is now awaiting admin approval again.')
+                else:
+                    messages.info(request, 'Your rejected feedback has been updated and is now awaiting admin review.')
             else:
-                messages.success(request, 'Your feedback has been updated successfully.')
+                messages.success(request, 'Your feedback has been updated successfully and is pending approval.')
             
             updated_feedback.save()
             return redirect('my_feedbacks')
@@ -80,6 +84,7 @@ def feedback_edit(request, slug):
         'form': form,
         'feedback': feedback,
         'is_edit': True,
+        'was_approved': was_approved,
     }
     return render(request, 'feedback/feedback_form.html', context)
 
@@ -133,18 +138,28 @@ def feedback_approve(request, pk):
         return redirect('home')
     
     feedback = get_object_or_404(Feedback, pk=pk)
+    original_status = feedback.status
     
     if request.method == 'POST':
         form = FeedbackApprovalForm(request.POST, instance=feedback)
         if form.is_valid():
-            form.save()
-            status = form.cleaned_data['status']
-            status_msg = {
-                'approved': 'Feedback has been approved and published.',
-                'rejected': 'Feedback has been rejected.',
-                'pending': 'Feedback has been set to pending review.'
-            }
-            messages.success(request, status_msg[status])
+            updated_feedback = form.save(commit=False)
+            new_status = form.cleaned_data['status']
+            
+            # Ensure we have a status change
+            if original_status != new_status:
+                updated_feedback.status = new_status
+                updated_feedback.save()
+                
+                status_msg = {
+                    'approved': 'Feedback has been approved and published.',
+                    'rejected': 'Feedback has been rejected.',
+                    'pending': 'Feedback has been set to pending review.'
+                }
+                messages.success(request, status_msg[new_status])
+            else:
+                messages.info(request, f"Feedback status remains '{new_status}'.")
+                
             return redirect('feedback_approval_list')
     else:
         form = FeedbackApprovalForm(instance=feedback)

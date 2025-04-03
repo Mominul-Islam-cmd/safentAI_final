@@ -69,6 +69,9 @@
                                                     <span class="badge bg-danger">Rejected</span>
                                                 {% else %}
                                                     <span class="badge bg-warning text-dark">Pending</span>
+                                                    {% if feedback.updated_at and feedback.updated_at > feedback.created_at %}
+                                                    <small class="d-block text-muted mt-1"><i class="fas fa-edit me-1"></i>Edited</small>
+                                                    {% endif %}
                                                 {% endif %}
                                             </td>
                                             <td>{{ feedback.created_at|date:"M d, Y" }}</td>

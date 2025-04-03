@@ -13,9 +13,17 @@ class FeedbackForm(forms.ModelForm):
         }
 
 class FeedbackApprovalForm(forms.ModelForm):
+    STATUS_CHOICES = [
+        ('pending', 'Pending Review'),
+        ('approved', 'Approve & Publish'),
+        ('rejected', 'Reject')
+    ]
+    
+    status = forms.ChoiceField(
+        choices=STATUS_CHOICES,
+        widget=forms.Select(attrs={'class': 'form-control'})
+    )
+    
     class Meta:
         model = Feedback
         fields = ['status']
-        widgets = {
-            'status': forms.Select(attrs={'class': 'form-control'}),
-        }

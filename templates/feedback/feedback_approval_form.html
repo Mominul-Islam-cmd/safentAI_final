@@ -67,12 +67,19 @@
                         </div>
                         
                         <div class="alert alert-info">
-                            <div class="mb-1"><i class="fas fa-info-circle me-2"></i> Decision Guide:</div>
+                            <div class="mb-1"><i class="fas fa-info-circle me-2"></i> <strong>Decision Guide:</strong></div>
                             <ul class="mb-0">
-                                <li><strong>Approve</strong> - This feedback meets our guidelines and will be published on the site.</li>
+                                <li><strong>Approve & Publish</strong> - This feedback meets our guidelines and will be published on the site.</li>
                                 <li><strong>Reject</strong> - This feedback violates our guidelines and will not be published.</li>
-                                <li><strong>Pending</strong> - Keep this feedback in review status for further consideration.</li>
+                                <li><strong>Pending Review</strong> - Keep this feedback in review status for further consideration.</li>
                             </ul>
+                            
+                            {% if feedback.status == 'pending' and feedback.updated_at and feedback.updated_at > feedback.created_at %}
+                            <div class="mt-2 pt-2 border-top">
+                                <i class="fas fa-exclamation-circle text-warning me-1"></i>
+                                <strong>Note:</strong> This feedback was previously edited and requires re-approval.
+                            </div>
+                            {% endif %}
                         </div>
                         
                         <div class="d-flex justify-content-between mt-4">

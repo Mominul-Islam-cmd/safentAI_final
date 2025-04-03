@@ -71,7 +71,12 @@
                                                 {% if feedback.status == 'approved' %}
                                                 <div class="text-info small mt-1">
                                                     <i class="fas fa-info-circle me-1"></i> 
-                                                    Editing will require re-approval
+                                                    <strong>Note:</strong> Editing will require admin re-approval
+                                                </div>
+                                                {% elif feedback.status == 'rejected' %}
+                                                <div class="text-warning small mt-1">
+                                                    <i class="fas fa-exclamation-triangle me-1"></i> 
+                                                    Edit to address rejection reasons
                                                 </div>
                                                 {% endif %}
                                             </td>
