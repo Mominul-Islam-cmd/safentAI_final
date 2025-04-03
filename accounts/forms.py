@@ -12,6 +12,17 @@ class UserRegisterForm(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2']
 
 
+class ProfileRegisterForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['institution_name', 'profile_picture', 'phone_number']
+        widgets = {
+            'profile_picture': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+            'institution_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your institution name'}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your phone number'})
+        }
+
+
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
     

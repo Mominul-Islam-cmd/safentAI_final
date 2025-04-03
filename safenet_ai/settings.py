@@ -15,6 +15,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', '*']
 
+# CSRF Trusted Origins
+CSRF_TRUSTED_ORIGINS = ['https://*.replit.dev', 'https://*.replit.app']
+
 # Application definition
 
 INSTALLED_APPS = [

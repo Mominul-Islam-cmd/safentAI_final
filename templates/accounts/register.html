@@ -10,26 +10,27 @@
                 <h3 class="mb-0">Create an Account</h3>
             </div>
             <div class="card-body">
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     
+                    <h4 class="mb-3">Account Information</h4>
                     <div class="form-group mb-3">
-                        <label for="{{ form.username.id_for_label }}" class="form-label">Username</label>
-                        <input type="text" name="{{ form.username.name }}" id="{{ form.username.id_for_label }}" class="form-control {% if form.username.errors %}is-invalid{% endif %}" placeholder="Choose a username" required>
-                        {% if form.username.errors %}
+                        <label for="{{ user_form.username.id_for_label }}" class="form-label">Username</label>
+                        <input type="text" name="{{ user_form.username.name }}" id="{{ user_form.username.id_for_label }}" class="form-control {% if user_form.username.errors %}is-invalid{% endif %}" placeholder="Choose a username" required>
+                        {% if user_form.username.errors %}
                             <div class="invalid-feedback">
-                                {{ form.username.errors }}
+                                {{ user_form.username.errors }}
                             </div>
                         {% endif %}
                         <div class="form-text">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</div>
                     </div>
                     
                     <div class="form-group mb-3">
-                        <label for="{{ form.email.id_for_label }}" class="form-label">Email Address</label>
-                        <input type="email" name="{{ form.email.name }}" id="{{ form.email.id_for_label }}" class="form-control {% if form.email.errors %}is-invalid{% endif %}" placeholder="Enter your email address" required>
-                        {% if form.email.errors %}
+                        <label for="{{ user_form.email.id_for_label }}" class="form-label">Email Address</label>
+                        <input type="email" name="{{ user_form.email.name }}" id="{{ user_form.email.id_for_label }}" class="form-control {% if user_form.email.errors %}is-invalid{% endif %}" placeholder="Enter your email address" required>
+                        {% if user_form.email.errors %}
                             <div class="invalid-feedback">
-                                {{ form.email.errors }}
+                                {{ user_form.email.errors }}
                             </div>
                         {% endif %}
                     </div>
@@ -37,11 +38,11 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group mb-3">
-                                <label for="{{ form.password1.id_for_label }}" class="form-label">Password</label>
-                                <input type="password" name="{{ form.password1.name }}" id="{{ form.password1.id_for_label }}" class="form-control {% if form.password1.errors %}is-invalid{% endif %}" placeholder="Enter a password" required>
-                                {% if form.password1.errors %}
+                                <label for="{{ user_form.password1.id_for_label }}" class="form-label">Password</label>
+                                <input type="password" name="{{ user_form.password1.name }}" id="{{ user_form.password1.id_for_label }}" class="form-control {% if user_form.password1.errors %}is-invalid{% endif %}" placeholder="Enter a password" required>
+                                {% if user_form.password1.errors %}
                                     <div class="invalid-feedback">
-                                        {{ form.password1.errors }}
+                                        {{ user_form.password1.errors }}
                                     </div>
                                 {% endif %}
                                 <div class="form-text">
@@ -56,11 +57,11 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-3">
-                                <label for="{{ form.password2.id_for_label }}" class="form-label">Confirm Password</label>
-                                <input type="password" name="{{ form.password2.name }}" id="{{ form.password2.id_for_label }}" class="form-control {% if form.password2.errors %}is-invalid{% endif %}" placeholder="Confirm your password" required>
-                                {% if form.password2.errors %}
+                                <label for="{{ user_form.password2.id_for_label }}" class="form-label">Confirm Password</label>
+                                <input type="password" name="{{ user_form.password2.name }}" id="{{ user_form.password2.id_for_label }}" class="form-control {% if user_form.password2.errors %}is-invalid{% endif %}" placeholder="Confirm your password" required>
+                                {% if user_form.password2.errors %}
                                     <div class="invalid-feedback">
-                                        {{ form.password2.errors }}
+                                        {{ user_form.password2.errors }}
                                     </div>
                                 {% endif %}
                                 <div class="form-text">Enter the same password as before, for verification.</div>
@@ -68,13 +69,53 @@
                         </div>
                     </div>
                     
-                    <div class="d-grid gap-2">
+                    <h4 class="mb-3 mt-4">Profile Information</h4>
+                    
+                    <div class="form-group mb-3">
+                        <label for="{{ profile_form.institution_name.id_for_label }}" class="form-label">Institution Name</label>
+                        <input type="text" name="{{ profile_form.institution_name.name }}" id="{{ profile_form.institution_name.id_for_label }}" class="form-control {% if profile_form.institution_name.errors %}is-invalid{% endif %}" placeholder="Enter your institution name">
+                        {% if profile_form.institution_name.errors %}
+                            <div class="invalid-feedback">
+                                {{ profile_form.institution_name.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                        <label for="{{ profile_form.phone_number.id_for_label }}" class="form-label">Phone Number</label>
+                        <input type="text" name="{{ profile_form.phone_number.name }}" id="{{ profile_form.phone_number.id_for_label }}" class="form-control {% if profile_form.phone_number.errors %}is-invalid{% endif %}" placeholder="Enter your phone number">
+                        {% if profile_form.phone_number.errors %}
+                            <div class="invalid-feedback">
+                                {{ profile_form.phone_number.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                        <label for="{{ profile_form.profile_picture.id_for_label }}" class="form-label">Profile Picture</label>
+                        <input type="file" name="{{ profile_form.profile_picture.name }}" id="{{ profile_form.profile_picture.id_for_label }}" class="form-control {% if profile_form.profile_picture.errors %}is-invalid{% endif %}">
+                        {% if profile_form.profile_picture.errors %}
+                            <div class="invalid-feedback">
+                                {{ profile_form.profile_picture.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="d-grid gap-2 mt-4">
                         <button type="submit" class="btn btn-primary">Register</button>
                     </div>
                     
-                    {% if form.non_field_errors %}
+                    {% if user_form.non_field_errors %}
                         <div class="alert alert-danger mt-3">
-                            {% for error in form.non_field_errors %}
+                            {% for error in user_form.non_field_errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    
+                    {% if profile_form.non_field_errors %}
+                        <div class="alert alert-danger mt-3">
+                            {% for error in profile_form.non_field_errors %}
                                 {{ error }}
                             {% endfor %}
                         </div>

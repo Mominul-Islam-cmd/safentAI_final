@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.core.mail import send_mail
 from django.conf import settings
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, ContactForm
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, ContactForm, ProfileRegisterForm
 
 
 class CustomLoginView(LoginView):
@@ -35,15 +35,25 @@ class CustomPasswordResetCompleteView(PasswordResetCompleteView):
 
 def register(request):
     if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
+        user_form = UserRegisterForm(request.POST)
+        profile_form = ProfileRegisterForm(request.POST, request.FILES)
+        if user_form.is_valid() and profile_form.is_valid():
+            user = user_form.save()
+            # Don't save profile form yet, just get the data
+            profile = user.profile  # Profile is created via signal
+            profile.institution_name = profile_form.cleaned_data.get('institution_name')
+            profile.phone_number = profile_form.cleaned_data.get('phone_number')
+            if 'profile_picture' in request.FILES:
+                profile.profile_picture = request.FILES['profile_picture']
+            profile.save()
+            
+            username = user_form.cleaned_data.get('username')
             messages.success(request, f'Account created for {username}! You can now log in.')
             return redirect('login')
     else:
-        form = UserRegisterForm()
-    return render(request, 'accounts/register.html', {'form': form})
+        user_form = UserRegisterForm()
+        profile_form = ProfileRegisterForm()
+    return render(request, 'accounts/register.html', {'user_form': user_form, 'profile_form': profile_form})
 
 
 @login_required
