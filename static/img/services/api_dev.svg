@@ -1,0 +1,30 @@
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#1a2942"/>
+  <g>
+    <!-- Server -->
+    <rect x="250" y="70" width="100" height="140" rx="5" fill="#2c3e50" stroke="#4a6fdc" stroke-width="2"/>
+    <rect x="270" y="85" width="60" height="10" rx="2" fill="#3498db"/>
+    <rect x="270" y="105" width="60" height="10" rx="2" fill="#3498db"/>
+    <rect x="270" y="125" width="60" height="10" rx="2" fill="#3498db"/>
+    
+    <!-- API connections -->
+    <path d="M170,110 C200,110 200,90 250,90" stroke="#ffffff" stroke-width="2" fill="none"/>
+    <path d="M170,140 C200,140 200,110 250,110" stroke="#ffffff" stroke-width="2" fill="none"/>
+    <path d="M170,170 C200,170 200,130 250,130" stroke="#ffffff" stroke-width="2" fill="none"/>
+    
+    <path d="M350,90 C400,90 400,110 430,110" stroke="#ffffff" stroke-width="2" fill="none"/>
+    <path d="M350,110 C400,110 400,140 430,140" stroke="#ffffff" stroke-width="2" fill="none"/>
+    <path d="M350,130 C400,130 400,170 430,170" stroke="#ffffff" stroke-width="2" fill="none"/>
+    
+    <!-- Devices -->
+    <rect x="140" y="100" width="30" height="20" rx="2" fill="#3498db"/>
+    <rect x="140" y="130" width="30" height="20" rx="2" fill="#3498db"/>
+    <rect x="140" y="160" width="30" height="20" rx="2" fill="#3498db"/>
+    
+    <rect x="430" y="100" width="30" height="20" rx="2" fill="#3498db"/>
+    <rect x="430" y="130" width="30" height="20" rx="2" fill="#3498db"/>
+    <rect x="430" y="160" width="30" height="20" rx="2" fill="#3498db"/>
+    
+    <text x="300" y="240" font-family="Arial" font-size="24" fill="#ffffff" text-anchor="middle">API Development</text>
+  </g>
+</svg>

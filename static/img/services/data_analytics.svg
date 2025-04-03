@@ -1,0 +1,19 @@
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#1a2942"/>
+  <g>
+    <line x1="150" y1="200" x2="450" y2="200" stroke="#ffffff" stroke-width="2"/>
+    <line x1="150" y1="70" x2="150" y2="200" stroke="#ffffff" stroke-width="2"/>
+    
+    <!-- Bar chart -->
+    <rect x="180" y="120" width="40" height="80" fill="#3498db" opacity="0.8"/>
+    <rect x="240" y="90" width="40" height="110" fill="#3498db" opacity="0.9"/>
+    <rect x="300" y="140" width="40" height="60" fill="#3498db" opacity="0.7"/>
+    <rect x="360" y="100" width="40" height="100" fill="#3498db" opacity="0.85"/>
+    
+    <!-- Chart axes labels -->
+    <text x="300" y="230" font-family="Arial" font-size="16" fill="#ffffff" text-anchor="middle">Time Period</text>
+    <text x="110" y="135" font-family="Arial" font-size="16" fill="#ffffff" text-anchor="middle" transform="rotate(-90, 110, 135)">Data Value</text>
+    
+    <text x="300" y="240" font-family="Arial" font-size="24" fill="#ffffff" text-anchor="middle">Data Analytics</text>
+  </g>
+</svg>

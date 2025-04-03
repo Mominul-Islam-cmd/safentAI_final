@@ -1,97 +1,167 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}About SAFENET.AI{% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col-12">
-        <h1 class="page-header">About SAFENET.AI</h1>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-8">
-        <div class="card mb-4">
-            <div class="card-body">
-                <h2>Our Mission</h2>
-                <p>At SAFENET.AI, we're dedicated to pioneering ethical AI solutions through innovative research and quantum computing advancements. Our platform brings together researchers, practitioners, and enthusiasts in the fields of Artificial Intelligence and Quantum Computing.</p>
-                
-                <h2 class="mt-4">What We Do</h2>
-                <p>We provide a collaborative environment where:</p>
-                <ul>
-                    <li>Researchers can share their latest papers and findings</li>
-                    <li>Experts can contribute to emerging research topics</li>
-                    <li>Community members can publish insightful blog articles</li>
-                    <li>Everyone can learn from and collaborate with peers in the field</li>
-                </ul>
-                
-                <h2 class="mt-4">Our Focus Areas</h2>
-                <div class="row mt-3">
-                    <div class="col-md-4 mb-3">
-                        <div class="card h-100 border-primary">
-                            <div class="card-body text-center">
-                                <i class="fas fa-robot fa-3x mb-3 text-primary"></i>
-                                <h5>Artificial Intelligence</h5>
-                                <p>Machine learning, neural networks, NLP, computer vision, and ethical AI systems</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="card h-100 border-danger">
-                            <div class="card-body text-center">
-                                <i class="fas fa-atom fa-3x mb-3 text-danger"></i>
-                                <h5>Quantum Computing</h5>
-                                <p>Quantum algorithms, error correction, quantum machine learning, and hardware advancements</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="card h-100 border-purple">
-                            <div class="card-body text-center">
-                                <i class="fas fa-code-branch fa-3x mb-3 text-purple"></i>
-                                <h5>Hybrid Systems</h5>
-                                <p>Integration of classical and quantum computing for practical applications</p>
-                            </div>
-                        </div>
-                    </div>
+<!-- Community Section -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <h2 class="text-center display-5 fw-bold mb-4">Welcome to Our Community</h2>
+                    <p>We are more than just a website; we are a thriving community of researchers, scholars, and innovators committed to advancing knowledge in machine learning, AI, and cutting-edge AI models like LLM and GPT. Our mission is to make research accessible to all, bridging the gap between complex theories and practical applications to empower individuals to explore research and development, offering expert guidance and resources. With a foundation in research, we're expanding into development, focusing on data science, engineering, and AI solutions. Join us as we innovate and deliver comprehensive project-based services to our community and beyond.</p>
+                    
+                    <h3 class="mt-5 mb-4">Our Focus</h3>
+                    <ul>
+                        <li><strong>Innovative Research:</strong> We delve into the depths of machine learning and AI, exploring new frontiers and pushing the boundaries of what's possible.</li>
+                        <li><strong>Collaboration:</strong> We believe in the power of teamwork. By bringing together brilliant minds, we foster a space for sharing ideas, sparking innovation, and driving progress.</li>
+                        <li><strong>Accessible Knowledge:</strong> We aim to democratize research, ensuring that complex information is available and understandable for everyone.</li>
+                        <li><strong>Development:</strong> We don't just focus on research but also on development, specializing in data science, data engineering, web-based and AI-based software solutions.</li>
+                        <li><strong>Project-Based Services:</strong> We provide comprehensive project-based services to our community and beyond, working on cutting-edge projects to deliver impactful solutions.</li>
+                    </ul>
+                    
+                    <h3 class="mt-5 mb-4">Our Vision</h3>
+                    <p>We strive to build a collaborative community where both seasoned and new researchers can share knowledge, resources, and guidance. Our goal is to ensure that every member can conduct research efficiently and confidently, benefiting from the collective expertise of the group. Together, we aim to be a beacon for future researchers, providing a foundation for meaningful and impactful work in development and beyond.</p>
                 </div>
             </div>
         </div>
     </div>
-    
-    <div class="col-md-4">
-        <div class="card mb-4">
-            <div class="card-header">
-                <h4>Join Our Community</h4>
-            </div>
-            <div class="card-body">
-                <p>Become a part of our growing network of researchers and enthusiasts:</p>
-                <ul>
-                    <li>Share your research papers</li>
-                    <li>Contribute to research topics</li>
-                    <li>Write blog articles</li>
-                    <li>Connect with peers</li>
-                </ul>
-                {% if not user.is_authenticated %}
-                <div class="d-grid gap-2">
-                    <a href="{% url 'register' %}" class="btn btn-primary">Register Now</a>
-                    <a href="{% url 'login' %}" class="btn btn-outline-primary">Login</a>
+</div>
+
+<!-- Services Section -->
+<div class="services-section py-5" style="background-color: #1a2942;">
+    <div class="container">
+        <h2 class="text-center text-light display-5 mb-2">Our Services</h2>
+        <p class="text-center text-light mb-5">Empowering your digital transformation through cutting edge solutions and expert services</p>
+        
+        <div class="row g-4 mb-4">
+            <!-- AI/ML Engineering -->
+            <div class="col-md-4">
+                <div class="card h-100 border-0 rounded-3 overflow-hidden">
+                    <img src="{% static 'img/services/ai_ml.svg' %}" class="card-img-top" alt="AI/ML Engineering">
+                    <div class="card-body">
+                        <h5 class="card-title">AI/ML Engineering</h5>
+                        <p class="card-text">Design and development of intelligent systems powered by advanced machine learning algorithms and neural networks.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <a href="#" class="btn btn-primary w-100 rounded-pill">Schedule Consultation</a>
+                    </div>
                 </div>
-                {% endif %}
+            </div>
+            
+            <!-- Web Development -->
+            <div class="col-md-4">
+                <div class="card h-100 border-0 rounded-3 overflow-hidden">
+                    <img src="{% static 'img/services/web_dev.svg' %}" class="card-img-top" alt="Web Development">
+                    <div class="card-body">
+                        <h5 class="card-title">Web Development</h5>
+                        <p class="card-text">Full stack development of responsive, SEO-optimized web applications with modern frameworks and cloud integration.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <a href="#" class="btn btn-primary w-100 rounded-pill">Start Project</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Data Analytics -->
+            <div class="col-md-4">
+                <div class="card h-100 border-0 rounded-3 overflow-hidden">
+                    <img src="{% static 'img/services/data_analytics.svg' %}" class="card-img-top" alt="Data Analytics">
+                    <div class="card-body">
+                        <h5 class="card-title">Data Analytics</h5>
+                        <p class="card-text">Advanced analytics solutions leveraging BI tools and predictive modeling to transform data into strategic assets.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <a href="#" class="btn btn-primary w-100 rounded-pill">Request Analysis</a>
+                    </div>
+                </div>
             </div>
         </div>
         
-        <div class="card">
-            <div class="card-header">
-                <h4>Contact Us</h4>
+        <div class="row g-4">
+            <!-- API Development -->
+            <div class="col-md-4">
+                <div class="card h-100 border-0 rounded-3 overflow-hidden">
+                    <img src="{% static 'img/services/api_dev.svg' %}" class="card-img-top" alt="API Development">
+                    <div class="card-body">
+                        <h5 class="card-title">API Development</h5>
+                        <p class="card-text">Secure and scalable API solutions with comprehensive documentation and developer support.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <a href="#" class="btn btn-primary w-100 rounded-pill">Develop API</a>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <p><i class="fas fa-envelope me-2"></i> <a href="mailto:contact@safenet.ai">contact@safenet.ai</a></p>
-                <p><i class="fas fa-map-marker-alt me-2"></i> Dhanmondi-15, Dhaka</p>
-                <p><i class="far fa-clock me-2"></i> 9 AM - 5 PM PST</p>
-                <a href="{% url 'contact' %}" class="btn btn-outline-primary">Send us a message</a>
+            
+            <!-- Data Scraping -->
+            <div class="col-md-4">
+                <div class="card h-100 border-0 rounded-3 overflow-hidden">
+                    <img src="{% static 'img/services/data_scraping.svg' %}" class="card-img-top" alt="Data Scraping">
+                    <div class="card-body">
+                        <h5 class="card-title">Data Scraping</h5>
+                        <p class="card-text">Ethical web scraping solutions delivering structured data from diverse sources with ETL pipeline integration.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <a href="#" class="btn btn-primary w-100 rounded-pill">Get Data</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Data Annotation -->
+            <div class="col-md-4">
+                <div class="card h-100 border-0 rounded-3 overflow-hidden">
+                    <img src="{% static 'img/services/data_annotation.svg' %}" class="card-img-top" alt="Data Annotation">
+                    <div class="card-body">
+                        <h5 class="card-title">Data Annotation</h5>
+                        <p class="card-text">High-precision data labeling services for computer vision and NLP applications with quality assurance.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <a href="#" class="btn btn-primary w-100 rounded-pill">Annotate Data</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Join Community CTA -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-8 mx-auto text-center">
+            {% if not user.is_authenticated %}
+            <h3 class="mb-4">Join Our Research & Development Community</h3>
+            <p class="lead mb-4">Become part of our growing network of researchers, scholars, and innovators.</p>
+            <div class="d-grid gap-2 d-md-block">
+                <a href="{% url 'register' %}" class="btn btn-primary btn-lg px-4 me-md-2">Register Now</a>
+                <a href="{% url 'login' %}" class="btn btn-outline-primary btn-lg px-4">Login</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+.services-section .card {
+    transition: transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.services-section .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+.services-section .card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+.services-section .btn-primary {
+    background-color: #4a6fdc;
+    border-color: #4a6fdc;
+}
+.services-section .btn-primary:hover {
+    background-color: #3d5cb8;
+    border-color: #3d5cb8;
+}
+</style>
 {% endblock %}

@@ -1,0 +1,28 @@
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#1a2942"/>
+  <g>
+    <!-- Spider web -->
+    <circle cx="300" cy="120" r="80" stroke="#4a6fdc" stroke-width="1" fill="none"/>
+    <circle cx="300" cy="120" r="60" stroke="#4a6fdc" stroke-width="1" fill="none"/>
+    <circle cx="300" cy="120" r="40" stroke="#4a6fdc" stroke-width="1" fill="none"/>
+    <circle cx="300" cy="120" r="20" stroke="#4a6fdc" stroke-width="1" fill="none"/>
+    
+    <line x1="300" y1="40" x2="300" y2="200" stroke="#4a6fdc" stroke-width="1"/>
+    <line x1="220" y1="120" x2="380" y2="120" stroke="#4a6fdc" stroke-width="1"/>
+    <line x1="234" y1="54" x2="366" y2="186" stroke="#4a6fdc" stroke-width="1"/>
+    <line x1="234" y1="186" x2="366" y2="54" stroke="#4a6fdc" stroke-width="1"/>
+    
+    <!-- Spider -->
+    <circle cx="300" cy="120" r="12" fill="#3498db"/>
+    <circle cx="304" cy="116" r="3" fill="#ffffff"/>
+    <circle cx="296" cy="116" r="3" fill="#ffffff"/>
+    
+    <!-- Spider legs -->
+    <path d="M288,120 C270,100 250,110 230,100" stroke="#3498db" stroke-width="2" fill="none"/>
+    <path d="M288,124 C270,144 250,150 230,160" stroke="#3498db" stroke-width="2" fill="none"/>
+    <path d="M312,120 C330,100 350,110 370,100" stroke="#3498db" stroke-width="2" fill="none"/>
+    <path d="M312,124 C330,144 350,150 370,160" stroke="#3498db" stroke-width="2" fill="none"/>
+    
+    <text x="300" y="240" font-family="Arial" font-size="24" fill="#ffffff" text-anchor="middle">Data Scraping</text>
+  </g>
+</svg>
