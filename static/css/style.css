@@ -233,3 +233,82 @@ a:hover {
         font-size: 1.5rem;
     }
 }
+
+/* Contact Page Styles */
+.contact-section {
+    background-color: #1e3a4f;
+    color: white;
+    padding: 4rem 0;
+}
+
+.contact-form-wrapper {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+
+.contact-info {
+    padding: 2rem;
+}
+
+.contact-info i {
+    width: 24px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.contact-info a {
+    color: rgba(255, 255, 255, 0.9);
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.contact-form .form-control {
+    border: 1px solid #e0e0e0;
+    padding: 12px 15px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.contact-form .form-control:focus {
+    border-color: #5d4c8d;
+    box-shadow: 0 0 0 0.2rem rgba(93, 76, 141, 0.25);
+}
+
+.contact-form .btn-primary {
+    background-color: #5d4c8d;
+    border-color: #5d4c8d;
+    padding: 12px 24px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.contact-form .btn-primary:hover {
+    background-color: #4a3c70;
+    border-color: #4a3c70;
+}
+
+.faq-section {
+    padding: 4rem 0;
+    background-color: #f9f9f9;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #e6f0fa;
+    color: #1e3a4f;
+    font-weight: 600;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(0, 0, 0, 0.125);
+}
+
+.accordion-button:not(.collapsed)::after {
+    transform: rotate(180deg);
+}
