@@ -1,0 +1,437 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}SAFENET.AI - AI and Quantum Research Community{% endblock %}
+
+{% block content %}
+<!-- Hero Section with Dark Background and Robot Animation -->
+<div class="bannar_body text-center">
+    <div class="bannar_items" id="main_about" style="background-color: transparent; align-items: center;">
+        <h1 style="font-family: 'Overpass', sans-serif; background: linear-gradient(90deg, #f7941e 0%, #0094ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 2px 2px 4px #000000;">SafeNet
+        </h1>
+        <h4 class="tpyebefore"> <span class="typing"
+                style="background: linear-gradient(90deg, #b1ae2b 0%, #adc7af 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 2px 2px 4px #e4dada;">Quantum & AI </span>
+        </h4>
+    </div>
+</div>
+
+<main class="hero-section py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Text Column -->
+            <div class="col-lg-6 col-12 hero-content mb-5 mb-lg-0">
+                <h1 class="hero-title">Empowering Research, Enabling Innovation</h1>
+                <p class="hero-subtitle mt-4">
+                    Join a collaborative platform for AI, NLP, and Computer Vision research and projects. 
+                    Whether you're a student, researcher, or industry professional, there's a place for you here.
+                </p>
+                <div class="cta-buttons">
+                    {% if not user.is_authenticated %}
+                        <a href="{% url 'register' %}" class="btn btn-primary cta-button me-3">Get Started</a>
+                        <a href="{% url 'login' %}" class="btn btn-secondary cta-button">Sign In</a>
+                    {% else %}
+                        <a href="{% url 'research_paper_create' %}" class="btn btn-primary cta-button me-3">Submit Research</a>
+                        <a href="{% url 'profile' %}" class="btn btn-secondary cta-button">My Dashboard</a>
+                    {% endif %}
+                </div>
+            </div>
+            <!-- Animation Icons Column -->
+            <div class="col-lg-6 col-12 d-flex justify-content-center align-items-center" style="margin-top: 200px;">
+                <div id="robotContainer" class="robot-container" style="max-width: 100%; height: auto;">
+                    <div class="ai-illustration-container">
+                        <div class="gear-platform">
+                            <div class="spinning-group">
+                                <div class="gear">
+                                    <div class="gear-tooth top"></div>
+                                    <div class="gear-tooth bottom"></div>
+                                    <div class="gear-tooth left"></div>
+                                    <div class="gear-tooth right"></div>
+                                    <div class="gear-center">
+                                        <div class="gear-inner-circle"></div>
+                                    </div>
+                                </div>
+                                <div class="robot">
+                                    <div class="robot-body">
+                                        <div class="robot-head">
+                                            <div class="robot-eye left"></div>
+                                            <div class="robot-eye right"></div>
+                                            <div class="robot-antenna">
+                                                <div class="antenna-light"></div>
+                                            </div>
+                                            <div class="robot-visor"></div>
+                                        </div>
+                                        <div class="robot-arm left-1"></div>
+                                        <div class="robot-arm left-2"></div>
+                                        <div class="robot-arm right-1"></div>
+                                        <div class="robot-arm right-2"></div>
+                                        <div class="robot-button-main">
+                                            <div class="robot-button-inner"></div>
+                                        </div>
+                                        <div class="robot-control-1"></div>
+                                        <div class="robot-control-2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ai-text-block">
+                                <span>AI</span>
+                            </div>
+                            <div class="Quantum-text-block">
+                                <span>Quantum</span>
+                            </div>
+                            <div class="data-bars">
+                                <div class="data-bar bar-1"></div>
+                                <div class="data-bar bar-2"></div>
+                                <div class="data-bar bar-3"></div>
+                                <div class="data-bar bar-4"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Welcome Section -->
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <h2 class="text-center mb-4" style="font-family: 'Overpass', sans-serif; color: #2c3e50;">Welcome to Our Community</h2>
+                    <p class="lead text-muted">
+                        We are more than just a website; we are a thriving community of researchers, scholars, and innovators committed to advancing knowledge in machine learning, AI, and cutting-edge AI models like LLM and GPT. Our mission is to make research accessible to all, bridging the gap between complex theories and practical applications e empower individuals to explore research and development, offering expert guidance and resources. With a foundation in research, we're expanding into development, focusing on data science, engineering, and AI solutions. Join us as we innovate and deliver comprehensive project-based services to our community and beyond.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Our Focus Section -->
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <h2 class="text-center mb-4" style="font-family: 'Overpass', sans-serif; color: #2c3e50;">Our Focus</h2>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <div class="d-flex align-items-start">
+                                <span class="badge bg-primary rounded-circle p-2 me-3 mt-1"><i class="fas fa-lightbulb"></i></span>
+                                <div>
+                                    <h5 class="fw-bold">Innovative Research</h5>
+                                    <p>We delve into the depths of machine learning and AI, exploring new frontiers and pushing the boundaries of what's possible.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex align-items-start">
+                                <span class="badge bg-success rounded-circle p-2 me-3 mt-1"><i class="fas fa-users"></i></span>
+                                <div>
+                                    <h5 class="fw-bold">Collaboration</h5>
+                                    <p>We believe in the power of teamwork. By bringing together brilliant minds, we foster a space for sharing ideas, sparking innovation, and driving progress.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex align-items-start">
+                                <span class="badge bg-info rounded-circle p-2 me-3 mt-1"><i class="fas fa-book-open"></i></span>
+                                <div>
+                                    <h5 class="fw-bold">Accessible Knowledge</h5>
+                                    <p>We aim to democratize research, ensuring that complex information is available and understandable for everyone.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex align-items-start">
+                                <span class="badge bg-warning rounded-circle p-2 me-3 mt-1"><i class="fas fa-cogs"></i></span>
+                                <div>
+                                    <h5 class="fw-bold">Development</h5>
+                                    <p>We don't just focus on research but also on development, specializing in data science, data engineering, web-based and AI-based software solutions.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="d-flex align-items-start">
+                                <span class="badge bg-danger rounded-circle p-2 me-3 mt-1"><i class="fas fa-project-diagram"></i></span>
+                                <div>
+                                    <h5 class="fw-bold">Project-Based Services</h5>
+                                    <p>We provide comprehensive project-based services to our community and beyond, working on cutting-edge projects to deliver impactful solutions.</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Our Vision Section -->
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <h2 class="text-center mb-4" style="font-family: 'Overpass', sans-serif; color: #2c3e50;">Our Vision</h2>
+                    <p class="lead text-muted">
+                        We strive to build a collaborative community where both seasoned and new researchers can share knowledge, resources, and guidance. Our goal is to ensure that every member can conduct research efficiently and confidently, benefiting from the collective expertise of the group. Together, we aim to be a beacon for future researchers, providing a foundation for meaningful and impactful work in development and beyond.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Research Focus Areas -->
+<div class="research-container">
+    <h1 class="section-title">Research Focus Areas</h1>
+    
+    <!-- Added styled introductory text -->
+    <p class="section-intro">
+        We focus on <strong style="color: #4a90e2;">cutting-edge technologies</strong> and 
+        <strong style="color: #00cec9;">emerging fields</strong> in AI research, including:
+    </p>
+  
+    <div class="row g-4">
+        <!-- Artificial Intelligence -->
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="research-card">
+                <div class="research-icon" style="--accent-color: #4a90e2;">
+                    <i class="fas fa-brain fa-lg"></i>
+                </div>
+                <h3 class="card-title">Artificial Intelligence</h3>
+                <p class="card-content">Advanced machine learning algorithms and neural networks development</p>
+            </div>
+        </div>
+
+        <!-- Machine Learning -->
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="research-card">
+                <div class="research-icon" style="--accent-color: #00cec9;">
+                    <i class="fas fa-chart-line fa-lg"></i>
+                </div>
+                <h3 class="card-title">Machine Learning (ML)</h3>
+                <p class="card-content">Predictive analytics and adaptive pattern recognition systems</p>
+            </div>
+        </div>
+
+        <!-- Agentic AI -->
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="research-card">
+                <div class="research-icon" style="--accent-color: #e84393;">
+                    <i class="fas fa-robot fa-lg"></i>
+                </div>
+                <h3 class="card-title">Agentic AI</h3>
+                <p class="card-content">Autonomous decision-making systems with ethical AI frameworks</p>
+            </div>
+        </div>
+
+        <!-- RAG -->
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="research-card">
+                <div class="research-icon" style="--accent-color: #fdcb6e;">
+                    <i class="fas fa-search fa-lg"></i>
+                </div>
+                <h3 class="card-title">Retrieval-Augmented Generation</h3>
+                <p class="card-content">Context-aware generation models with real-time knowledge integration</p>
+            </div>
+        </div>
+
+        <!-- Quantum Computing -->
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="research-card">
+                <div class="research-icon" style="--accent-color: #6c5ce7;">
+                    <i class="fas fa-atom fa-lg"></i>
+                </div>
+                <h3 class="card-title">Quantum Computing</h3>
+                <p class="card-content">Quantum algorithm development and hybrid computing systems</p>
+            </div>
+        </div>
+
+        <!-- Computer Vision -->
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="research-card">
+                <div class="research-icon" style="--accent-color: #00b894;">
+                    <i class="fas fa-eye fa-lg"></i>
+                </div>
+                <h3 class="card-title">Computer Vision (CV)</h3>
+                <p class="card-content">Advanced image processing and real-time object recognition</p>
+            </div>
+        </div>
+
+        <!-- LLMs -->
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="research-card">
+                <div class="research-icon" style="--accent-color: #d63031;">
+                    <i class="fas fa-language fa-lg"></i>
+                </div>
+                <h3 class="card-title">Large Language Models</h3>
+                <p class="card-content">Multimodal foundation models for natural language understanding</p>
+            </div>
+        </div>
+
+        <!-- Reinforcement Learning -->
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="research-card">
+                <div class="research-icon" style="--accent-color: #00d2d3;">
+                    <i class="fas fa-gamepad fa-lg"></i>
+                </div>
+                <h3 class="card-title">Reinforcement Learning</h3>
+                <p class="card-content">Advanced reward-based learning for complex decision-making tasks</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Research Dashboard Stats -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-center mb-4" style="font-family: 'Overpass', sans-serif; color: #2c3e50;">Research Dashboard</h2>
+            <div class="title-underline mx-auto"></div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-3">
+            <div class="stats-card">
+                <div class="icon">
+                    <i class="far fa-file-alt"></i>
+                </div>
+                <div class="count">{{ research_papers_count }}</div>
+                <div class="label">Research Papers</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stats-card">
+                <div class="icon">
+                    <i class="fas fa-rss"></i>
+                </div>
+                <div class="count">{{ blog_count }}</div>
+                <div class="label">Blog Articles</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stats-card">
+                <div class="icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="count">8</div>
+                <div class="label">Research Fields</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stats-card">
+                <div class="icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="count">{{ topics_count }}</div>
+                <div class="label">Expert Topics</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Research Papers -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2 class="section-title">Recent Research Papers</h2>
+            <div class="title-underline mx-auto"></div>
+            <p class="lead mt-3">Must Read for AI and Quantum Researchers</p>
+        </div>
+    </div>
+
+    <div class="row g-4 mt-2">
+        {% for paper in recent_papers %}
+        <div class="col-md-4 mb-4">
+            <div class="paper-card h-100 shadow-sm rounded overflow-hidden">
+                <div class="paper-header p-3" style="background-color: rgba(74, 111, 220, 0.1);">
+                    <span class="category-badge rounded-pill px-3 py-1 {% if paper.category == 'ai' %}bg-primary{% elif paper.category == 'quantum' %}bg-purple{% else %}bg-info{% endif %} text-white">
+                        {{ paper.category|upper }}
+                    </span>
+                </div>
+                <div class="paper-body p-4">
+                    <h5 class="paper-title fw-bold mb-3">{{ paper.title }}</h5>
+                    <div class="author-info d-flex align-items-center mb-3">
+                        <div class="author-avatar me-2">
+                            {% if paper.author.profile.profile_picture %}
+                            <img src="{{ paper.author.profile.profile_picture.url }}" alt="{{ paper.author.username }}" class="rounded-circle" width="32" height="32">
+                            {% else %}
+                            <div class="avatar-placeholder rounded-circle d-flex align-items-center justify-content-center" style="width:32px;height:32px;background-color:#4a6fdc;color:white;">
+                                {{ paper.author.username|first|upper }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <span class="author-name">
+                            {{ paper.author.get_full_name|default:paper.author.username }}{% if paper.co_authors %} & {{ paper.co_authors }}{% endif %}
+                        </span>
+                    </div>
+                    <p class="paper-abstract">{{ paper.abstract|truncatewords:25 }}</p>
+                </div>
+                <div class="paper-footer p-3 d-flex justify-content-between align-items-center" style="background-color: #f8f9fa;">
+                    <small class="text-muted">{{ paper.created_at|date:"M d, Y" }}</small>
+                    <a href="{% url 'research_paper_detail' paper.slug %}" class="btn btn-sm btn-primary rounded-pill px-3">Read Paper</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle me-2"></i> No research papers have been published yet. Be the first to submit your research!
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{% url 'research_paper_list' %}" class="btn btn-outline-primary rounded-pill px-4">
+            Browse All Papers <i class="fas fa-arrow-right ms-2"></i>
+        </a>
+    </div>
+</div>
+
+{% if user.is_authenticated %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Contribute to the Community</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="text-center mb-4">
+                                <i class="fas fa-file-upload fa-3x mb-3 text-primary"></i>
+                                <h5>Share Your Research</h5>
+                                <p>Upload your latest papers on AI and Quantum computing.</p>
+                                <a href="{% url 'research_paper_create' %}" class="btn btn-sm btn-outline-primary">Upload Paper</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="text-center mb-4">
+                                <i class="fas fa-lightbulb fa-3x mb-3 text-primary"></i>
+                                <h5>Propose Research Topics</h5>
+                                <p>Suggest new areas of exploration for the community.</p>
+                                <a href="{% url 'research_topic_create' %}" class="btn btn-sm btn-outline-primary">Add Topic</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="text-center mb-4">
+                                <i class="fas fa-edit fa-3x mb-3 text-primary"></i>
+                                <h5>Write a Blog Post</h5>
+                                <p>Share your insights and perspectives with the community.</p>
+                                <a href="{% url 'blog_create' %}" class="btn btn-sm btn-outline-primary">Write Post</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

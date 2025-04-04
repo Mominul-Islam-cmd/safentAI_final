@@ -21,8 +21,16 @@ def home(request):
         'recent_papers': recent_papers,
     }
     
-    return render(request, 'home.html', context)
+    # Check if the new template exists, otherwise fall back to the original
+    try:
+        return render(request, 'new_designs/home.html', context)
+    except:
+        return render(request, 'home.html', context)
 
 
 def about(request):
-    return render(request, 'about.html')
+    # Check if the new template exists, otherwise fall back to the original
+    try:
+        return render(request, 'new_designs/about.html')
+    except:
+        return render(request, 'about.html')

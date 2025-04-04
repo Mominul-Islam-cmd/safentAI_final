@@ -4,7 +4,7 @@
 {% block title %}SAFENET.AI - AI and Quantum Research Community{% endblock %}
 
 {% block content %}
-<!-- Hero Section with Dark Background and Robot Animation -->
+<!-- Hero Section with Banner and Robot Animation -->
 <div class="bannar_body text-center">
     <div class="bannar_items" id="main_about" style="background-color: transparent; align-items: center;">
         <h1 style="font-family: 'Overpass', sans-serif; background: linear-gradient(90deg, #f7941e 0%, #0094ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 2px 2px 4px #000000;">SafeNet
@@ -36,8 +36,8 @@
                 </div>
             </div>
             <!-- Animation Icons Column -->
-            <div class="col-lg-6 col-12 d-flex justify-content-center align-items-center" style="margin-top: 200px;">
-                <div id="robotContainer" class="robot-container" style="max-width: 100%; height: auto;">
+            <div class="col-lg-6 col-12 d-flex justify-content-center align-items-center robot-container-wrapper">
+                <div id="robotContainer" class="robot-container">
                     <div class="ai-illustration-container">
                         <div class="gear-platform">
                             <div class="spinning-group">
@@ -93,55 +93,98 @@
 </main>
 
 <!-- Research Focus Areas -->
-<div class="research-focus-container container my-5 py-4">
-    <div class="text-center mb-4">
-        <h2 class="section-title">Research Focus Areas</h2>
-        <div class="title-underline"></div>
-        <p class="lead mt-3">
-            We focus on <span class="text-primary">cutting-edge technologies</span> and 
-            <span class="text-success">emerging fields</span> in AI research, including:
-        </p>
-    </div>
-    
-    <div class="row g-4 mt-2">
-        <!-- AI Card -->
-        <div class="col-md-4">
-            <div class="research-card h-100 p-4 border rounded shadow-sm">
-                <div class="d-flex">
-                    <img src="{% static 'img/research/ai_icon.svg' %}" class="research-icon me-3" alt="AI">
-                    <h3 class="research-card-title">Artificial Intelligence</h3>
-                </div>
-                <p class="mt-3">Advanced machine learning algorithms and neural networks development</p>
-            </div>
-        </div>
-        
-        <!-- ML Card -->
-        <div class="col-md-4">
-            <div class="research-card h-100 p-4 border rounded shadow-sm">
-                <div class="d-flex">
-                    <img src="{% static 'img/research/ml_icon.svg' %}" class="research-icon me-3" alt="Machine Learning">
-                    <h3 class="research-card-title">Machine Learning (ML)</h3>
-                </div>
-                <p class="mt-3">Predictive analytics and adaptive pattern recognition systems</p>
-            </div>
-        </div>
-        
-        <!-- Agentic AI Card -->
-        <div class="col-md-4">
-            <div class="research-card h-100 p-4 border rounded shadow-sm">
-                <div class="d-flex">
-                    <img src="{% static 'img/research/agent_icon.svg' %}" class="research-icon me-3" alt="Agentic AI">
-                    <h3 class="research-card-title">Agentic AI</h3>
-                </div>
-                <p class="mt-3">Autonomous decision-making systems with ethical AI frameworks</p>
-            </div>
-        </div>
-    </div>
+<div class="research-container">
+  <h1 class="section-title">Research Focus Areas</h1>
+  
+  <!-- Added styled introductory text -->
+  <p class="section-intro">
+      We focus on <strong style="color: #4a90e2;">cutting-edge technologies</strong> and 
+      <strong style="color: #00cec9;">emerging fields</strong> in AI research, including:
+  </p>
+
+  <div class="row g-4">
+      <!-- Artificial Intelligence -->
+      <div class="col-12 col-md-6 col-lg-4">
+          <div class="research-card">
+              <div class="research-icon" style="--accent-color: #4a90e2;">
+                  <i class="fas fa-brain fa-lg"></i>
+              </div>
+              <h3 class="card-title">Artificial Intelligence</h3>
+              <p class="card-content">Advanced machine learning algorithms and neural networks development</p>
+          </div>
+      </div>
+
+      <!-- Machine Learning -->
+      <div class="col-12 col-md-6 col-lg-4">
+          <div class="research-card">
+              <div class="research-icon" style="--accent-color: #00cec9;">
+                  <i class="fas fa-chart-line fa-lg"></i>
+              </div>
+              <h3 class="card-title">Machine Learning (ML)</h3>
+              <p class="card-content">Predictive analytics and adaptive pattern recognition systems</p>
+          </div>
+      </div>
+
+      <!-- Agentic AI -->
+      <div class="col-12 col-md-6 col-lg-4">
+          <div class="research-card">
+              <div class="research-icon" style="--accent-color: #e84393;">
+                  <i class="fas fa-robot fa-lg"></i>
+              </div>
+              <h3 class="card-title">Agentic AI</h3>
+              <p class="card-content">Autonomous decision-making systems with ethical AI frameworks</p>
+          </div>
+      </div>
+
+      <!-- RAG -->
+      <div class="col-12 col-md-6 col-lg-4">
+          <div class="research-card">
+              <div class="research-icon" style="--accent-color: #fdcb6e;">
+                  <i class="fas fa-search fa-lg"></i>
+              </div>
+              <h3 class="card-title">Retrieval-Augmented Generation (RAG)</h3>
+              <p class="card-content">Context-aware generation models with real-time knowledge integration</p>
+          </div>
+      </div>
+
+      <!-- Quantum Computing -->
+      <div class="col-12 col-md-6 col-lg-4">
+          <div class="research-card">
+              <div class="research-icon" style="--accent-color: #6c5ce7;">
+                  <i class="fas fa-atom fa-lg"></i>
+              </div>
+              <h3 class="card-title">Quantum Computing</h3>
+              <p class="card-content">Quantum algorithm development and hybrid computing systems</p>
+          </div>
+      </div>
+
+      <!-- Computer Vision -->
+      <div class="col-12 col-md-6 col-lg-4">
+          <div class="research-card">
+              <div class="research-icon" style="--accent-color: #00b894;">
+                  <i class="fas fa-eye fa-lg"></i>
+              </div>
+              <h3 class="card-title">Computer Vision (CV)</h3>
+              <p class="card-content">Advanced image processing and real-time object recognition</p>
+          </div>
+      </div>
+
+      <!-- LLMs -->
+      <div class="col-12 col-md-6 col-lg-4">
+          <div class="research-card">
+              <div class="research-icon" style="--accent-color: #d63031;">
+                  <i class="fas fa-language fa-lg"></i>
+              </div>
+              <h3 class="card-title">Large Language Models (LLMs)</h3>
+              <p class="card-content">Multimodal foundation models for natural language understanding</p>
+          </div>
+      </div>
+  </div>
 </div>
 
 <!-- Research Dashboard Stats -->
-<div class="container">
-    <div class="row mt-5">
+<div class="container mt-5">
+    <div class="row">
         <div class="col-12">
             <h2 class="text-center mb-4">Research Dashboard</h2>
             <div class="title-underline mx-auto"></div>
