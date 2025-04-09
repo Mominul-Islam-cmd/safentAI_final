@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base2.html' %}
 {% load static %}
 
 {% block title %}SAFENET.AI - AI and Quantum Research Community{% endblock %}
@@ -15,82 +15,164 @@
     </div>
 </div>
 
-<main class="hero-section py-5">
-    <div class="container">
-        <div class="row align-items-center">
-            <!-- Text Column -->
-            <div class="col-lg-6 col-12 hero-content mb-5 mb-lg-0">
-                <h1 class="hero-title">Empowering Research, Enabling Innovation</h1>
-                <p class="hero-subtitle mt-4">
-                    Join a collaborative platform for AI, NLP, and Computer Vision research and projects. 
-                    Whether you're a student, researcher, or industry professional, there's a place for you here.
-                </p>
-                <div class="cta-buttons">
-                    {% if not user.is_authenticated %}
-                        <a href="{% url 'register' %}" class="btn btn-primary cta-button me-3">Get Started</a>
-                        <a href="{% url 'login' %}" class="btn btn-secondary cta-button">Sign In</a>
-                    {% else %}
-                        <a href="{% url 'research_paper_create' %}" class="btn btn-primary cta-button me-3">Submit Research</a>
-                        <a href="{% url 'profile' %}" class="btn btn-secondary cta-button">My Dashboard</a>
-                    {% endif %}
-                </div>
+</main>
+<div class="container" >
+    <div class="row align-items-center">
+        <!-- Text Column -->
+        <div class="col-lg-6 col-12 hero-content mb-5 mb-lg-0" >
+            <h1 class="hero-title">Empowering Research, Enabling Innovation</h1>
+            <p class="hero-subtitle mt-4">
+                Join a collaborative platform for AI, NLP, and Computer Vision research and projects. 
+                Whether you’re a student, researcher, or industry professional, there’s a place for you here.
+            </p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary cta-button me-3">Get Started</a>
+                <a href="#" class="btn btn-secondary cta-button">Sign In</a>
             </div>
-            <!-- Animation Icons Column -->
-            <div class="col-lg-6 col-12 d-flex justify-content-center align-items-center robot-container-wrapper">
-                <div id="robotContainer" class="robot-container">
-                    <div class="ai-illustration-container">
-                        <div class="gear-platform">
-                            <div class="spinning-group">
-                                <div class="gear">
-                                    <div class="gear-tooth top"></div>
-                                    <div class="gear-tooth bottom"></div>
-                                    <div class="gear-tooth left"></div>
-                                    <div class="gear-tooth right"></div>
-                                    <div class="gear-center">
-                                        <div class="gear-inner-circle"></div>
-                                    </div>
-                                </div>
-                                <div class="robot">
-                                    <div class="robot-body">
-                                        <div class="robot-head">
-                                            <div class="robot-eye left"></div>
-                                            <div class="robot-eye right"></div>
-                                            <div class="robot-antenna">
-                                                <div class="antenna-light"></div>
-                                            </div>
-                                            <div class="robot-visor"></div>
-                                        </div>
-                                        <div class="robot-arm left-1"></div>
-                                        <div class="robot-arm left-2"></div>
-                                        <div class="robot-arm right-1"></div>
-                                        <div class="robot-arm right-2"></div>
-                                        <div class="robot-button-main">
-                                            <div class="robot-button-inner"></div>
-                                        </div>
-                                        <div class="robot-control-1"></div>
-                                        <div class="robot-control-2"></div>
-                                    </div>
+        </div>
+        <!-- Animation Icons Column -->
+        <div class="col-lg-6 col-12 d-flex justify-content-center align-items-center" style="margin-top: 200px; ">
+            <div id="robotContainer" class="robot-container" style="max-width: 100%; height: auto;">
+                <div class="ai-illustration-container">
+                    <div class="gear-platform">
+                        <div class="spinning-group">
+                            <div class="gear">
+                                <div class="gear-tooth top"></div>
+                                <div class="gear-tooth bottom"></div>
+                                <div class="gear-tooth left"></div>
+                                <div class="gear-tooth right"></div>
+                                <div class="gear-center">
+                                    <div class="gear-inner-circle"></div>
                                 </div>
                             </div>
-                            <div class="ai-text-block">
-                                <span>AI</span>
+                            <div class="robot">
+                                <div class="robot-body">
+                                    <div class="robot-head">
+                                        <div class="robot-eye left"></div>
+                                        <div class="robot-eye right"></div>
+                                        <div class="robot-antenna">
+                                            <div class="antenna-light"></div>
+                                        </div>
+                                        <div class="robot-visor"></div>
+                                    </div>
+                                    <div class="robot-arm left-1"></div>
+                                    <div class="robot-arm left-2"></div>
+                                    <div class="robot-arm right-1"></div>
+                                    <div class="robot-arm right-2"></div>
+                                    <div class="robot-button-main">
+                                        <div class="robot-button-inner"></div>
+                                    </div>
+                                    <div class="robot-control-1"></div>
+                                    <div class="robot-control-2"></div>
+                                </div>
                             </div>
-                            <div class="Quantum-text-block">
-                                <span>Quantum</span>
-                            </div>
-                            <div class="data-bars">
-                                <div class="data-bar bar-1"></div>
-                                <div class="data-bar bar-2"></div>
-                                <div class="data-bar bar-3"></div>
-                                <div class="data-bar bar-4"></div>
-                            </div>
+                        </div>
+                        <div class="ai-text-block">
+                            <span>AI</span>
+                        </div>
+                        <div class="Quantum-text-block">
+                            <span>Quantum</span>
+                        </div>
+                        <div class="data-bars">
+                            <div class="data-bar bar-1"></div>
+                            <div class="data-bar bar-2"></div>
+                            <div class="data-bar bar-3"></div>
+                            <div class="data-bar bar-4"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </main>
+
+<style>
+@media (max-width: 768px) {
+    .robot-container {
+        transform: scale(0.7); /* Reduce the size of the robot */
+        margin: 0 auto; /* Center horizontally */
+        margin-top: -190px; /* Adjust top margin */
+    }
+    .col-lg-6.col-12.d-flex.justify-content-center.align-items-center {
+        margin-left: -108px !important; /* Remove left gap */
+    }
+}
+
+@media (max-width: 576px) {
+    .robot-container {
+        transform: scale(0.6); /* Further reduce size for smaller screens */
+        margin: 0 auto; /* Center horizontally */
+        margin-top: 10px; /* Adjust top margin */
+    }
+}
+</style>
+
+<style>
+@media (max-width: 768px) {
+    .hero-section .row {
+        margin: 0; /* Remove gaps between columns */
+    }
+    .hero-content,
+    .robot-container {
+        margin-top: 0 !important; /* Remove top margin */
+    }
+    .hero-content {
+        margin-bottom: 10px; /* Reduce gap between hero-content and animation icons */
+    }
+}
+</style>
+
+    <style>
+      @media (max-width: 768px) {
+        .robot-container {
+          transform: scale(0.7); /* Reduce the size of the robot */
+          margin: 0 auto; /* Center horizontally */
+          margin-top: -190px; /* Adjust top margin */
+         
+        }
+
+        .ai-text-block span,
+        .Quantum-text-block span {
+          font-size: 1.5rem; /* Reduce font size for AI and Quantum text */
+          width: 100px;
+          height: 50px;
+        }
+
+        .ai-text-block span::before,
+        .Quantum-text-block span::before {
+          width: 100%;
+          height: 100%;
+        }
+
+        .gear-platform {
+          transform: scale(0.8); /* Adjust the gear platform size */
+        }
+
+        .data-bars .data-bar {
+          height: 10px; /* Reduce the height of data bars */
+        }
+      }
+
+      @media (max-width: 576px) {
+        .robot-container {
+          transform: scale(0.6); /* Further reduce size for smaller screens */
+          margin: 0 auto; /* Center horizontally */
+          margin-top: 10px; /* Adjust top margin */
+        }
+      }
+
+
+      
+    </style>
+    </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
 
 <!-- Research Focus Areas -->
 <div class="research-container">

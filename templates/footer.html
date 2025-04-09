@@ -16,10 +16,13 @@
                 <h5>EXPLORE</h5>
                 <ul class="list-unstyled">
                     <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'research_paper_list' %}">Research</a></li>
+    
+                    <li><a href="{% url 'About:about_us' %}">About</a></li>
+                    <li><a href="{% url 'PublicationProject:publication_view' %}">Our Projects&Publications</a></li>
+                    <li><a href="{% url 'research_paper_list' %}">Research Papers</a></li>
                     <li><a href="{% url 'blog_list' %}">Blog</a></li>
-                    <li><a href="{% url 'research_topic_list' %}">Expert Topics</a></li>
-                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'research_topic_list' %}">Research Topics</a></li>
+                    
                     <li><a href="{% url 'contact' %}">Contact</a></li>
                 </ul>
             </div>

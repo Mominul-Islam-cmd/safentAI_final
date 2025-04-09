@@ -11,6 +11,10 @@ urlpatterns = [
     path('expert-topics/', include('expert_topics.urls')),
     path('blog/', include('blog.urls')),
     path('feedback/', include('feedback.urls')),
+    path('about/', include('About.urls')),
+    path('Guidelines/', include('Guidelines.urls')),
+    path('Researchers/', include('Researchers.urls')),
+    path('PublicationProject/', include('PublicationProject.urls')),
 ]
 
 # Serve media files in development

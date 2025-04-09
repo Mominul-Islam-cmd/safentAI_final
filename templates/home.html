@@ -1,289 +1,394 @@
-{% extends 'base.html' %}
+{% extends 'base2.html' %}
 {% load static %}
 
 {% block title %}SAFENET.AI - AI and Quantum Research Community{% endblock %}
 
 {% block content %}
 <!-- Hero Section with Dark Background and Robot Animation -->
-<div class="bannar_body text-center">
-    <div class="bannar_items" id="main_about" style="background-color: transparent; align-items: center;">
-        <h1 style="font-family: 'Overpass', sans-serif; background: linear-gradient(90deg, #f7941e 0%, #0094ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 2px 2px 4px #000000;">SafeNet
-        </h1>
-        <h4 class="tpyebefore"> <span class="typing"
-                style="background: linear-gradient(90deg, #b1ae2b 0%, #adc7af 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 2px 2px 4px #e4dada;">Quantum & AI </span>
-        </h4>
-    </div>
-</div>
+<body>
+    
 
-<main class="hero-section py-5">
-    <div class="container">
-        <div class="row align-items-center">
-            <!-- Text Column -->
-            <div class="col-lg-6 col-12 hero-content mb-5 mb-lg-0">
-                <h1 class="hero-title">Empowering Research, Enabling Innovation</h1>
-                <p class="hero-subtitle mt-4">
-                    Join a collaborative platform for AI, NLP, and Computer Vision research and projects. 
-                    Whether you're a student, researcher, or industry professional, there's a place for you here.
-                </p>
-                <div class="cta-buttons">
-                    {% if not user.is_authenticated %}
-                        <a href="{% url 'register' %}" class="btn btn-primary cta-button me-3">Get Started</a>
-                        <a href="{% url 'login' %}" class="btn btn-secondary cta-button">Sign In</a>
-                    {% else %}
-                        <a href="{% url 'research_paper_create' %}" class="btn btn-primary cta-button me-3">Submit Research</a>
-                        <a href="{% url 'profile' %}" class="btn btn-secondary cta-button">My Dashboard</a>
-                    {% endif %}
-                </div>
-            </div>
-            <!-- Animation Icons Column -->
-            <div class="col-lg-6 col-12 d-flex justify-content-center align-items-center" style="margin-top: 200px;">
-                <div id="robotContainer" class="robot-container" style="max-width: 100%; height: auto;">
-                    <div class="ai-illustration-container">
-                        <div class="gear-platform">
-                            <div class="spinning-group">
-                                <div class="gear">
-                                    <div class="gear-tooth top"></div>
-                                    <div class="gear-tooth bottom"></div>
-                                    <div class="gear-tooth left"></div>
-                                    <div class="gear-tooth right"></div>
-                                    <div class="gear-center">
-                                        <div class="gear-inner-circle"></div>
-                                    </div>
-                                </div>
-                                <div class="robot">
-                                    <div class="robot-body">
-                                        <div class="robot-head">
-                                            <div class="robot-eye left"></div>
-                                            <div class="robot-eye right"></div>
-                                            <div class="robot-antenna">
-                                                <div class="antenna-light"></div>
-                                            </div>
-                                            <div class="robot-visor"></div>
-                                        </div>
-                                        <div class="robot-arm left-1"></div>
-                                        <div class="robot-arm left-2"></div>
-                                        <div class="robot-arm right-1"></div>
-                                        <div class="robot-arm right-2"></div>
-                                        <div class="robot-button-main">
-                                            <div class="robot-button-inner"></div>
-                                        </div>
-                                        <div class="robot-control-1"></div>
-                                        <div class="robot-control-2"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ai-text-block">
-                                <span>AI</span>
-                            </div>
-                            <div class="Quantum-text-block">
-                                <span>Quantum</span>
-                            </div>
-                            <div class="data-bars">
-                                <div class="data-bar bar-1"></div>
-                                <div class="data-bar bar-2"></div>
-                                <div class="data-bar bar-3"></div>
-                                <div class="data-bar bar-4"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="bannar_body text-center" style="background-color: white;">
+        <div class="bannar_items" id="main_about" style="background-color: white; align-items: center;">
+            <h1 style="font-family: 'Overpass', sans-serif; background: linear-gradient(90deg, #f7941e 0%, #0094ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 2px 2px 4px #000000;">SafeNet
+            </h1>
+            <h4 class="tpyebefore"> <span class="typing"
+                    style="background: linear-gradient(90deg, #b1ae2b 0%, #adc7af 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 2px 2px 4px #e4dada;">Quantum & AI </span>
+            </h4>
         </div>
-    </div>
-</main>
-
-<!-- Research Focus Areas -->
-<div class="research-focus-container container my-5 py-4">
-    <div class="text-center mb-4">
-        <h2 class="section-title">Research Focus Areas</h2>
-        <div class="title-underline"></div>
-        <p class="lead mt-3">
-            We focus on <span class="text-primary">cutting-edge technologies</span> and 
-            <span class="text-success">emerging fields</span> in AI research, including:
-        </p>
     </div>
     
-    <div class="row g-4 mt-2">
-        <!-- AI Card -->
-        <div class="col-md-4">
-            <div class="research-card h-100 p-4 border rounded shadow-sm">
-                <div class="d-flex">
-                    <img src="{% static 'img/research/ai_icon.svg' %}" class="research-icon me-3" alt="AI">
-                    <h3 class="research-card-title">Artificial Intelligence</h3>
+    
+      <!-- new design -->
+    
+    
+    
+    
+      <main class="hero-section py-5">
+        <style>
+            @media (max-width: 768px) {
+                .hero-content {
+                    margin-bottom: -150px !important; /* Remove bottom margin */
+                }
+                .robot-container {
+                    margin-top: 0px !important;
+                     /* Adjust top margin to reduce gap */
+                }
+            }
+        </style>
+    </main>
+        <div class="container" >
+            <div class="row align-items-center">
+                <!-- Text Column -->
+                <div class="col-lg-6 col-12 hero-content mb-5 mb-lg-0" >
+                    <h1 class="hero-title">Empowering Research, Enabling Innovation</h1>
+                    <p class="hero-subtitle mt-4">
+                        Join a collaborative platform for AI, NLP, and Computer Vision research and projects. 
+                        Whether you’re a student, researcher, or industry professional, there’s a place for you here.
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="#" class="btn btn-primary cta-button me-3">Get Started</a>
+                        <a href="#" class="btn btn-secondary cta-button">Sign In</a>
+                    </div>
                 </div>
-                <p class="mt-3">Advanced machine learning algorithms and neural networks development</p>
-            </div>
-        </div>
-        
-        <!-- ML Card -->
-        <div class="col-md-4">
-            <div class="research-card h-100 p-4 border rounded shadow-sm">
-                <div class="d-flex">
-                    <img src="{% static 'img/research/ml_icon.svg' %}" class="research-icon me-3" alt="Machine Learning">
-                    <h3 class="research-card-title">Machine Learning (ML)</h3>
-                </div>
-                <p class="mt-3">Predictive analytics and adaptive pattern recognition systems</p>
-            </div>
-        </div>
-        
-        <!-- Agentic AI Card -->
-        <div class="col-md-4">
-            <div class="research-card h-100 p-4 border rounded shadow-sm">
-                <div class="d-flex">
-                    <img src="{% static 'img/research/agent_icon.svg' %}" class="research-icon me-3" alt="Agentic AI">
-                    <h3 class="research-card-title">Agentic AI</h3>
-                </div>
-                <p class="mt-3">Autonomous decision-making systems with ethical AI frameworks</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Research Dashboard Stats -->
-<div class="container">
-    <div class="row mt-5">
-        <div class="col-12">
-            <h2 class="text-center mb-4">Research Dashboard</h2>
-            <div class="title-underline mx-auto"></div>
-        </div>
-    </div>
-
-    <div class="row mt-4">
-        <div class="col-md-3">
-            <div class="stats-card">
-                <div class="icon">
-                    <i class="far fa-file-alt"></i>
-                </div>
-                <div class="count">{{ research_papers_count }}</div>
-                <div class="label">Research Papers</div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="stats-card">
-                <div class="icon">
-                    <i class="fas fa-rss"></i>
-                </div>
-                <div class="count">{{ blog_count }}</div>
-                <div class="label">Blog Articles</div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="stats-card">
-                <div class="icon">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <div class="count">2</div>
-                <div class="label">Research Fields</div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="stats-card">
-                <div class="icon">
-                    <i class="fas fa-book"></i>
-                </div>
-                <div class="count">{{ topics_count }}</div>
-                <div class="label">Expert Topics</div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Recent Research Papers -->
-<div class="container mt-5 pt-3">
-    <div class="row">
-        <div class="col-12 text-center">
-            <h2 class="section-title">Recent Research Papers</h2>
-            <div class="title-underline mx-auto"></div>
-            <p class="lead mt-3">Must Read for AI and Quantum Researchers</p>
-        </div>
-    </div>
-
-    <div class="row g-4 mt-2">
-        {% for paper in recent_papers %}
-        <div class="col-md-4 mb-4">
-            <div class="paper-card h-100 shadow-sm rounded overflow-hidden">
-                <div class="paper-header p-3" style="background-color: rgba(74, 111, 220, 0.1);">
-                    <span class="category-badge rounded-pill px-3 py-1 {% if paper.category == 'ai' %}bg-primary{% elif paper.category == 'quantum' %}bg-purple{% else %}bg-info{% endif %} text-white">
-                        {{ paper.category|upper }}
-                    </span>
-                </div>
-                <div class="paper-body p-4">
-                    <h5 class="paper-title fw-bold mb-3">{{ paper.title }}</h5>
-                    <div class="author-info d-flex align-items-center mb-3">
-                        <div class="author-avatar me-2">
-                            {% if paper.author.profile.profile_picture %}
-                            <img src="{{ paper.author.profile.profile_picture.url }}" alt="{{ paper.author.username }}" class="rounded-circle" width="32" height="32">
-                            {% else %}
-                            <div class="avatar-placeholder rounded-circle d-flex align-items-center justify-content-center" style="width:32px;height:32px;background-color:#4a6fdc;color:white;">
-                                {{ paper.author.username|first|upper }}
+                <!-- Animation Icons Column -->
+                <div class="col-lg-6 col-12 d-flex justify-content-center align-items-center" style="margin-top: 200px; ">
+                    <div id="robotContainer" class="robot-container" style="max-width: 100%; height: auto;">
+                        <div class="ai-illustration-container">
+                            <div class="gear-platform">
+                                <div class="spinning-group">
+                                    <div class="gear">
+                                        <div class="gear-tooth top"></div>
+                                        <div class="gear-tooth bottom"></div>
+                                        <div class="gear-tooth left"></div>
+                                        <div class="gear-tooth right"></div>
+                                        <div class="gear-center">
+                                            <div class="gear-inner-circle"></div>
+                                        </div>
+                                    </div>
+                                    <div class="robot">
+                                        <div class="robot-body">
+                                            <div class="robot-head">
+                                                <div class="robot-eye left"></div>
+                                                <div class="robot-eye right"></div>
+                                                <div class="robot-antenna">
+                                                    <div class="antenna-light"></div>
+                                                </div>
+                                                <div class="robot-visor"></div>
+                                            </div>
+                                            <div class="robot-arm left-1"></div>
+                                            <div class="robot-arm left-2"></div>
+                                            <div class="robot-arm right-1"></div>
+                                            <div class="robot-arm right-2"></div>
+                                            <div class="robot-button-main">
+                                                <div class="robot-button-inner"></div>
+                                            </div>
+                                            <div class="robot-control-1"></div>
+                                            <div class="robot-control-2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ai-text-block">
+                                    <span>AI</span>
+                                </div>
+                                <div class="Quantum-text-block">
+                                    <span>Quantum</span>
+                                </div>
+                                <div class="data-bars">
+                                    <div class="data-bar bar-1"></div>
+                                    <div class="data-bar bar-2"></div>
+                                    <div class="data-bar bar-3"></div>
+                                    <div class="data-bar bar-4"></div>
+                                </div>
                             </div>
-                            {% endif %}
                         </div>
-                        <span class="author-name">
-                            {{ paper.author.get_full_name|default:paper.author.username }}{% if paper.co_authors %} & {{ paper.co_authors }}{% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <style>
+        @media (max-width: 768px) {
+            .robot-container {
+                transform: scale(0.7); /* Reduce the size of the robot */
+                margin: 0 auto; /* Center horizontally */
+                margin-top: -190px; /* Adjust top margin */
+            }
+            .col-lg-6.col-12.d-flex.justify-content-center.align-items-center {
+                margin-left: -108px !important; /* Remove left gap */
+            }
+        }
+    
+        @media (max-width: 576px) {
+            .robot-container {
+                transform: scale(0.6); /* Further reduce size for smaller screens */
+                margin: 0 auto; /* Center horizontally */
+                margin-top: 10px; /* Adjust top margin */
+            }
+        }
+    </style>
+    
+    <style>
+        @media (max-width: 768px) {
+            .hero-section .row {
+                margin: 0; /* Remove gaps between columns */
+            }
+            .hero-content,
+            .robot-container {
+                margin-top: 0 !important; /* Remove top margin */
+            }
+            .hero-content {
+                margin-bottom: 10px; /* Reduce gap between hero-content and animation icons */
+            }
+        }
+    </style>
+    
+            <style>
+              @media (max-width: 768px) {
+                .robot-container {
+                  transform: scale(0.7); /* Reduce the size of the robot */
+                  margin: 0 auto; /* Center horizontally */
+                  margin-top: -190px; /* Adjust top margin */
+                 
+                }
+    
+                .ai-text-block span,
+                .Quantum-text-block span {
+                  font-size: 1.5rem; /* Reduce font size for AI and Quantum text */
+                  width: 100px;
+                  height: 50px;
+                }
+    
+                .ai-text-block span::before,
+                .Quantum-text-block span::before {
+                  width: 100%;
+                  height: 100%;
+                }
+    
+                .gear-platform {
+                  transform: scale(0.8); /* Adjust the gear platform size */
+                }
+    
+                .data-bars .data-bar {
+                  height: 10px; /* Reduce the height of data bars */
+                }
+              }
+    
+              @media (max-width: 576px) {
+                .robot-container {
+                  transform: scale(0.6); /* Further reduce size for smaller screens */
+                  margin: 0 auto; /* Center horizontally */
+                  margin-top: 10px; /* Adjust top margin */
+                }
+              }
+    
+    
+              
+            </style>
+            </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    
+    
+    <!-- Research Focus Areas -->
+    <div class="research-focus-container container my-5 py-4">
+        <div class="text-center mb-4">
+            <h2 class="section-title">Research Focus Areas</h2>
+            <div class="title-underline"></div>
+            <p class="lead mt-3">
+                We focus on <span class="text-primary">cutting-edge technologies</span> and 
+                <span class="text-success">emerging fields</span> in AI research, including:
+            </p>
+        </div>
+        
+        <div class="row g-4 mt-2">
+            <!-- AI Card -->
+            <div class="col-md-4">
+                <div class="research-card h-100 p-4 border rounded shadow-sm">
+                    <div class="d-flex">
+                        <img src="{% static 'img/research/ai_icon.svg' %}" class="research-icon me-3" alt="AI">
+                        <h3 class="research-card-title">Artificial Intelligence</h3>
+                    </div>
+                    <p class="mt-3">Advanced machine learning algorithms and neural networks development</p>
+                </div>
+            </div>
+            
+            <!-- ML Card -->
+            <div class="col-md-4">
+                <div class="research-card h-100 p-4 border rounded shadow-sm">
+                    <div class="d-flex">
+                        <img src="{% static 'img/research/ml_icon.svg' %}" class="research-icon me-3" alt="Machine Learning">
+                        <h3 class="research-card-title">Machine Learning (ML)</h3>
+                    </div>
+                    <p class="mt-3">Predictive analytics and adaptive pattern recognition systems</p>
+                </div>
+            </div>
+            
+            <!-- Agentic AI Card -->
+            <div class="col-md-4">
+                <div class="research-card h-100 p-4 border rounded shadow-sm">
+                    <div class="d-flex">
+                        <img src="{% static 'img/research/agent_icon.svg' %}" class="research-icon me-3" alt="Agentic AI">
+                        <h3 class="research-card-title">Agentic AI</h3>
+                    </div>
+                    <p class="mt-3">Autonomous decision-making systems with ethical AI frameworks</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Research Dashboard Stats -->
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-12">
+                <h2 class="text-center mb-4">Research Dashboard</h2>
+                <div class="title-underline mx-auto"></div>
+            </div>
+        </div>
+    
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <div class="stats-card">
+                    <div class="icon">
+                        <i class="far fa-file-alt"></i>
+                    </div>
+                    <div class="count">{{ research_papers_count }}</div>
+                    <div class="label">Research Papers</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-card">
+                    <div class="icon">
+                        <i class="fas fa-rss"></i>
+                    </div>
+                    <div class="count">{{ blog_count }}</div>
+                    <div class="label">Blog Articles</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-card">
+                    <div class="icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="count">2</div>
+                    <div class="label">Research Fields</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-card">
+                    <div class="icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="count">{{ topics_count }}</div>
+                    <div class="label">Expert Topics</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recent Research Papers -->
+    <div class="container mt-5 pt-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="section-title">Recent Research Papers</h2>
+                <div class="title-underline mx-auto"></div>
+                <p class="lead mt-3">Must Read for AI and Quantum Researchers</p>
+            </div>
+        </div>
+    
+        <div class="row g-4 mt-2">
+            {% for paper in recent_papers %}
+            <div class="col-md-4 mb-4">
+                <div class="paper-card h-100 shadow-sm rounded overflow-hidden">
+                    <div class="paper-header p-3" style="background-color: rgba(74, 111, 220, 0.1);">
+                        <span class="category-badge rounded-pill px-3 py-1 {% if paper.category == 'ai' %}bg-primary{% elif paper.category == 'quantum' %}bg-purple{% else %}bg-info{% endif %} text-white">
+                            {{ paper.category|upper }}
                         </span>
                     </div>
-                    <p class="paper-abstract">{{ paper.abstract|truncatewords:25 }}</p>
-                </div>
-                <div class="paper-footer p-3 d-flex justify-content-between align-items-center" style="background-color: #f8f9fa;">
-                    <small class="text-muted">{{ paper.created_at|date:"M d, Y" }}</small>
-                    <a href="{% url 'research_paper_detail' paper.slug %}" class="btn btn-sm btn-primary rounded-pill px-3">Read Paper</a>
+                    <div class="paper-body p-4">
+                        <h5 class="paper-title fw-bold mb-3">{{ paper.title }}</h5>
+                        <div class="author-info d-flex align-items-center mb-3">
+                            <div class="author-avatar me-2">
+                                {% if paper.author.profile.profile_picture %}
+                                <img src="{{ paper.author.profile.profile_picture.url }}" alt="{{ paper.author.username }}" class="rounded-circle" width="32" height="32">
+                                {% else %}
+                                <div class="avatar-placeholder rounded-circle d-flex align-items-center justify-content-center" style="width:32px;height:32px;background-color:#4a6fdc;color:white;">
+                                    {{ paper.author.username|first|upper }}
+                                </div>
+                                {% endif %}
+                            </div>
+                            <span class="author-name">
+                                {{ paper.author.get_full_name|default:paper.author.username }}{% if paper.co_authors %} & {{ paper.co_authors }}{% endif %}
+                            </span>
+                        </div>
+                        <p class="paper-abstract">{{ paper.abstract|truncatewords:25 }}</p>
+                    </div>
+                    <div class="paper-footer p-3 d-flex justify-content-between align-items-center" style="background-color: #f8f9fa;">
+                        <small class="text-muted">{{ paper.created_at|date:"M d, Y" }}</small>
+                        <a href="{% url 'research_paper_detail' paper.slug %}" class="btn btn-sm btn-primary rounded-pill px-3">Read Paper</a>
+                    </div>
                 </div>
             </div>
+            {% empty %}
+            <div class="col-12">
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-2"></i> No research papers have been published yet. Be the first to submit your research!
+                </div>
+            </div>
+            {% endfor %}
         </div>
-        {% empty %}
+    
+        <div class="text-center mt-4">
+            <a href="{% url 'research_paper_list' %}" class="btn btn-outline-primary rounded-pill px-4">
+                Browse All Papers <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
+    
+    {% if user.is_authenticated %}
+    <div class="row mt-5">
         <div class="col-12">
-            <div class="alert alert-info">
-                <i class="fas fa-info-circle me-2"></i> No research papers have been published yet. Be the first to submit your research!
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-
-    <div class="text-center mt-4">
-        <a href="{% url 'research_paper_list' %}" class="btn btn-outline-primary rounded-pill px-4">
-            Browse All Papers <i class="fas fa-arrow-right ms-2"></i>
-        </a>
-    </div>
-</div>
-
-{% if user.is_authenticated %}
-<div class="row mt-5">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header bg-primary text-white">
-                <h4 class="mb-0">Contribute to the Community</h4>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="text-center mb-4">
-                            <i class="fas fa-file-upload fa-3x mb-3 text-primary"></i>
-                            <h5>Share Your Research</h5>
-                            <p>Upload your latest papers on AI and Quantum computing.</p>
-                            <a href="{% url 'research_paper_create' %}" class="btn btn-sm btn-outline-primary">Upload Paper</a>
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Contribute to the Community</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="text-center mb-4">
+                                <i class="fas fa-file-upload fa-3x mb-3 text-primary"></i>
+                                <h5 style="color: #adc7af;">Share Your Research</h5>
+                                <p>Upload your latest papers on AI and Quantum computing.</p>
+                                <a href="{% url 'research_paper_create' %}" class="btn btn-sm btn-outline-primary">Upload Paper</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="text-center mb-4">
-                            <i class="fas fa-lightbulb fa-3x mb-3 text-primary"></i>
-                            <h5>Propose Research Topics</h5>
-                            <p>Suggest new areas of exploration for the community.</p>
-                            <a href="{% url 'research_topic_create' %}" class="btn btn-sm btn-outline-primary">Add Topic</a>
+                        <div class="col-md-4">
+                            <div class="text-center mb-4">
+                                <i class="fas fa-lightbulb fa-3x mb-3 text-primary"></i>
+                                <h5>Propose Research Topics</h5>
+                                <p>Suggest new areas of exploration for the community.</p>
+                                <a href="{% url 'research_topic_create' %}" class="btn btn-sm btn-outline-primary">Add Topic</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="text-center mb-4">
-                            <i class="fas fa-edit fa-3x mb-3 text-primary"></i>
-                            <h5>Write a Blog Post</h5>
-                            <p>Share your insights and perspectives with the community.</p>
-                            <a href="{% url 'blog_create' %}" class="btn btn-sm btn-outline-primary">Write Post</a>
+                        <div class="col-md-4">
+                            <div class="text-center mb-4">
+                                <i class="fas fa-edit fa-3x mb-3 text-primary"></i>
+                                <h5>Write a Blog Post</h5>
+                                <p>Share your insights and perspectives with the community.</p>
+                                <a href="{% url 'blog_create' %}" class="btn btn-sm btn-outline-primary">Write Post</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</body>
+
 {% endif %}
 {% endblock %}

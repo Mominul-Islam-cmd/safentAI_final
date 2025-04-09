@@ -23,13 +23,17 @@ class ProfileRegisterForm(forms.ModelForm):
             'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your phone number'})
         }
         
-    def clean_profile_picture(self):
-        profile_picture = self.cleaned_data.get('profile_picture')
-        if profile_picture:
-            # 256KB = 262,144 bytes
-            if profile_picture.size > 262144:
-                raise forms.ValidationError("Profile picture must be less than 256KB in size.")
-        return profile_picture
+def clean_profile_picture(self):
+    profile_picture = self.cleaned_data.get('profile_picture')
+    if profile_picture and hasattr(profile_picture, 'size'):  # Ensure it's a file object
+        # 256KB = 262,144 bytes
+        if profile_picture.size > 262144:
+            raise forms.ValidationError("Profile picture must be less than 256KB in size.")
+        if not profile_picture.name.lower().endswith(('.png', '.jpg', '.jpeg')):
+            raise forms.ValidationError("Profile picture must be a PNG or JPG image.")
+    elif profile_picture:  # If it's not a file object but exists
+        raise forms.ValidationError("Invalid profile picture format.")
+    return profile_picture
 
 
 class UserUpdateForm(forms.ModelForm):

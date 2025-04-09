@@ -1,0 +1,144 @@
+{% extends "base2.html" %}
+
+{% load static %}
+
+{% block title %}Technology Career Roadmaps{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'guidelines/css/r.css' %}">
+<!-- <section class="hero-section">
+    <div class="container">
+        <h1 class="hero-title">Technology Career Roadmaps</h1>
+        <p class="hero-subtitle">Explore comprehensive roadmaps for different technology domains and plan your learning journey</p>
+    </div>
+</section> -->
+<div class="container-fluid" style="text-align: center;margin-bottom: 50px;background-color: black; border-radius: 10px; height: 250px; padding-top: 50px;">
+    <h1 class="hero-title">Technology Career Roadmaps</h1>
+    <p class="hero-subtitle">Explore comprehensive roadmaps for different technology domains and plan your learning journey</p>
+
+</div>
+<!-- Main Roadmap Timeline Layout -->
+<div class="timeline-container">
+    <div class="timeline-line"></div>
+    
+    <!-- AI/ML Card -->
+    <div class="domain-card left">
+        <div class="card-bg-overlay" style="background-image: url('{% static "guidelines/images/ai_ml.svg" %}');"></div>
+        <div class="domain-icon">
+            <i class="fas fa-brain"></i>
+        </div>
+        <h3 class="domain-title">AI & Machine Learning</h3>
+        <p class="domain-description">
+            Explore artificial intelligence and machine learning, from fundamental algorithms to advanced neural networks and deep learning models.
+        </p>
+        <div class="domain-tags">
+            <span class="domain-tag">Trending</span>
+            <span class="domain-tag">High Demand</span>
+        </div>
+        <a href="{% url 'Guidelines:ai' %}" class="explore-button">
+            Explore Roadmap <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+    
+    <!-- Data Analytics Card -->
+    <div class="domain-card right">
+        <div class="card-bg-overlay" style="background-image: url('{% static "guidelines/images/data_analytics.svg" %}');"></div>
+        <div class="domain-icon">
+            <i class="fas fa-chart-bar"></i>
+        </div>
+        <h3 class="domain-title">Data Analytics</h3>
+        <p class="domain-description">
+            Learn to collect, process, and analyze data to extract actionable insights using statistical methods and visualization techniques.
+        </p>
+        <div class="domain-tags">
+            <span class="domain-tag">Popular</span>
+            <span class="domain-tag">Growing Field</span>
+        </div>
+        <a href="{% url 'Guidelines:data_analytics' %}" class="explore-button">
+            Explore Roadmap <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+    
+    <!-- Data Engineering Card -->
+    <div class="domain-card left">
+        <div class="card-bg-overlay" style="background-image: url('{% static "guidelines/images/data_engineering.svg" %}');"></div>
+        <div class="domain-icon">
+            <i class="fas fa-database"></i>
+        </div>
+        <h3 class="domain-title">Data Engineering</h3>
+        <p class="domain-description">
+            Develop skills to design, build, and maintain data infrastructure, pipelines, and warehouses at scale for big data systems.
+        </p>
+        <div class="domain-tags">
+            <span class="domain-tag">In-Demand</span>
+            <span class="domain-tag">Critical Role</span>
+        </div>
+        <a href="{% url 'Guidelines:data_engineer' %}" class="explore-button">
+            Explore Roadmap <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+    
+    <!-- Academic Research Card -->
+    <div class="domain-card right">
+        <div class="card-bg-overlay" style="background-image: url('{% static "guidelines/images/academic_research.svg" %}');"></div>
+        <div class="domain-icon">
+            <i class="fas fa-graduation-cap"></i>
+        </div>
+        <h3 class="domain-title">Academic Research</h3>
+        <p class="domain-description">
+            Navigate the path to becoming a researcher with methodologies, publication strategies, and academic career planning.
+        </p>
+        <div class="domain-tags">
+            <span class="domain-tag">Specialized</span>
+            <span class="domain-tag">Deep Expertise</span>
+        </div>
+        <a href="{% url 'Guidelines:research' %}" class="explore-button">
+            Explore Roadmap <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="roadmap-info-box p-4 rounded">
+                <h3 class="text-center mb-3" style="color: #4ae3b5;">Why Follow a Roadmap?</h3>
+                <p class="text-light mb-0">A structured roadmap helps you navigate the complex landscape of technology careers, ensuring you develop the right skills in the right order while avoiding common pitfalls. Each domain roadmap provides detailed learning paths to guide your career development journey.</p>
+            </div>
+        </div>
+    </div>
+</div><br><br>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Animation for domain cards on scroll
+        const animateOnScroll = () => {
+            const cards = document.querySelectorAll('.domain-card');
+            
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (cardTop < windowHeight - 100) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animation
+        const cards = document.querySelectorAll('.domain-card');
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+        
+        // Run animation on load and scroll
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
+    });
+</script>
+{% endblock %}

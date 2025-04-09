@@ -1,0 +1,247 @@
+/* FontAwesome for working BootSnippet :> */
+
+/* Uncomment if you want to import the older FontAwesome version
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+#team {
+    background: #eee !important;
+} */
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #108d6f;
+    border-color: #108d6f;
+    box-shadow: none;
+    outline: none;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #007b5e;
+    border-color: #007b5e;
+}
+
+section {
+    padding: 60px 0;
+}
+
+section .section-title {
+    text-align: center;
+    color: #007b5e;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+/* Team Section */
+#team {
+    background: #eee !important;
+}
+
+/* Add vertical gap between card containers */
+#team .col-12,
+#team .col-sm-6,
+#team .col-md-4 {
+    margin-bottom: 30px;
+}
+
+.card {
+    border: none;
+    background: #ffffff;
+    height: 100%;
+}
+
+/* Flip Card Container */
+.image-flip,
+.mainflip {
+    width: 100%;
+    height: 100%;
+}
+
+/* Front and Back Sides */
+.frontside,
+.backside {
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+}
+
+/* Initial states */
+.frontside {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 30px;
+    transform: rotateY(0deg);
+}
+
+.backside {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #e9e9e9;
+    transform: rotateY(-180deg);
+    box-shadow: 5px 7px 9px -4px rgb(245, 233, 233);
+}
+
+/* Hover States for Flip Effect */
+.image-flip:hover .backside,
+.image-flip.hover .backside {
+    transform: rotateY(0deg);
+    border-radius: 0.25rem;
+    border: 4px solid #e5e5e5;
+}
+
+.image-flip:hover .frontside,
+.image-flip.hover .frontside {
+    transform: rotateY(180deg);
+}
+
+/* Card inside flip sides */
+.frontside .card,
+.backside .card {
+    min-height: 350px;
+    /* Enforces consistent card heights */
+    height: 80%;
+}
+
+/* Flexbox styling for card body */
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.frontside .card {
+    background-color: #c4d6f0;
+}
+
+.backside .card {
+    background-color: #e9e9e9;
+}
+
+.backside .card a {
+    font-size: 18px;
+    color: #a33434 !important;
+}
+
+.backside .card .card-text-sup {
+    color: rgb(141, 110, 110);
+}
+
+.frontside .card .card-title,
+.backside .card .card-title {
+    color: #e75353 !important;
+}
+
+.frontside .card .card-body img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #e5e5e5;
+}
+
+
+
+
+
+.social_icons {
+    margin-left: 10px;
+
+}
+
+/* Co-founder Section */
+.backgorund_cofounder {
+    background-color: #f8f9fa;
+}
+
+.co_card {
+    margin: 20px 0;
+    width: 28rem;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.co_card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+}
+
+.card-spacing {
+    margin-bottom: 30px;
+    margin-left: 80px;
+}
+
+/* Supervisor Section */
+#supervisors-section {
+    background-color: #f8f9fa;
+    padding: 60px 0;
+}
+
+.supervisors-title {
+    text-align: center;
+    text-transform: uppercase;
+    color: #29ddb6;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+}
+
+.supervisor-card {
+    border-radius: 10px;
+    border: 2px solid #ffffff;
+    transition: transform 0.3s ease-in-out;
+}
+
+.supervisor-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.supervisor-card-body img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.supervisor-name {
+    margin-top: 20px;
+}
+
+/* 
+.supervisor-social-icons a {
+    font-size: 18px;
+    text-decoration: none;
+    margin-right: 10px;
+    transition: color 0.3s ease-in-out;
+} */
+
+/* .supervisor-social-icons a:hover {
+    color: #c2e4dc;
+} */
+
+/* @media (max-width: 768px) {
+    .supervisor-card-body img {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .supervisor-social-icons a {
+        margin-right: 5px;
+    }
+} */
+
+/* Import updated FontAwesome */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+
+
+/* edit_button */
+/* 
+.edit_button {
+    margin-left: 55x;
+} */

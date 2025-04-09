@@ -1,38 +1,60 @@
-<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm" style="background: linear-gradient(90deg, #000000, #21487a);">
     <div class="container">
-        <a class="navbar-brand" href="{% url 'home' %}">SAFENET.AI</a>
+        <a class="navbar-brand fw-bold text-uppercase" href="{% url 'home' %}">
+            <img src="/static/images/logo.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top" style="border-radius: 10px;">
+            <span style="background: linear-gradient(90deg, #5fccff, #feb47b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold; font-size: 1.25rem;">
+                SAFENET.AI
+            </span>
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">Home</a>
+                    <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">
+                        <i class="fas fa-home me-1"></i> Home
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="expertDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-lightbulb me-1"></i> Become an Expert
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="expertDropdown">
+                        <li><a class="dropdown-item" href="{% url 'Guidelines:guidelines_cards' %}">Guidelines</a></li>
+                        <li><a class="dropdown-item {% if 'research' in request.path %}active{% endif %}" href="{% url 'research_paper_list' %}">Research Papers</a></li>
+                        <li><a class="dropdown-item {% if 'expert-topics' in request.path %}active{% endif %}" href="{% url 'research_topic_list' %}">Expert Topics</a></li>
+                        <li><a class="dropdown-item {% if 'blog' in request.path %}active{% endif %}" href="{% url 'blog_list' %}">Blog</a></li>
+                        
+                    </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if 'research' in request.path %}active{% endif %}" href="{% url 'research_paper_list' %}">Research Papers</a>
+                    <a class="nav-link" href="{% url 'Researchers:researcher_view' %}">
+                        <i class="fas fa-users me-1"></i> Researchers
+                    </a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link " href="{% url 'About:about_us' %}">
+                        <i class="fas fa-info-circle me-1"></i> About
+                    </a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/accounts/contact/' %}active{% endif %}" href="{% url 'contact' %}">
+                        <i class="fas fa-envelope me-1"></i> Contact
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if 'expert-topics' in request.path %}active{% endif %}" href="{% url 'research_topic_list' %}">Expert Topics</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if 'blog' in request.path %}active{% endif %}" href="{% url 'blog_list' %}">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="{% url 'about' %}">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if request.path == '/accounts/contact/' %}active{% endif %}" href="{% url 'contact' %}">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if 'feedback' in request.path %}active{% endif %}" href="{% url 'feedback_list' %}">Feedback</a>
+                    <a class="nav-link {% if 'feedback' in request.path %}active{% endif %}" href="{% url 'feedback_list' %}">
+                        <i class="fas fa-comment-dots me-1"></i> Feedback
+                    </a>
                 </li>
                 {% if user.is_authenticated and user.is_superuser %}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle {% if 'approval' in request.path %}active{% endif %}" href="#" id="adminDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle {% if 'approval' in request.path %}active{% endif %}" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-shield-alt me-1"></i> Admin
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="adminDropdownMenuLink">
+                    <ul class="dropdown-menu" aria-labelledby="adminDropdown">
                         <li><h6 class="dropdown-header">Content Approvals</h6></li>
                         <li><a class="dropdown-item" href="{% url 'research_paper_approval_list' %}">Research Paper Approvals</a></li>
                         <li><a class="dropdown-item" href="{% url 'research_topic_approval_list' %}">Expert Topic Approvals</a></li>
@@ -44,33 +66,36 @@
             </ul>
             <ul class="navbar-nav ms-auto">
                 {% if user.is_authenticated %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-user-circle me-1"></i> {{ user.username }}
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="{% url 'profile' %}">My Profile</a></li>
-                            <li><a class="dropdown-item" href="{% url 'my_research_papers' %}">My Research Papers</a></li>
-                            <li><a class="dropdown-item" href="{% url 'my_research_topics' %}">My Expert Topics</a></li>
-                            <li><a class="dropdown-item" href="{% url 'my_blog_posts' %}">My Blog Posts</a></li>
-                            <li><a class="dropdown-item" href="{% url 'my_feedbacks' %}">My Feedbacks</a></li>
-
-                            <li><hr class="dropdown-divider"></li>
-                            <li>
-                                <form action="{% url 'logout' %}" method="post" id="logout-form">
-                                    {% csrf_token %}
-                                    <a class="dropdown-item" href="javascript:document.getElementById('logout-form').submit();">Logout</a>
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user-circle me-1"></i> {{ user.username }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="{% url 'profile' %}">My Profile</a></li>
+                        <li><a class="dropdown-item" href="{% url 'my_research_papers' %}">My Research Papers</a></li>
+                        <li><a class="dropdown-item" href="{% url 'my_research_topics' %}">My Expert Topics</a></li>
+                        <li><a class="dropdown-item" href="{% url 'my_blog_posts' %}">My Blog Posts</a></li>
+                        <li><a class="dropdown-item" href="{% url 'my_feedbacks' %}">My Feedbacks</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <form action="{% url 'logout' %}" method="post" id="logout-form">
+                                {% csrf_token %}
+                                <a class="dropdown-item" href="javascript:document.getElementById('logout-form').submit();">Logout</a>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
                 {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/accounts/login/' %}active{% endif %}" href="{% url 'login' %}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/accounts/register/' %}active{% endif %}" href="{% url 'register' %}">Register</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/accounts/login/' %}active{% endif %}" href="{% url 'login' %}">
+                        <i class="fas fa-sign-in-alt me-1"></i> Login
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/accounts/register/' %}active{% endif %} btn btn-primary " href="{% url 'register' %}">
+                        <i class="fas fa-user-plus me-1"></i> Sign Up
+                    </a>
+                </li>
                 {% endif %}
             </ul>
         </div>

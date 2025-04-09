@@ -1,0 +1,42 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About SAFENET.AI{% endblock %}
+
+{% block content %}
+
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="Header_title">Submit Your Information</h3>
+        </div>
+        <div class="card-body">
+            <form enctype="multipart/form-data" method="POST">
+                {{ test_form.as_p }}
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        var inputs = document.querySelectorAll("input");
+                        inputs.forEach(function(input) {
+                            if (["linekdin_url", "github_url", "personal_website"].includes(input.name)) {
+                                input.classList.add("form-control");
+                            } else {
+                                input.classList.add("form-control");
+                                input.setAttribute("placeholder", "Enter " + input.name);
+                            }
+                        });
+                    });
+                </script>
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+               
+    </div>
+</div>
+
+
+
+
+ {% endblock %}

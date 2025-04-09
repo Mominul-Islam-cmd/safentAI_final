@@ -1,0 +1,571 @@
+{% extends "base3.html" %}
+{% load static %}
+{% block title %}Academic Research Roadmap{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'guidelines/css/r.css' %}">
+<br><br><br>
+<!-- <section class="hero-section" style="background-color: black;">
+    <div class="container">
+        <h1 class="hero-title">Academic Research Roadmap</h1>
+        <p class="hero-subtitle">Follow this roadmap to develop expertise in conducting academic research</p>
+    </div>
+</section> -->
+
+<div class="container-fluid" style="text-align: center;margin-bottom: 50px;background-color: black; border-radius: 10px; height: 250px; padding-top: 50px;">
+    <h1 class="hero-title">Academic Research Roadmap</h1>
+    <p class="hero-subtitle">Follow this roadmap to develop expertise in conducting academic research</p>
+</div>
+
+<div class="timeline-container">
+    <div class="timeline-line"></div>
+    
+    <!-- Foundations Card -->
+    <div class="domain-card left">
+        <div class="card-bg-overlay" style="background-image: url('{% static "guidelines/images/academic_research.svg" %}');"></div>
+        <div class="domain-icon">
+            <i class="fas fa-book"></i>
+        </div>
+        <h3 class="domain-title">Research Foundations</h3>
+        <p class="domain-description">
+            Acquire fundamental knowledge in academic research, including ethics, literature review techniques, and critical thinking.
+        </p>
+        <a href="#foundations-topics" class="explore-button" data-bs-toggle="modal" data-bs-target="#foundationsModal">
+            Explore Topics <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+    
+    <!-- Methods Card -->
+    <div class="domain-card right">
+        <div class="card-bg-overlay" style="background-image: url('{% static "guidelines/images/academic_research.svg" %}');"></div>
+        <div class="domain-icon">
+            <i class="fas fa-microscope"></i>
+        </div>
+        <h3 class="domain-title">Research Methods</h3>
+        <p class="domain-description">
+            Learn diverse research methodologies, including quantitative, qualitative, and mixed methods approaches.
+        </p>
+        <a href="#methods-topics" class="explore-button" data-bs-toggle="modal" data-bs-target="#methodsModal">
+            Explore Topics <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+    
+    <!-- Analysis Card -->
+    <div class="domain-card left">
+        <div class="card-bg-overlay" style="background-image: url('{% static "guidelines/images/academic_research.svg" %}');"></div>
+        <div class="domain-icon">
+            <i class="fas fa-chart-line"></i>
+        </div>
+        <h3 class="domain-title">Data Analysis</h3>
+        <p class="domain-description">
+            Master various techniques for collecting, processing, and analyzing research data to derive insights and test hypotheses.
+        </p>
+        <a href="#analysis-topics" class="explore-button" data-bs-toggle="modal" data-bs-target="#analysisModal">
+            Explore Topics <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+    
+    <!-- Publishing Card -->
+    <div class="domain-card right">
+        <div class="card-bg-overlay" style="background-image: url('{% static "guidelines/images/academic_research.svg" %}');"></div>
+        <div class="domain-icon">
+            <i class="fas fa-file-alt"></i>
+        </div>
+        <h3 class="domain-title">Academic Publishing</h3>
+        <p class="domain-description">
+            Develop skills to write, submit, and publish academic papers in peer-reviewed journals and present at conferences.
+        </p>
+        <a href="#publishing-topics" class="explore-button" data-bs-toggle="modal" data-bs-target="#publishingModal">
+            Explore Topics <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+    
+    <!-- Career Development Card -->
+    <div class="domain-card left">
+        <div class="card-bg-overlay" style="background-image: url('{% static "guidelines/images/academic_research.svg" %}');"></div>
+        <div class="domain-icon">
+            <i class="fas fa-graduation-cap"></i>
+        </div>
+        <h3 class="domain-title">Academic Career Development</h3>
+        <p class="domain-description">
+            Navigate the academic career path, from PhD studies to faculty positions, including grant writing and teaching skills.
+        </p>
+        <a href="#career-topics" class="explore-button" data-bs-toggle="modal" data-bs-target="#careerModal">
+            Explore Topics <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</div>
+
+<!-- Research Foundations Modal -->
+<div class="modal fade" id="foundationsModal" tabindex="-1" aria-labelledby="foundationsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content roadmap-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="foundationsModalLabel">Research Foundations</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Fundamentals</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Epistemology:</strong> Theories of knowledge and how we know what we know</li>
+                            <li><strong>Ontology:</strong> The nature of reality and what exists</li>
+                            <li><strong>Research Paradigms:</strong> Positivism, interpretivism, critical theory, pragmatism</li>
+                            <li><strong>Philosophy of Science:</strong> How scientific knowledge advances</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+
+                        <h3>Literature Review</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Systematic Reviews:</strong> Comprehensive and unbiased literature search</li>
+                            <li><strong>Critical Appraisal:</strong> Evaluating research quality and relevance</li>
+                            <li><strong>Reference Management:</strong> Zotero, Mendeley, EndNote</li>
+                            <li><strong>Literature Mapping:</strong> Identifying research gaps</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Research Ethics</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Ethical Frameworks:</strong> Guidelines for research integrity</li>
+                            <li><strong>IRB/Ethics Approval:</strong> Institutional review board processes</li>
+                            <li><strong>Informed Consent:</strong> Participant rights and protections</li>
+                            <li><strong>Data Privacy:</strong> GDPR, confidentiality, data protection</li>
+                            <li><strong>Plagiarism Prevention:</strong> Proper attribution and citation</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+
+                        <h3>Critical Thinking</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div the="topic-content">
+                        <ul>
+                            <li><strong>Argument Analysis:</strong> Identifying premises and conclusions</li>
+                            <li><strong>Logical Fallacies:</strong> Recognizing common reasoning errors</li>
+                            <li><strong>Scientific Skepticism:</strong> Questioning findings and methods</li>
+                            <li><strong>Bias Recognition:</strong> Identifying and mitigating research bias</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Research Methods Modal -->
+<div class="modal fade" id="methodsModal" tabindex="-1" aria-labelledby="methodsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content roadmap-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="methodsModalLabel">Research Methods</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Quantitative Methods</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Experimental Design:</strong> Controlled studies, variables, randomization</li>
+                            <li><strong>Survey Research:</strong> Questionnaire design, sampling methods</li>
+                            <li><strong>Correlational Studies:</strong> Relationships between variables</li>
+                            <li><strong>Quasi-experimental Methods:</strong> When full randomization isn't possible</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+
+                        <h3>Qualitative Methods</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Ethnography:</strong> Immersive study of cultures or groups</li>
+                            <li><strong>Case Studies:</strong> In-depth analysis of specific instances</li>
+                            <li><strong>Interviews:</strong> Structured, semi-structured, unstructured</li>
+                            <li><strong>Focus Groups:</strong> Facilitated group discussions</li>
+                            <li><strong>Content/Discourse Analysis:</strong> Examining texts or communication</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+
+                        <h3>Mixed Methods</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Convergent Design:</strong> Parallel quantitative and qualitative data collection</li>
+                            <li><strong>Explanatory Sequential:</strong> Quantitative followed by qualitative</li>
+                            <li><strong>Exploratory Sequential:</strong> Qualitative followed by quantitative</li>
+                            <li><strong>Integration Techniques:</strong> Merging, connecting, embedding data</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+
+                        <h3>Research Design</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Research Questions:</strong> Formulating clear, answerable questions</li>
+                            <li><strong>Hypothesis Development:</strong> Creating testable predictions</li>
+                            <li><strong>Sampling Strategies:</strong> Random, stratified, convenience sampling</li>
+                            <li><strong>Validity & Reliability:</strong> Ensuring robust research design</li>
+                            <li><strong>Generalizability:</strong> Extending findings beyond the study context</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" the="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Data Analysis Modal -->
+<div class="modal fade" id="analysisModal" tabindex="-1" aria-labelledby="analysisModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content roadmap-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="analysisModalLabel">Data Analysis</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+
+                        <h3>Statistical Analysis</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Descriptive Statistics:</strong> Mean, median, mode, standard deviation</li>
+                            <li><strong>Inferential Statistics:</strong> Hypothesis testing, confidence intervals</li>
+                            <li><strong>Parametric Tests:</strong> t-tests, ANOVA, regression</li>
+                            <li><strong>Non-parametric Tests:</strong> Chi-square, Mann-Whitney U, Kruskal-Wallis</li>
+                            <li><strong>Statistical Power:</strong> Sample size determination, effect size</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+
+                        <h3>Qualitative Analysis</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Thematic Analysis:</strong> Identifying patterns in qualitative data</li>
+                            <li><strong>Grounded Theory:</strong> Developing theory from data</li>
+                            <li><strong>Phenomenology:</strong> Analyzing lived experiences</li>
+                            <li><strong>Narrative Analysis:</strong> Examining stories and accounts</li>
+                            <li><strong>Coding Techniques:</strong> Open, axial, selective coding</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+
+                        <h3>Analysis Tools</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Statistical Software:</strong> SPSS, R, SAS, Stata</li>
+                            <li><strong>Qualitative Software:</strong> NVivo, ATLAS.ti, MAXQDA</li>
+                            <li><strong>Data Visualization:</strong> Tableau, ggplot2, matplotlib</li>
+                            <li><strong>Programming:</strong> Python, R for data analysis</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+
+                        <h3>Advanced Analytical Methods</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Meta-Analysis:</strong> Synthesizing multiple studies</li>
+                            <li><strong>Structural Equation Modeling:</strong> Testing complex relationships</li>
+                            <li><strong>Machine Learning:</strong> For pattern recognition in large datasets</li>
+                            <li><strong>Longitudinal Analysis:</strong> Studying changes over time</li>
+                            <li><strong>Network Analysis:</strong> Examining relationships and connections</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Academic Publishing Modal -->
+<div class="modal fade" id="publishingModal" tabindex="-1" aria-labelledby="publishingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content roadmap-modal">
+            <div the="modal-header">
+                <h5 class="modal-title" id="publishingModalLabel">Academic Publishing</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+
+                        <h3>Scientific Writing</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Academic Style:</strong> Clarity, precision, formality</li>
+                            <li><strong>Paper Structure:</strong> IMRaD format (Introduction, Methods, Results, Discussion)</li>
+                            <li><strong>Literature Citations:</strong> APA, MLA, Chicago, Harvard styles</li>
+                            <li><strong>Grant Writing:</strong> Proposals for research funding</li>
+                            <li><strong>Technical Writing Tools:</strong> LaTeX, Overleaf, Word</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+
+                        <h3>Journal Selection & Submission</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Journal Impact Factors:</strong> Understanding journal metrics</li>
+                            <li><strong>Scope & Audience:</strong> Finding the right fit for your research</li>
+                            <li><strong>Open Access vs. Traditional:</strong> Publication models</li>
+                            <li><strong>Submission Guidelines:</strong> Following journal requirements</li>
+                            <li><strong>Cover Letters:</strong> Writing effective submission letters</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+
+                        <h3>Peer Review Process</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Types of Review:</strong> Single-blind, double-blind, open peer review</li>
+                            <li><strong>Responding to Reviewers:</strong> Addressing feedback constructively</li>
+                            <li><strong>Revisions & Resubmissions:</strong> Managing the revision process</li>
+                            <li><strong>Becoming a Reviewer:</strong> Contributing to the academic community</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+
+                        <h3>Research Dissemination</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Conference Presentations:</strong> Oral talks, posters, symposia</li>
+                            <li><strong>Academic Social Media:</strong> ResearchGate, Academia.edu, Google Scholar</li>
+                            <li><strong>Public Engagement:</strong> Communicating research to non-specialists</li>
+                            <li><strong>Research Promotion:</strong> Increasing visibility and impact</li>
+                            <li><strong>Research Metrics:</strong> Citations, h-index, altmetrics</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Academic Career Modal -->
+<div class="modal fade" id="careerModal" tabindex="-1" aria-labelledby="careerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content roadmap-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="careerModalLabel">Academic Career Development</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+
+                        <h3>Graduate Studies</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>PhD Planning:</strong> Selecting programs and advisors</li>
+                            <li><strong>Dissertation Process:</strong> From proposal to defense</li>
+                            <li><strong>Academic Productivity:</strong> Managing research projects</li>
+                            <li><strong>Work-Life Balance:</strong> Mental health in academia</li>
+                            <li><strong>Networking:</strong> Building academic connections</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+
+                        <h3>Early Career Development</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Postdoctoral Positions:</strong> Finding and maximizing post-doc opportunities</li>
+                            <li><strong>Job Market:</strong> Academic applications, interviews, job talks</li>
+                            <li><strong>Tenure Track:</strong> Navigating the path to permanence</li>
+                            <li><strong>Academic Politics:</strong> Departmental dynamics</li>
+                            <li><strong>Research Agenda:</strong> Developing a coherent research program</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+
+                        <h3>Funding & Grants</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Grant Agencies:</strong> NSF, NIH, ERC, private foundations</li>
+                            <li><strong>Proposal Development:</strong> Crafting compelling grant applications</li>
+                            <li><strong>Budget Management:</strong> Planning and administering research funds</li>
+                            <li><strong>Collaborative Grants:</strong> Multi-investigator projects</li>
+                            <li><strong>Alternative Funding:</strong> Industry partnerships, crowdfunding</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+
+                        <h3>Teaching & Mentorship</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Course Development:</strong> Designing effective curricula</li>
+                            <li><strong>Pedagogical Approaches:</strong> Active learning, problem-based learning</li>
+                            <li><strong>Student Mentorship:</strong> Advising undergraduates and graduates</li>
+                            <li><strong>Teaching Portfolio:</strong> Documenting teaching effectiveness</li>
+                            <li><strong>Educational Technology:</strong> Tools for teaching and learning</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+
+                        <h3>Leadership & Service</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Committee Work:</strong> Departmental and university service</li>
+                            <li><strong>Journal Editing:</strong> Editorial boards and review activities</li>
+                            <li><strong>Professional Societies:</strong> Organizational involvement</li>
+                            <li><strong>Research Team Management:</strong> Leading labs and research groups</li>
+                            <li><strong>Policy Engagement:</strong> Informing policy through research</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Topic toggle functionality
+        const topicHeaders = document.querySelectorAll('.topic-header');
+        topicHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const isOpen = content.classList.contains('active');
+                
+                // Toggle active class
+                if (isOpen) {
+                    content.classList.remove('active');
+                    header.querySelector('i').className = 'fas fa-chevron-down';
+                } else {
+                    content.classList.add('active');
+                    header.querySelector('i').className = 'fas fa-chevron-up';
+                }
+            });
+        });
+    });
+    
+    // Functions from the original HTML files
+    function toggleAllContent(element) {
+        var contentBoxes = element.parentElement.querySelectorAll('.content-box');
+        contentBoxes.forEach(function(contentBox) {
+            if (contentBox.style.display === "none") {
+                contentBox.style.display = "block";
+            } else {
+                contentBox.style.display = "none";
+            }
+        });
+    }
+
+    function toggleContent(element) {
+        var content = element.nextElementSibling;
+        if (content.style.display === "none") {
+            content.style.display = "block";
+        } else {
+            content.style.display = "none";
+        }
+    }
+</script>
+{% endblock %}

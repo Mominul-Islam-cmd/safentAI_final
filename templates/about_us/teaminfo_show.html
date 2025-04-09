@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About SAFENET.AI{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link href="{% static 'Researchers/info_show.css' %}" rel="stylesheet">
+
+
+<section id="team" class="pb-5">
+  <div class="container">
+    <h5 class="section-title h1">Team member</h5>
+    <div class="row">
+      {% for member in team_list|dictsort:"id"  %}
+      <!-- Team Member -->
+      <div class="col-12 col-sm-6 col-md-4">
+        <div class="image-flip">
+          <div class="mainflip flip-0">
+            <!-- Front Side -->
+            <div class="frontside">
+              <div class="card">
+                <div class="card-body text-center">
+                  <p>
+                    <img class="img-fluid" src="{% if member.profile_pic %}{{ member.profile_pic.url }}{% else %}{% static 'images/default_profile.png' %}{% endif %}" alt="card image">
+                  </p>
+                  <h4 class="card-title">{{ member.first_Name }} {{member.last_Name}} </h4>
+                  <p class="card-text">
+                    <strong>Current job:</strong> {{ member.current_job }}
+                  </p>
+
+                  <p class="card-text">
+                    <strong>work_experience:</strong> {{ member.work_experience }}
+                  </p>
+                  <p class="card-text">
+                    <strong>Role:</strong> {{ member.Role }}
+                  </p>
+
+                  <!-- <p> <i class="fa fa-user"></i></p> -->
+                </div>
+           
+              </div>
+
+            </div>
+            <!-- Back Side -->
+            <div class="backside">
+              <div class="card">
+             
+                <div class="card-body text-center mt-4">
+                  
+                    <h5 class="card-title">  {{ member.first_Name }} {{member.last_Name}} </h5>
+
+                    <p class="card-text">
+                    <strong>University:</strong> {{ member.uv_name }}<br>
+                    <strong>Department:</strong> {{ member.dept_name }}<br>
+                    <strong>Domain_expertise:</strong> {{ member.domain_expertise }}<br>
+           
+                  </p>
+                  <p>
+<!--               
+                    <a href="{{ researcher.github_url }}" class="social_icons"> <i class="fa fa-github"></i></a>
+                    <a href="{{ researcher.personal_site_url }}" class="social_icons"> <i class="fa fa-globe"></i></a>
+                    <a href="{{ researcher.linekdin_url }}" class="social_icons"> <i class="fa fa-linkedin"></i></a> -->
+                    {% if member.github_url %}
+                    <a href="{{ researcher.github_url }}" target="_blank" class="social_icons"> <i class="fa fa-github"></i></a>
+                    {% endif %}
+  
+                    {% if member.personal_website %}
+                    <a href="{{ member.personal_website }}" target="_blank" class="social_icons"> <i class="fa fa-globe"></i></a>
+                    {% endif %}
+  
+                    {% if member.linekdin_url %}
+                    <a href="{{ member.linekdin_url }}" target="_blank" class="social_icons"> <i class="fa fa-linkedin"></i></a>
+                    {% endif %}
+                  
+             
+                    
+                    {% if member.google_scholar_url %}
+                    <a href="{{ researcher.google_scholar_url }}" target="_blank" class="social_icons"> <i class="fa fa-graduation-cap"></i></a>
+                    {% endif %}
+
+                  </p>
+
+                  
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+      <!-- Add Member Card -->
+   
+      <div class="col-12 col-sm-6 col-md-4">
+        <div class="image-flip1">
+          <div class="mainflip flip-0">
+        <div class="frontside">
+          <div class="card">
+        <div class="card-body text-center">
+          <p>
+        <img class="img-fluid" src="/static/images/add_icon.png" alt="Add Member">
+          </p>
+          <!-- <h4 class="card-title">Add New Member</h4> -->
+          <p class="card-text"></p>
+        <a href="{% url 'About:team_info_form' %}" class="btn btn-primary">Add New Team Member</a>
+          </p>
+
+         
+        </div>
+          </div>
+        </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->

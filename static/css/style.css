@@ -221,7 +221,7 @@ a:hover {
 
 /* Hero Section */
 .hero-section {
-    background-color: #0a192f;
+    background-color: #e3e8f0;
     min-height: 500px;
     position: relative;
     overflow: hidden;
@@ -236,7 +236,7 @@ a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(10,25,47,0.95) 50%, rgba(10,25,47,0.8) 100%);
+    background: linear-gradient(135deg, rgba(254, 254, 255, 0.95) 50%, rgba(255, 255, 255, 0.8) 100%);
     z-index: 1;
 }
 

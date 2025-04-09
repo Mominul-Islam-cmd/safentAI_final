@@ -1,0 +1,457 @@
+{% extends "base2.html" %}
+{% load static %}
+{% block title %}Data Analytics Roadmap{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'guidelines/css/r.css' %}">
+<!-- <section class="hero-section">
+    <div class="container">
+        <h1 class="hero-title">Data Analytics Roadmap</h1>
+        <p class="hero-subtitle">Follow this roadmap to develop expertise in Data Analytics</p>
+    </div>
+</section> -->
+<div class="container-fluid" style="text-align: center;margin-bottom: 50px;background-color: black; border-radius: 10px; height: 250px; padding-top: 50px;">
+<h1 class="hero-title">Data Analytics Roadmap</h1>
+<p class="hero-subtitle">Follow this roadmap to develop expertise in Data Analytics</p>
+
+</div>
+<div class="timeline-container">
+    <div class="timeline-line"></div>
+    
+    <!-- Fundamentals Card -->
+    <div class="domain-card left">
+        <div class="card-bg-overlay" style="background-image: url('{% static "guidelines/images/data_analytics.svg" %}');"></div>
+        <div class="domain-icon">
+            <i class="fas fa-calculator"></i>
+        </div>
+        <h3 class="domain-title">Analytics Fundamentals</h3>
+        <p class="domain-description">
+            Learn the basics of statistics, probability, and mathematics required for data analysis, along with essential tools like Excel and SQL.
+        </p>
+        <a href="#fundamentals-topics" class="explore-button" data-bs-toggle="modal" data-bs-target="#fundamentalsModal">
+            Explore Topics <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+    
+    <!-- Data Collection Card -->
+    <div class="domain-card right">
+        <div class="card-bg-overlay" style="background-image: url('{% static "guidelines/images/data_analytics.svg" %}');"></div>
+        <div class="domain-icon">
+            <i class="fas fa-database"></i>
+        </div>
+        <h3 class="domain-title">Data Collection</h3>
+        <p class="domain-description">
+            Master techniques for gathering data from various sources including web scraping, APIs, and database queries with SQL.
+        </p>
+        <a href="#data-collection-topics" class="explore-button" data-bs-toggle="modal" data-bs-target="#dataCollectionModal">
+            Explore Topics <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+    
+    <!-- Data Processing Card -->
+    <div class="domain-card left">
+        <div class="card-bg-overlay" style="background-image: url('{% static "guidelines/images/data_analytics.svg" %}');"></div>
+        <div class="domain-icon">
+            <i class="fas fa-wrench"></i>
+        </div>
+        <h3 class="domain-title">Data Processing</h3>
+        <p class="domain-description">
+            Learn techniques for cleaning, transforming, and preparing data for analysis, including handling missing values and outliers.
+        </p>
+        <a href="#data-processing-topics" class="explore-button" data-bs-toggle="modal" data-bs-target="#dataProcessingModal">
+            Explore Topics <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+    
+    <!-- Data Visualization Card -->
+    <div class="domain-card right">
+        <div class="card-bg-overlay" style="background-image: url('{% static "guidelines/images/data_analytics.svg" %}');"></div>
+        <div class="domain-icon">
+            <i class="fas fa-chart-bar"></i>
+        </div>
+        <h3 class="domain-title">Data Visualization</h3>
+        <p class="domain-description">
+            Develop skills to create effective visualizations and dashboards using tools like Tableau, Power BI, and Python libraries.
+        </p>
+        <a href="#visualization-topics" class="explore-button" data-bs-toggle="modal" data-bs-target="#vizModal">
+            Explore Topics <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+    
+    <!-- Advanced Analytics Card -->
+    <div class="domain-card left">
+        <div class="card-bg-overlay" style="background-image: url('{% static "guidelines/images/data_analytics.svg" %}');"></div>
+        <div class="domain-icon">
+            <i class="fas fa-brain"></i>
+        </div>
+        <h3 class="domain-title">Advanced Analytics</h3>
+        <p class="domain-description">
+            Take your skills further with statistical analysis, A/B testing, and introductory machine learning for predictive analytics.
+        </p>
+        <a href="#advanced-topics" class="explore-button" data-bs-toggle="modal" data-bs-target="#advancedModal">
+            Explore Topics <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</div>
+
+<!-- Fundamentals Modal -->
+<div class="modal fade" id="fundamentalsModal" tabindex="-1" aria-labelledby="fundamentalsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content roadmap-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="fundamentalsModalLabel">Analytics Fundamentals</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="roadmap-item mb-4">
+                    <div class="content-box" style="display: none; background-color: #2a2a2a; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                        <h4 class="clickable" onclick="toggleContent(this)">Basic Skills <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                        <ul style="display: none;">
+                            <li>Mathematics: Basic statistics, probability, and linear algebra.</li>
+                            <li>Programming: Python or R (Python is preferred for its versatility).</li>
+                            <li>Excel: Basic to advanced functions, pivot tables, and data visualization.</li>
+                        </ul>
+                    </div>
+                    <div class="content-box" style="display: none; background-color: #2a2a2a; padding: 1rem; border-radius: 8px;">
+                        <h4 class="clickable" onclick="toggleContent(this)">Soft Skills <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                        <ul style="display: none;">
+                            <li>Critical thinking and problem-solving.</li>
+                            <li>Communication skills for presenting insights.</li>
+                            <li>Attention to detail.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Traditional topic containers as backup -->
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Mathematics & Statistics</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Descriptive Statistics:</strong> Mean, median, mode, variance, standard deviation</li>
+                            <li><strong>Probability:</strong> Basic probability concepts, distributions (normal, binomial)</li>
+                            <li><strong>Inferential Statistics:</strong> Confidence intervals, hypothesis testing</li>
+                            <li><strong>Linear Algebra:</strong> Vectors, matrices (basics for data manipulation)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Tool Fundamentals</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Excel:</strong> Formulas, functions, pivot tables, charts</li>
+                            <li><strong>SQL:</strong> Basic queries, joins, aggregations</li>
+                            <li><strong>Python:</strong> Basics of programming for data analysis</li>
+                            <li><strong>R:</strong> Alternative language for statistical analysis</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Business Understanding</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Problem Framing:</strong> Converting business questions into data questions</li>
+                            <li><strong>Key Performance Indicators (KPIs):</strong> Defining and tracking metrics</li>
+                            <li><strong>Business Metrics:</strong> Revenue, conversion rates, customer lifetime value</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Data Collection Modal -->
+<div class="modal fade" id="dataCollectionModal" tabindex="-1" aria-labelledby="dataCollectionModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content roadmap-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="dataCollectionModalLabel">Data Collection Topics</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>SQL & Databases</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Advanced SQL:</strong> Subqueries, window functions, CTEs</li>
+                            <li><strong>Database Types:</strong> Relational (MySQL, PostgreSQL), NoSQL (MongoDB)</li>
+                            <li><strong>Database Design:</strong> Understanding data models and schema</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Web Scraping</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>HTML Basics:</strong> Understanding webpage structure</li>
+                            <li><strong>Scraping Tools:</strong> BeautifulSoup, Scrapy, Selenium</li>
+                            <li><strong>Legal & Ethical Considerations:</strong> Robots.txt, rate limiting</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>APIs & Data Formats</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>REST APIs:</strong> Endpoints, authentication, requests</li>
+                            <li><strong>Data Formats:</strong> JSON, XML, CSV</li>
+                            <li><strong>API Libraries:</strong> Requests (Python), httr (R)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Data Processing Modal -->
+<div class="modal fade" id="dataProcessingModal" tabindex="-1" aria-labelledby="dataProcessingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content roadmap-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="dataProcessingModalLabel">Data Processing Topics</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Data Cleaning</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Missing Data:</strong> Identifying and handling null values</li>
+                            <li><strong>Outlier Detection:</strong> Statistical methods, visualization</li>
+                            <li><strong>Data Quality:</strong> Consistency, accuracy, completeness</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Data Transformation</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Feature Engineering:</strong> Creating new variables</li>
+                            <li><strong>Normalization & Scaling:</strong> Min-max, z-score</li>
+                            <li><strong>Encoding:</strong> Handling categorical variables</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Data Manipulation Libraries</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Pandas (Python):</strong> DataFrames, groupby, merge</li>
+                            <li><strong>dplyr (R):</strong> filter, select, mutate, summarize</li>
+                            <li><strong>Data Pipelines:</strong> Creating reproducible workflows</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Data Visualization Modal -->
+<div class="modal fade" id="vizModal" tabindex="-1" aria-labelledby="vizModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content roadmap-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="vizModalLabel">Data Visualization Topics</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Visualization Principles</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Data-Ink Ratio:</strong> Maximizing information, minimizing clutter</li>
+                            <li><strong>Chart Selection:</strong> Choosing the right visualization for the data</li>
+                            <li><strong>Color Theory:</strong> Effective use of color in visualizations</li>
+                            <li><strong>Storytelling:</strong> Crafting a narrative with data</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Visualization Tools</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Tableau:</strong> Interactive dashboards and visualizations</li>
+                            <li><strong>Power BI:</strong> Microsoft's business intelligence tool</li>
+                            <li><strong>Python Libraries:</strong> Matplotlib, Seaborn, Plotly</li>
+                            <li><strong>R Libraries:</strong> ggplot2, Shiny</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Dashboard Design</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Layout & Composition:</strong> Organizing visualizations effectively</li>
+                            <li><strong>Interactivity:</strong> Filters, drill-downs, tooltips</li>
+                            <li><strong>User Experience:</strong> Designing for the intended audience</li>
+                            <li><strong>Performance:</strong> Optimizing for speed and responsiveness</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Advanced Analytics Modal -->
+<div class="modal fade" id="advancedModal" tabindex="-1" aria-labelledby="advancedModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content roadmap-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="advancedModalLabel">Advanced Analytics Topics</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Statistical Analysis</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Hypothesis Testing:</strong> t-tests, chi-square, ANOVA</li>
+                            <li><strong>Correlation & Regression:</strong> Linear relationships, multivariate</li>
+                            <li><strong>Time Series Analysis:</strong> Trends, seasonality, forecasting</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>A/B Testing & Experimentation</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Experiment Design:</strong> Control groups, randomization</li>
+                            <li><strong>Sample Size Determination:</strong> Statistical power, confidence</li>
+                            <li><strong>Analysis:</strong> Interpreting results, statistical significance</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Predictive Analytics</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Supervised Learning:</strong> Regression, classification</li>
+                            <li><strong>Model Evaluation:</strong> Metrics, cross-validation</li>
+                            <li><strong>Feature Importance:</strong> Understanding model drivers</li>
+                            <li><strong>Model Interpretability:</strong> Explaining predictions to stakeholders</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Define functions globally to make them accessible to onclick attributes
+    function toggleAllContent(element) {
+        var contentBoxes = element.parentElement.querySelectorAll('.content-box');
+        contentBoxes.forEach(function(contentBox) {
+            if (contentBox.style.display === "none") {
+                contentBox.style.display = "block";
+            } else {
+                contentBox.style.display = "none";
+            }
+        });
+    }
+
+    function toggleContent(element) {
+        var content = element.nextElementSibling;
+        if (content.style.display === "none") {
+            content.style.display = "block";
+        } else {
+            content.style.display = "none";
+        }
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        // Topic toggle functionality
+        const topicHeaders = document.querySelectorAll('.topic-header');
+        topicHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const isOpen = content.classList.contains('active');
+                
+                // Toggle active class
+                if (isOpen) {
+                    content.classList.remove('active');
+                    header.querySelector('i').className = 'fas fa-chevron-down';
+                } else {
+                    content.classList.add('active');
+                    header.querySelector('i').className = 'fas fa-chevron-up';
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

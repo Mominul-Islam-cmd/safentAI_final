@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+ {% extends "base.html" %}
+ {% block body_block %}
+ {% load static %}
+    <title>Academic Research Roadmap (Specialized in AI/Data Science)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: white;
+        }
+        .hero {
+            text-align: center;
+            padding: 2rem;
+            background-color: #333;
+        }
+        .content {
+            padding: 2rem;
+        }
+        .roadmap-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .roadmap-item {
+            padding: 1rem;
+            background: #444;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #1f1f1f;
+        }
+        .content-box {
+            margin-bottom: 1rem;
+            background-color: #555;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+        .clickable {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h2>Become an AI/ML Engineer</h2>
+        <p>A complete guide to learning Artificial Intelligence and Machine Learning.</p>
+    </section>
+
+    <section class="content">
+        <h2 style="text-align: center; font-size: 2rem; font-weight: bold;">AI/Data Science Research Path</h2>
+        <div class="roadmap-container">
+            <div class="roadmap-item">
+                <h3 class="clickable" onclick="toggleAllContent(this)">1 Prerequisites <span style="font-size: 0.8rem;">(Click to expand)</span></h3>
+                <div class="content-box" style="display: none;">
+                    <h4 class="clickable" onclick="toggleContent(this)">Mathematics & Statistics <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                    <ul style="display: none;">
+                        <li>Linear Algebra (Matrices, Eigenvalues, Singular Value Decomposition)</li>
+                        <li>Probability & Statistics (Distributions, Hypothesis Testing, Bayesian Inference)</li>
+                        <li>Optimization (Gradient Descent, Convex Optimization)</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h4 class="clickable" onclick="toggleContent(this)">Programming & Computational Tools <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                    <ul style="display: none;">
+                        <li>Python (NumPy, Pandas, Scikit-Learn, TensorFlow/PyTorch)</li>
+                        <li>LaTeX (For writing research papers)</li>
+                        <li>GitHub (Version control & collaboration)</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h4 class="clickable" onclick="toggleContent(this)">Research Writing & Paper Reading <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                    <ul style="display: none;">
+                        <li>How to read & analyze academic papers (Google Scholar, ArXiv, IEEE, Springer, Elsevier)</li>
+                        <li>Writing clear and structured research papers</li>
+                        <li>Understanding citations & referencing styles (APA, IEEE, ACM)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <h3 class="clickable" onclick="toggleAllContent(this)">2 Understanding the Research Process <span style="font-size: 0.8rem;">(Click to expand)</span></h3>
+                <div class="content-box" style="display: none;">
+                    <h4 class="clickable" onclick="toggleContent(this)">Formulating a Research Question <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                    <ul style="display: none;">
+                        <li>Identifying a gap in existing research</li>
+                        <li>Conducting a literature review</li>
+                        <li>Defining research objectives & hypothesis</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h4 class="clickable" onclick="toggleContent(this)">Selecting a Research Methodology <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                    <ul style="display: none;">
+                        <li>Theoretical vs. Empirical Research</li>
+                        <li>Qualitative vs. Quantitative Methods</li>
+                        <li>Experimental Design & Reproducibility</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <h3 class="clickable" onclick="toggleAllContent(this)">3 Literature Review & Paper Analysis <span style="font-size: 0.8rem;">(Click to expand)</span></h3>
+                <div class="content-box" style="display: none;">
+                    <h4 class="clickable" onclick="toggleContent(this)">Where to Find Papers? <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                    <ul style="display: none;">
+                        <li>Google Scholar, ArXiv, IEEE Xplore, Springer, Elsevier, ACL Anthology</li>
+                        <li>ResearchGate & Academia.edu</li>
+                        <li>Conference Proceedings (NeurIPS, ICML, CVPR, ACL, EMNLP)</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h4 class="clickable" onclick="toggleContent(this)">How to Read a Paper Efficiently? <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                    <ul style="display: none;">
+                        <li>Read the Abstract, Conclusion, and Figures first</li>
+                        <li>Identify key contributions & limitations</li>
+                        <li>Compare with similar research papers</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <h3 class="clickable" onclick="toggleAllContent(this)">4 Data Collection & Preprocessing <span style="font-size: 0.8rem;">(Click to expand)</span></h3>
+                <div class="content-box" style="display: none;">
+                    <h4 class="clickable" onclick="toggleContent(this)">Where to Get Datasets? <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                    <ul style="display: none;">
+                        <li>Kaggle, UCI ML Repository, Hugging Face Datasets</li>
+                        <li>Open-source datasets from research papers</li>
+                        <li>Web scraping (BeautifulSoup, Scrapy) & APIs (Twitter API, Google Dataset Search)</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h4 class="clickable" onclick="toggleContent(this)">Data Preprocessing Steps <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                    <ul style="display: none;">
+                        <li>Cleaning missing data & outliers</li>
+                        <li>Feature selection & dimensionality reduction</li>
+                        <li>Data augmentation techniques</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <h3 class="clickable" onclick="toggleAllContent(this)">5 Core Research Topics in AI & Data Science <span style="font-size: 0.8rem;">(Click to expand)</span></h3>
+                <div class="content-box" style="display: none;">
+                    <h4 class="clickable" onclick="toggleContent(this)">Machine Learning & Deep Learning <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                    <ul style="display: none;">
+                        <li>Supervised & Unsupervised Learning</li>
+                        <li>Neural Networks, CNNs, RNNs, Transformers</li>
+                        <li>Generative AI (GANs, VAEs)</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h4 class="clickable" onclick="toggleContent(this)">Natural Language Processing (NLP) <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                    <ul style="display: none;">
+                        <li>Sentiment Analysis, Text Summarization, Named Entity Recognition (NER)</li>
+                        <li>Transformer-based Models (BERT, GPT, T5)</li>
+                        <li>Multilingual NLP & Low-Resource Language Processing</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h4 class="clickable" onclick="toggleContent(this)">Computer Vision <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                    <ul style="display: none;">
+                        <li>Image Classification & Object Detection (YOLO, Faster R-CNN)</li>
+                        <li>Image Segmentation (U-Net, Mask R-CNN)</li>
+                        <li>Self-Supervised & Few-Shot Learning</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h4 class="clickable" onclick="toggleContent(this)">Optimization & Reinforcement Learning <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                    <ul style="display: none;">
+                        <li>Q-Learning, Deep Q-Networks (DQN), Policy Gradient Methods</li>
+                        <li>Applications in Robotics & Game AI</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <h3 class="clickable" onclick="toggleAllContent(this)">6 Experimentation & Model Evaluation <span style="font-size: 0.8rem;">(Click to expand)</span></h3>
+                <div class="content-box" style="display: none;">
+                    <h4 class="clickable" onclick="toggleContent(this)">Experiment Design <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                    <ul style="display: none;">
+                        <li>Train-Test Splits & Cross-Validation</li>
+                        <li>Hyperparameter Tuning (Grid Search, Bayesian Optimization)</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h4 class="clickable" onclick="toggleContent(this)">Evaluation Metrics <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                    <ul style="display: none;">
+                        <li>Classification: Accuracy, Precision, Recall, F1-Score</li>
+                        <li>Regression: RMSE, MAE, R² Score</li>
+                        <li>NLP: BLEU, ROUGE, Perplexity</li>
+                        <li>Computer Vision: IoU, mAP</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h4 class="clickable" onclick="toggleContent(this)">Reproducibility & Code Documentation <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                    <ul style="display: none;">
+                        <li>Using Jupyter Notebooks for experimental tracking</li>
+                        <li>Docker & Virtual Environments for version control</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <h3 class="clickable" onclick="toggleAllContent(this)">7 Writing & Publishing Research Papers <span style="font-size: 0.8rem;">(Click to expand)</span></h3>
+                <div class="content-box" style="display: none;">
+                    <h4 class="clickable" onclick="toggleContent(this)">How to Write a Research Paper? <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                    <ul style="display: none;">
+                        <li>Abstract: Problem, Approach, Results</li>
+                        <li>Introduction: Motivation, Research Gap, Contributions</li>
+                        <li>Related Work: Reviewing prior research</li>
+                        <li>Methodology: Detailed Explanation of Approach</li>
+                        <li>Experiments & Results: Tables, Graphs, Analysis</li>
+                        <li>Conclusion & Future Work</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h4 class="clickable" onclick="toggleContent(this)">Where to Publish? (Conferences & Journals) <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                    <ul style="display: none;">
+                        <li>Top AI/ML Conferences: NeurIPS, ICML, CVPR, ACL, EMNLP, AAAI, ICLR</li>
+                        <li>Scopus/IEEE/Springer Journals: IEEE Transactions, ACM, Springer LNCS, Elsevier</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h4 class="clickable" onclick="toggleContent(this)">Reference Management <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                    <ul style="display: none;">
+                        <li>Tools: Mendeley, Zotero, EndNote, BibTeX</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <h3 class="clickable" onclick="toggleAllContent(this)">8 Peer Review & Collaborations <span style="font-size: 0.8rem;">(Click to expand)</span></h3>
+                <div class="content-box" style="display: none;">
+                    <h4 class="clickable" onclick="toggleContent(this)">Understanding the Peer Review Process <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                    <ul style="display: none;">
+                        <li>Single-blind vs. Double-blind Peer Review</li>
+                        <li>How to respond to reviewers' comments</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h4 class="clickable" onclick="toggleContent(this)">Collaborating with Researchers <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                    <ul style="display: none;">
+                        <li>Finding research groups on LinkedIn, Twitter, AI Conferences</li>
+                        <li>Working on Open Research Projects</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h4 class="clickable" onclick="toggleContent(this)">Open-Source Contributions <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                    <ul style="display: none;">
+                        <li>Contributing to research repositories (PapersWithCode, Hugging Face)</li>
+                        <li>Creating & sharing datasets</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <h3 class="clickable" onclick="toggleAllContent(this)">9 Where to Learn? (Best Courses & Books) <span style="font-size: 0.8rem;">(Click to expand)</span></h3>
+                <div class="content-box" style="display: none;">
+                    <h4 class="clickable" onclick="toggleContent(this)">Online Courses <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                    <ul style="display: none;">
+                        <li>📖 MIT OpenCourseWare - Introduction to Deep Learning</li>
+                        <li>📖 Coursera - AI For Everyone (Andrew Ng)</li>
+                        <li>📖 Fast.ai - Practical Deep Learning</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h4 class="clickable" onclick="toggleContent(this)">Books <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                    <ul style="display: none;">
+                        <li>📘 Deep Learning – Ian Goodfellow</li>
+                        <li>📘 Pattern Recognition and Machine Learning – Christopher Bishop</li>
+                        <li>📘 Research Methods in AI & Data Science – Various Research Guides</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Additional roadmap items can be added here -->
+        </div>
+    </section>
+
+    <section class="content">
+
+
+    </section>
+
+    <footer>
+        <p>© 2025 AI/ML Roadmap. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function toggleAllContent(element) {
+            var contentBoxes = element.parentElement.querySelectorAll('.content-box');
+            contentBoxes.forEach(function(contentBox) {
+                if (contentBox.style.display === "none") {
+                    contentBox.style.display = "block";
+                } else {
+                    contentBox.style.display = "none";
+                }
+            });
+        }
+
+        function toggleContent(element) {
+            var content = element.nextElementSibling;
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+{% endblock %}

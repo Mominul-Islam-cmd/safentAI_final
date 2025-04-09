@@ -1,0 +1,844 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About SAFENET.AI{% endblock %}
+
+{% block content %}
+<style>
+    .custom-card {
+        background-color: #f7fafc;
+        /* Tailwind gray-100 */
+        border-radius: 0.75rem;
+        /* rounded-xl */
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        position: relative;
+        overflow: hidden;
+        transition: box-shadow 0.5s;
+    }
+
+    .custom-card:hover {
+        box-shadow: 0 20px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .custom-card .profile-img {
+        width: 8rem;
+        /* ~w-32 */
+        height: 8rem;
+        /* ~h-32 */
+        border-radius: 50%;
+        object-fit: cover;
+        transition: width 0.5s, height 0.5s;
+    }
+
+    .custom-card:hover .profile-img {
+        width: 9rem;
+        /* ~w-36 */
+        height: 9rem;
+        /* ~h-36 */
+    }
+
+    .custom-card .info h3 {
+        color: #4a5568;
+        /* Tailwind gray-600 */
+        font-weight: bold;
+    }
+
+    .custom-card .info h4 {
+        color: #4a5568;
+        /* Tailwind gray-600 */
+        font-weight: bold;
+    }
+
+    .custom-card .info p {
+        color: #a0aec0;
+        /* Tailwind gray-400 */
+        font-size: 15px;
+    }
+
+    .custom-card .info a.experience {
+        font-size: 0.75rem;
+        /* text-xs */
+        color: #718096;
+        /* Tailwind gray-500 */
+        opacity: 0;
+        transition: opacity 0.5s 0.3s;
+        text-decoration: none;
+    }
+
+    .custom-card:hover .info a.experience {
+        opacity: 1;
+    }
+
+    .custom-card .social-links {
+        position: absolute;
+        right: 0.25rem;
+        /* equivalent to right-1 */
+        bottom: -4rem;
+        /* starting off-screen (-bottom-16) */
+        background-color: #4a5568;
+        /* Tailwind gray-600 */
+        border-radius: 0.5rem;
+        padding: 0.1rem;
+        transition: bottom 0.5s 0.3s;
+    }
+
+    .custom-card:hover .social-links {
+        bottom: 0.25rem;
+        /* slides up (bottom-1) */
+    }
+
+    .custom-card .social-links a {
+        color: #fff;
+        font-size: 1.5rem;
+        margin-left: 0.5rem;
+    }
+
+    .custom-card .social-links a:first-child {
+        margin-left: 0;
+    }
+
+
+
+
+
+
+    .flip-card {
+        perspective: 1000px;
+    }
+
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 12px;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .flip-card-front {
+        background: linear-gradient(to bottom, #ffffff, #f8fafc);
+        transition: background 0.3s ease;
+    }
+
+    .flip-card:hover .flip-card-front {
+        background: linear-gradient(to bottom, #f0f4f8, #e2e8f0);
+    }
+
+    .flip-card-back {
+        background: linear-gradient(to bottom, #2a6d72, #35445c);
+        transform: rotateY(180deg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+
+    .bannar_body {
+        background-image: url('{% static "images/5zati5qk.png" %}');
+    }
+</style>
+
+
+
+<!-- Community Section -->
+<!-- Header with Dark Background -->
+<div class="page-header text-center py-5" style="background-color: #1a2942; margin-top: -1.5rem;">
+    <div class="container">
+        <h1 class="display-4 fw-bold text-white">About SAFENET.AI</h1>
+        <p class="lead text-light">Bridging the gap between AI research and practical implementation</p>
+    </div>
+</div>
+
+<!-- Community Section with Card Style -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <h2 class="text-center mb-4" style="font-family: 'Overpass', sans-serif; color: #2c3e50;">Welcome to
+                        Our Community</h2>
+                    <div class="text-center"></div>
+                    <p class="lead text-muted"
+                        style="font-size: 1.2rem; line-height: 1.8; font-family: 'Roboto', sans-serif; color: #2c3e50;">
+                        <strong style="font-size: 1.4rem; color: #4a6fdc;">We are more than just a website;</strong> we
+                        are a thriving community of
+                        <span style="color: #418aeb; font-weight: bold;">researchers, scholars, and innovators</span>
+                        committed to advancing knowledge in
+                        <span style="color: #4a6fdc; font-weight: bold;">machine learning</span>, <span
+                            style="color: #4a6fdc; font-weight: bold;">AI</span>,
+                        and cutting-edge AI models like <span style="color: #418aeb; font-weight: bold;">LLM</span> and
+                        <span style="color: #418aeb; font-weight: bold;">GPT</span>.
+                        Our mission is to make research accessible to all, bridging the gap between complex theories and
+                        practical applications.
+                    </p>
+                    <p class="lead text-muted"
+                        style="font-size: 1.2rem; line-height: 1.8; font-family: 'Roboto', sans-serif; color: #2c3e50;">
+                        We empower individuals to explore research and development, offering expert guidance and
+                        resources. With a foundation in research,
+                        we're expanding into development, focusing on <span
+                            style="color: #4a6fdc; font-weight: bold;">data science</span>,
+                        <span style="color: #4a6fdc; font-weight: bold;">engineering</span>, and <span
+                            style="color: #4a6fdc; font-weight: bold;">AI solutions</span>.
+                        Join us as we innovate and deliver comprehensive project-based services to our community and
+                        beyond.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Our Focus Section with Icon List -->
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <h2 class="text-center mb-4" style="font-family: 'Overpass', sans-serif; color: #2c3e50;">Our Focus
+                    </h2>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <div class="d-flex align-items-start">
+                                <span class="badge bg-primary rounded-circle p-2 me-3 mt-1"><i
+                                        class="fas fa-lightbulb"></i></span>
+                                <div>
+                                    <h5 class="fw-bold">Innovative Research</h5>
+                                    <p>We delve into the depths of machine learning and AI, exploring new frontiers and
+                                        pushing the boundaries of what's possible.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex align-items-start">
+                                <span class="badge bg-success rounded-circle p-2 me-3 mt-1"><i
+                                        class="fas fa-users"></i></span>
+                                <div>
+                                    <h5 class="fw-bold">Collaboration</h5>
+                                    <p>We believe in the power of teamwork. By bringing together brilliant minds, we
+                                        foster a space for sharing ideas, sparking innovation, and driving progress.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex align-items-start">
+                                <span class="badge bg-info rounded-circle p-2 me-3 mt-1"><i
+                                        class="fas fa-book-open"></i></span>
+                                <div>
+                                    <h5 class="fw-bold">Accessible Knowledge</h5>
+                                    <p>We aim to democratize research, ensuring that complex information is available
+                                        and understandable for everyone.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex align-items-start">
+                                <span class="badge bg-warning rounded-circle p-2 me-3 mt-1"><i
+                                        class="fas fa-cogs"></i></span>
+                                <div>
+                                    <h5 class="fw-bold">Development</h5>
+                                    <p>We don't just focus on research but also on development, specializing in data
+                                        science, data engineering, web-based and AI-based software solutions.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="d-flex align-items-start">
+                                <span class="badge bg-danger rounded-circle p-2 me-3 mt-1"><i
+                                        class="fas fa-project-diagram"></i></span>
+                                <div>
+                                    <h5 class="fw-bold">Project-Based Services</h5>
+                                    <p>We provide comprehensive project-based services to our community and beyond,
+                                        working on cutting-edge projects to deliver impactful solutions.</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="vision-section py-5"
+    style="background: linear-gradient(135deg, #1a2942, #4a6fdc); color: white; border-radius: 12px;">
+    <div class="container text-center">
+        <h3 class="mb-4" style="font-family: 'Overpass', sans-serif; font-weight: bold; font-size: 2rem;">Our Vision
+        </h3>
+        <p style="font-size: 1.2rem; line-height: 1.8; font-family: 'Roboto', sans-serif;">
+            We strive to build a collaborative community where both seasoned and new researchers can share knowledge,
+            resources, and guidance.
+            Our goal is to ensure that every member can conduct research efficiently and confidently, benefiting from
+            the collective expertise of the group.
+            Together, we aim to be a beacon for future researchers, providing a foundation for meaningful and impactful
+            work in development and beyond.
+        </p>
+    </div>
+</div>
+
+
+
+
+
+<!-- Our Focus Section -->
+
+<br>
+<div class="container-fluid"
+    style="margin-bottom: 0px;;  text-align: center; color: #418aeb; margin-top: 25px;font-style: italic;font-family: 'Courier New', Courier, monospace; font-weight: 900;font-size: 50px;">
+    <p>Team Members </p>
+</div>
+<!-- .................................................................................................................... -->
+<!-- co-founder section -->
+<div class="container py-5">
+    <div class="row justify-content-center">
+
+
+        <div class="container-fluid mt-4 p-4">
+            <div class="row justify-content-center"  style="margin-top: -90px;">
+                <!-- Card 1 -->
+                <div class="col-md-6 col-lg-4 mb-4" >
+                    <div class="custom-card" style="background-color: #feffff; height: 200px;" >
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="/static/co_founder/mominul.png" alt="Profile Image" class="profile-img">
+                            <div class="info">
+                                <h3 style="font-size: 25px;">Mominul Islam</h3>
+                                <p style="margin-bottom: 0%;"><span style="color: #0d6efd;">Co-Founder </span> &amp; <span style="color: #670bd1;">CEO </span>, <small>SafeNet.ai</small></p>
+                                <a href="#" class="experience">4 years Research Experience</a>
+                            </div>
+                        </div>
+                        <div class="social-links">
+                            <!-- Google Scholar -->
+                            <a href="https://scholar.google.com" target="_blank" aria-label="Google Scholar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 48 48">
+                                    <path fill="#1e88e5"
+                                        d="M24,4C12.954,4,4,12.954,4,24s8.954,20,20,20s20-8.954,20-20S35.046,4,24,4z">
+                                    </path>
+                                    <path fill="#1565c0" d="M35,16.592v-3.878L37,11H27l0.917,1.833c-1.236,0-2.265,0-2.265,0S19.095,13,19.095,18.748
+                  c0,5.752,5.732,5.088,5.732,5.088s0,0.865,0,1.453c0,0.594,0.77,0.391,0.864,1.583c-0.388,0-7.964-0.208-7.964,4.998
+                  s6.679,4.959,6.679,4.959s7.722,0.365,7.722-6.104c0-3.871-4.405-5.121-4.405-6.686c0-1.563,3.319-2.012,3.319-5.684
+                  c0-0.823-0.028-1.524-0.149-2.12L34,13.571v3.02c-0.581,0.207-1,0.756-1,1.408v4.5c0,0.829,0.672,1.5,1.5,1.5s1.5-0.671,1.5-1.5V18
+                  C36,17.348,35.581,16.799,35,16.592z M30.047,31.169c0.131,2.024-1.929,3.811-4.603,3.998c-2.671,0.188-4.946-1.295-5.077-3.316
+                  c-0.133-2.016,1.927-3.805,4.6-3.996C27.641,27.667,29.914,29.152,30.047,31.169z M26.109,22.453
+                  c-1.592,0.451-3.375-1.062-3.982-3.367c-0.604-2.312,0.195-4.543,1.786-4.992c1.593-0.453,3.374,1.059,3.981,3.367
+                  C28.499,19.77,27.702,22.004,26.109,22.453z"></path>
+                                    <path fill="#e8eaf6" d="M34,16.592V12c0-0.051-0.015-0.097-0.029-0.143L35,11H21l-9,8h5.383
+                  c0.174,5.466,5.715,4.836,5.715,4.836s0,0.865,0,1.453c0,0.594,0.771,0.391,0.865,1.583c-0.388,0-7.964-0.208-7.964,4.998
+                  s6.679,4.959,6.679,4.959s7.721,0.365,7.721-6.104c0-3.871-4.404-5.121-4.404-6.686c0-1.563,3.318-2.012,3.318-5.684
+                  c0-0.971-0.047-1.763-0.232-2.422L33,12.667v3.925c-0.581,0.207-1,0.756-1,1.408v4.5c0,0.829,0.672,1.5,1.5,1.5s1.5-0.671,1.5-1.5
+                  V18C35,17.348,34.581,16.799,34,16.592z M28.319,31.169c0.131,2.024-1.928,3.811-4.602,3.998c-2.671,0.188-4.946-1.295-5.077-3.316
+                  c-0.133-2.016,1.927-3.805,4.599-3.996C25.914,27.667,28.187,29.152,28.319,31.169z M24.38,22.453
+                  c-1.591,0.451-3.373-1.062-3.981-3.367c-0.604-2.312,0.194-4.543,1.785-4.992c1.593-0.453,3.374,1.059,3.982,3.367
+                  C26.77,19.77,25.973,22.004,24.38,22.453z"></path>
+                                </svg>
+                            </a>
+                            <!-- Personal Website -->
+                            <style>
+                               .social-links a {
+    display: inline-block;
+    color: inherit;
+    /* Makes SVG inherit text color */
+    line-height: 0;
+    /* Fixes extra spacing */
+}
+
+
+                                svg {
+                                    vertical-align: middle;
+                                    transition: all 0.3s ease;
+                                }
+
+                                a:hover svg {
+                                    transform: scale(1.1);
+                                    color: #007bff;
+                                    /* Change to your brand color */
+                                }
+                            </style>
+                            <!-- Personal Website -->
+                            <a href="https://yourwebsite.com" target="_blank" rel="noopener"
+                                aria-label="Personal Website">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32"
+                                    fill="none" stroke="currentColor">
+                                    <!-- Browser Window -->
+                                    <path stroke-width="1.5"
+                                        d="M3 5h18a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" />
+
+                                    <!-- Header Bar -->
+                                    <path stroke-width="1.2" d="M3 8h18" class="header-line" />
+                                    <circle cx="6" cy="6.5" r="1" fill="#ee5325" class="tab-circle" />
+
+                                    <!-- Content Area -->
+                                    <rect x="4" y="10" width="16" height="10" rx="1" stroke-width="0.8" />
+
+                                    <!-- Content Elements -->
+                                    <path stroke-width="0.6" d="M7 13h10M7 16h10M7 19h6" />
+                                    <circle cx="17" cy="17" r="2" stroke-width="0.8" class="content-circle" />
+
+                                    <!-- Accent Color -->
+                                    <path stroke="#53AEE1" stroke-width="1" d="M4 12h5v2H4z" />
+                                </svg>
+                            </a>
+                            <!-- Facebook -->
+                            <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+                                <svg fill="currentColor" viewBox="0 0 16 16" width="25" height="25">
+                                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0 0 3.603 0 8.05c0 4.017 2.926 7.347 6.75 7.951
+                  v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009
+                  c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                                </svg>
+                            </a>
+                            <!-- LinkedIn -->
+                            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+                                <svg viewBox="0 0 960 1000" fill="currentColor" width="25" height="25">
+                                    <path d="M480 20c133.333 0 246.667 46.667 340 140s140 206.667 140 340c0 132-46.667 245-140 339S613.333
+                  980 480 980c-132 0-245-47-339-141S0 632 0 500c0-133.333 47-246.667 141-340S348 20 480 20M362 698V386h-96v312h96
+                  m-48-352c34.667 0 52-16 52-48s-17.333-48-52-48c-14.667 0-27 4.667-37 14s-15 20.667-15 34c0 32 17.333 48 52 48
+                  m404 352V514c0-44-10.333-77.667-31-101s-47.667-35-81-35c-44 0-76 16.667-96 50h-2l-6-42h-84c1.333 18.667 2 52 2 100v212h98V518
+                  c0-12 1.333-20 4-24 8-25.333 24.667-38 50-38 32 0 48 22.667 48 68v174h98" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 (Duplicate or modify as needed) -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="custom-card" style="height: 200px;">
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="/static/co_founder/Opi2.jpg" alt="Profile Image" class="profile-img">
+                            <div class="info">
+                                <h4 style="font-size: 23px;">Md Sanjid Hossain</h4>
+                                <p style="margin-bottom: 0%;"> <span style="color: #0d6efd;">Co-Founder </span> &amp; <span style="color: #670bd1;">CTO </span>, <small>SafeNet.ai</small></p>
+
+                                <a href="#" class="experience">3 years Research Experience</a>
+                            </div>
+                        </div>
+                        <div class="social-links">
+                            <!-- Repeat social icons as above -->
+                            <a href="https://scholar.google.com" target="_blank" aria-label="Google Scholar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 48 48">
+                                    <path fill="#1e88e5"
+                                        d="M24,4C12.954,4,4,12.954,4,24s8.954,20,20,20s20-8.954,20-20S35.046,4,24,4z">
+                                    </path>
+                                    <path fill="#1565c0" d="M35,16.592v-3.878L37,11H27l0.917,1.833c-1.236,0-2.265,0-2.265,0S19.095,13,19.095,18.748
+                  c0,5.752,5.732,5.088,5.732,5.088s0,0.865,0,1.453c0,0.594,0.77,0.391,0.864,1.583c-0.388,0-7.964-0.208-7.964,4.998
+                  s6.679,4.959,6.679,4.959s7.722,0.365,7.722-6.104c0-3.871-4.405-5.121-4.405-6.686c0-1.563,3.319-2.012,3.319-5.684
+                  c0-0.823-0.028-1.524-0.149-2.12L34,13.571v3.02c-0.581,0.207-1,0.756-1,1.408v4.5c0,0.829,0.672,1.5,1.5,1.5s1.5-0.671,1.5-1.5V18
+                  C36,17.348,35.581,16.799,35,16.592z M30.047,31.169c0.131,2.024-1.929,3.811-4.603,3.998c-2.671,0.188-4.946-1.295-5.077-3.316
+                  c-0.133-2.016,1.927-3.805,4.6-3.996C27.641,27.667,29.914,29.152,30.047,31.169z M26.109,22.453
+                  c-1.592,0.451-3.375-1.062-3.982-3.367c-0.604-2.312,0.195-4.543,1.786-4.992c1.593-0.453,3.374,1.059,3.981,3.367
+                  C28.499,19.77,27.702,22.004,26.109,22.453z"></path>
+                                    <path fill="#e8eaf6" d="M34,16.592V12c0-0.051-0.015-0.097-0.029-0.143L35,11H21l-9,8h5.383
+                  c0.174,5.466,5.715,4.836,5.715,4.836s0,0.865,0,1.453c0,0.594,0.771,0.391,0.865,1.583c-0.388,0-7.964-0.208-7.964,4.998
+                  s6.679,4.959,6.679,4.959s7.721,0.365,7.721-6.104c0-3.871-4.404-5.121-4.404-6.686c0-1.563,3.318-2.012,3.318-5.684
+                  c0-0.971-0.047-1.763-0.232-2.422L33,12.667v3.925c-0.581,0.207-1,0.756-1,1.408v4.5c0,0.829,0.672,1.5,1.5,1.5s1.5-0.671,1.5-1.5
+                  V18C35,17.348,34.581,16.799,34,16.592z M28.319,31.169c0.131,2.024-1.928,3.811-4.602,3.998c-2.671,0.188-4.946-1.295-5.077-3.316
+                  c-0.133-2.016,1.927-3.805,4.599-3.996C25.914,27.667,28.187,29.152,28.319,31.169z M24.38,22.453
+                  c-1.591,0.451-3.373-1.062-3.981-3.367c-0.604-2.312,0.194-4.543,1.785-4.992c1.593-0.453,3.374,1.059,3.982,3.367
+                  C26.77,19.77,25.973,22.004,24.38,22.453z"></path>
+                                </svg>
+                            </a>
+                            <a href="https://yourwebsite.com" target="_blank" rel="noopener" aria-label="Personal Website">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor">
+                                  <!-- Browser Window -->
+                                  <path stroke-width="1.5" d="M3 5h18a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/>
+                                  
+                                  <!-- Header Bar -->
+                                  <path stroke-width="1.2" d="M3 8h18" class="header-line"/>
+                                  <circle cx="6" cy="6.5" r="1" fill="#ee5325" class="tab-circle"/>
+                                  
+                                  <!-- Content Area -->
+                                  <rect x="4" y="10" width="16" height="10" rx="1" stroke-width="0.8"/>
+                                  
+                                  <!-- Content Elements -->
+                                  <path stroke-width="0.6" d="M7 13h10M7 16h10M7 19h6"/>
+                                  <circle cx="17" cy="17" r="2" stroke-width="0.8" class="content-circle"/>
+                                  
+                                  <!-- Accent Color -->
+                                  <path stroke="#53AEE1" stroke-width="1" d="M4 12h5v2H4z"/>
+                                </svg>
+                              </a>
+                            <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+                                <svg fill="currentColor" viewBox="0 0 16 16" width="25" height="25">
+                                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0 0 3.603 0 8.05c0 4.017 2.926 7.347 6.75 7.951
+                  v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009
+                  c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                                </svg>
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+                                <svg viewBox="0 0 960 1000" fill="currentColor" width="25" height="25">
+                                    <path d="M480 20c133.333 0 246.667 46.667 340 140s140 206.667 140 340c0 132-46.667 245-140 339S613.333
+                  980 480 980c-132 0-245-47-339-141S0 632 0 500c0-133.333 47-246.667 141-340S348 20 480 20M362 698V386h-96v312h96
+                  m-48-352c34.667 0 52-16 52-48s-17.333-48-52-48c-14.667 0-27 4.667-37 14s-15 20.667-15 34c0 32 17.333 48 52 48
+                  m404 352V514c0-44-10.333-77.667-31-101s-47.667-35-81-35c-44 0-76 16.667-96 50h-2l-6-42h-84c1.333 18.667 2 52 2 100v212h98V518
+                  c0-12 1.333-20 4-24 8-25.333 24.667-38 50-38 32 0 48 22.667 48 68v174h98" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+
+<!-- Our Team Section -->
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+    .flip-card {
+        perspective: 1000px;
+        margin: 0 auto;
+    }
+
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+        overflow: hidden;
+        backface-visibility: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .flip-card-front {
+        background: #fff;
+        padding: 15px;
+    }
+
+    .flip-card-front img {
+        border-radius: 10px;
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+    }
+
+    .flip-card-front .info {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .flip-card-front .info h5 {
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    .flip-card-front .info p {
+        margin: 0;
+        color: #84ca9f;
+        font-size: 0.9rem;
+    }
+
+    .flip-card-back {
+        background: #343a40;
+        color: #f8f9fa;
+        transform: rotateY(180deg);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .flip-card-back p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+
+    .social_icons a {
+        color: #f8f9fa;
+        transition: color 0.3s;
+    }
+
+    .social_icons a:hover {
+        color: #0d6efd;
+    }
+
+    .btn-edit {
+        border-color: #f8f9fa;
+        color: #f8f9fa;
+    }
+
+    .btn-edit:hover {
+        background: #f8f9fa;
+        color: #343a40;
+    }
+</style>
+
+<div class="container py-5">
+    <div class="row justify-content-center" style="margin-top: -60px;">
+        {% for member in team_list|dictsortreversed:"id" %}
+        <div class="col-12 col-sm-6 col-md-4 mb-4 d-flex justify-content-center">
+            <div class="flip-card" style="width: 250px; height: 300px;">
+                <div class="flip-card-inner">
+                    <!-- Front of the card -->
+                    <div class="flip-card-front">
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img src="{% if member.profile_pic %}{{ member.profile_pic.url }}{% else %}{% static 'images/default_profile.png' %}{% endif %}"
+                                alt="Profile Image" style="border-radius: 50%; width: 100px; height: 100px; object-fit: cover;">
+                        </div>
+                        <div class="info">
+                            <h5>{{ member.first_Name }} {{ member.last_Name }}</h5>
+                            <p> <span style="color: black;">Current Job: </span> {{ member.current_job }}</p>
+                            <p class="text-secondary"><span style="color: black;">Experience: </span> {{member.work_experience }}</p>
+                            <p class="text-primary"><strong>{{ member.Role }} <span style="color: black;">at SafeNet.AI
+                                    </span> </strong></p>
+                        </div>
+                    </div>
+                    <!-- Back of the card -->
+                    <div class="flip-card-back">
+                        <div>
+                            <p>
+                                <strong>University:</strong> {{ member.uv_name }}<br>
+                                <strong>Department:</strong> {{ member.dept_name }}<br>
+                                <strong>Expertise:</strong> {{ member.domain_expertise }}<br>
+                            </p>
+                            <div class="mb-3 social-links">
+                                {% if member.github_url %}
+                                <a href="{{ member.github_url }}" target="_blank" class="social_icons mx-2">
+                                    <i class="fab fa-github fa-lg"></i>
+                                </a>
+                                {% endif %}
+                                {% if member.personal_website %}
+                                <a href="{{ member.personal_website }}" target="_blank" class="social_icons mx-2">
+                                    <i class="fas fa-globe fa-lg"></i>
+                                </a>
+                                {% endif %}
+                                {% if member.linekdin_url %}
+                                <a href="{{ member.linekdin_url }}" target="_blank" class="social_icons mx-2">
+                                    <i class="fab fa-linkedin fa-lg"></i>
+                                </a>
+                                {% endif %}
+                                {% if member.google_scholar_url %}
+                                <a href="{{ member.google_scholar_url }}" target="_blank" class="social_icons mx-2">
+                                    <i class="fas fa-graduation-cap fa-lg"></i>
+                                </a>
+                                {% endif %}
+                            </div>
+                            <a href="{% url 'About:edit_team_info' member_id=member.id %}"
+                                class="btn btn-outline-light btn-sm btn-edit">
+                                Edit
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
+
+
+
+<br><br><br><br>
+<!-- Our Team Section -->
+{% if user.is_superuser %}
+<div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center mb-4">
+    <div class="card text-center" style="width: 250px; height: 300px;">
+        <div class="card-body d-flex flex-column align-items-center justify-content-center">
+            <img class="img-fluid" src="/static/images/add_icon.png" alt="Add Member"
+                style="width: 100px; height: 100px;">
+            <a href="{% url 'About:team_info_form' %}" class="btn btn-primary mt-3">Add New Team Member</a>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+
+<br><br>
+
+
+<!-- Services Section -->
+<div class="services-section py-5" style="background-color: #1a2942;">
+    <div class="container">
+        <h2 class="text-center text-light display-5 mb-2">Our Services</h2>
+        <p class="text-center text-light mb-5">Empowering your digital transformation through cutting edge solutions and
+            expert services</p>
+
+        <div class="row g-4 mb-4">
+            <!-- AI/ML Engineering -->
+            <div class="col-md-4">
+                <div class="card h-100 border-0 rounded-3 overflow-hidden">
+                    <img src="{% static 'img/services/ai_ml.svg' %}" class="card-img-top" alt="AI/ML Engineering">
+                    <div class="card-body">
+                        <h5 class="card-title">AI/ML Engineering</h5>
+                        <p class="card-text">Design and development of intelligent systems powered by advanced machine
+                            learning algorithms and neural networks.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <a href="#" class="btn btn-primary w-100 rounded-pill">Schedule Consultation</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Web Development -->
+            <div class="col-md-4">
+                <div class="card h-100 border-0 rounded-3 overflow-hidden">
+                    <img src="{% static 'img/services/web_dev.svg' %}" class="card-img-top" alt="Web Development">
+                    <div class="card-body">
+                        <h5 class="card-title">Web Development</h5>
+                        <p class="card-text">Full stack development of responsive, SEO-optimized web applications with
+                            modern frameworks and cloud integration.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <a href="#" class="btn btn-primary w-100 rounded-pill">Start Project</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Analytics -->
+            <div class="col-md-4">
+                <div class="card h-100 border-0 rounded-3 overflow-hidden">
+                    <img src="{% static 'img/services/data_analytics.svg' %}" class="card-img-top" alt="Data Analytics">
+                    <div class="card-body">
+                        <h5 class="card-title">Data Analytics</h5>
+                        <p class="card-text">Advanced analytics solutions leveraging BI tools and predictive modeling to
+                            transform data into strategic assets.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <a href="#" class="btn btn-primary w-100 rounded-pill">Request Analysis</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- API Development -->
+            <div class="col-md-4">
+                <div class="card h-100 border-0 rounded-3 overflow-hidden">
+                    <img src="{% static 'img/services/api_dev.svg' %}" class="card-img-top" alt="API Development">
+                    <div class="card-body">
+                        <h5 class="card-title">API Development</h5>
+                        <p class="card-text">Secure and scalable API solutions with comprehensive documentation and
+                            developer support.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <a href="#" class="btn btn-primary w-100 rounded-pill">Develop API</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Scraping -->
+            <div class="col-md-4">
+                <div class="card h-100 border-0 rounded-3 overflow-hidden">
+                    <img src="{% static 'img/services/data_scraping.svg' %}" class="card-img-top" alt="Data Scraping">
+                    <div class="card-body">
+                        <h5 class="card-title">Data Scraping</h5>
+                        <p class="card-text">Ethical web scraping solutions delivering structured data from diverse
+                            sources with ETL pipeline integration.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <a href="#" class="btn btn-primary w-100 rounded-pill">Get Data</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Annotation -->
+            <div class="col-md-4">
+                <div class="card h-100 border-0 rounded-3 overflow-hidden">
+                    <img src="{% static 'img/services/data_annotation.svg' %}" class="card-img-top"
+                        alt="Data Annotation">
+                    <div class="card-body">
+                        <h5 class="card-title">Data Annotation</h5>
+                        <p class="card-text">High-precision data labeling services for computer vision and NLP
+                            applications with quality assurance.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <a href="#" class="btn btn-primary w-100 rounded-pill">Annotate Data</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Join Community CTA -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-8 mx-auto text-center">
+            {% if not user.is_authenticated %}
+            <h3 class="mb-4">Join Our Research & Development Community</h3>
+            <p class="lead mb-4">Become part of our growing network of researchers, scholars, and innovators.</p>
+            <div class="d-grid gap-2 d-md-block">
+                <a href="{% url 'register' %}" class="btn btn-primary btn-lg px-4 me-md-2">Register Now</a>
+                <a href="{% url 'login' %}" class="btn btn-outline-primary btn-lg px-4">Login</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+    .services-section .card {
+        transition: transform 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .services-section .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .services-section .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .services-section .btn-primary {
+        background-color: #4a6fdc;
+        border-color: #4a6fdc;
+    }
+
+    .services-section .btn-primary:hover {
+        background-color: #3d5cb8;
+        border-color: #3d5cb8;
+    }
+</style>
+
+
+<!-- JAVASCRIPT CDN -->
+<script src="js/index.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+
+{% endblock %}

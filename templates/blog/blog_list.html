@@ -8,12 +8,13 @@
         <h1 class="page-header">AI & Quantum Blog</h1>
         <p class="lead">Insights, tutorials, and perspectives on AI and Quantum research</p>
     </div>
-    <div class="col-md-4 text-end">
-        {% if user.is_authenticated %}
+    <div class="col-md-4 text-end"> 
+
+     
             <a href="{% url 'blog_create' %}" class="btn btn-primary">
                 <i class="fas fa-edit me-2"></i> Write
             </a>
-        {% endif %}
+      
     </div>
 </div>
 

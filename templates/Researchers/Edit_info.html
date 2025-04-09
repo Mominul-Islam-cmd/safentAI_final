@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Research Project SAFENET.AI{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header text-center">
+                    <h3 class="Header_title">Edit Researcher Information</h3>
+                </div>
+                {% if sucess_text %}
+                <div class="alert alert-success m-3" role="alert">
+                    {{ sucess_text }}
+                </div>
+                {% endif %}
+                {% if user.is_superuser or user.username == 'subadmin' %}
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ edit_form.as_p }}
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function () {
+                                // Add Bootstrap classes to input elements
+                                document.querySelectorAll("input").forEach(function (input) {
+                                    input.classList.add("form-control");
+                                    input.setAttribute("placeholder", "Enter " + input.name);
+                                });
+                                // Remove unnecessary form-control class from checkboxes
+                                document.querySelectorAll("input[type='checkbox']").forEach(function (checkbox) {
+                                    checkbox.classList.remove("form-control");
+                                });
+                            });
+                        </script>
+                        <div class="text-center my-3">
+                            <button type="submit" class="btn btn-primary btn-block">Update</button>
+                        </div>
+                        {% if user.is_superuser %}
+                        <div class="text-right">
+                            <a href="{% url 'Researchers:delete_info' researcher_id=researcher_id %}" 
+                               class="btn btn-danger"
+                               onclick="return confirm('Delete This Member');">
+                               Delete
+                            </a>
+                        </div>
+                        {% endif %}
+                    </form>
+                </div>
+                {% else %}
+                <div class="alert alert-danger m-3" role="alert">
+                    You do not have permission to view this page.
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

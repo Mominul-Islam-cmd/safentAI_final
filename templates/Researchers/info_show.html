@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Researcher SAFENET.AI{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Researcher SAFENET.AI</title>
+  <!-- Bootstrap and Font Awesome CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    /* Container for each flip card */
+    .card-container {
+      perspective: 1000px;
+      margin-bottom: 30px;
+    }
+    
+    /* Flip card inner container */
+    .flip-card {
+      position: relative;
+      width: 100%;
+      height: 300px; /* Fixed height for consistency */
+      transform-style: preserve-3d;
+      transition: transform 0.8s ease;
+    }
+    
+    /* Flip effect on hover */
+    .card-container:hover .flip-card {
+      transform: rotateY(180deg);
+    }
+    
+    /* Common styles for both sides */
+    .flip-card-side {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 0.25rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    /* Front side styles */
+    .flip-card-front {
+      z-index: 2;
+      background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+      color: #fff;
+    }
+    
+    /* Back side styles with rotated transform */
+    .flip-card-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(135deg, #FF9A9E, #FAD0C4);
+      color: #333;
+      z-index: 1;
+    }
+    
+    /* Card styling */
+    .card {
+      border: none;
+      overflow: hidden;
+      height: 100%;
+      background: transparent;
+    }
+    
+    .card-body {
+      padding: 1rem;
+    }
+    
+    /* Rounded image style */
+    .img-fluid {
+      border-radius: 50%;
+      max-height: 150px;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 3px solid #fff;
+    }
+    
+    /* Social icon styles */
+    .social_icons i {
+      font-size: 1.5em;
+      margin: 0 5px;
+      transition: color 0.3s;
+    }
+    .social_icons i:hover {
+      color: #007bff;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 767px) {
+      .flip-card {
+        height: auto;
+        min-height: 300px;
+      }
+      .card-container {
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body style="background-color: #fcfcfc;">
+  <div class="container py-5">
+    <section id="team" class="pb-5">
+      <div class="container">
+        <h5 class="section-title h1 text-center mb-5">RESEARCHERS</h5>
+        <div class="row">
+          {% for researcher in Researchers_list|dictsort:"id" %}
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="card-container">
+              <div class="flip-card">
+                <!-- Front Side -->
+                <div class="flip-card-side flip-card-front">
+                  <div class="card">
+                    <div class="card-body text-center">
+                      <img class="img-fluid" src="{% if researcher.profile_pic %}{{ researcher.profile_pic.url }}{% else %}{% static 'images/default_profile.png' %}{% endif %}" alt="Profile image">
+                      <h4 class="card-title">{{ researcher.first_Name }} {{ researcher.last_Name }}</h4>
+                      <p class="card-text">
+                        <strong>Current project:</strong> {{ researcher.current_project }}
+                      </p>
+                     
+                        
+                          <p class="card-text text-left">
+                          <strong>Ratings:</strong> {{ researcher.Ranking }} %
+                          </p>
+                          <p class="card-text" style="align-items: center;"><i class="fa fa-user"></i></p>
+                    </div>
+                  </div>
+                </div>
+                <!-- Back Side -->
+                <div class="flip-card-side flip-card-back">
+                  <div class="card">
+                    {% if user.is_superuser or user.username == 'subadmin' %}
+                    <div class="text-right pr-3 pt-3">
+                      <a href="{% url 'Researchers:edit_info' researcher_id=researcher.id %}" class="btn btn-primary btn-sm">Edit</a>
+                    </div>
+                    {% endif %}
+                    <div class="card-body text-center mt-2">
+                      <h5 class="card-title">{{ researcher.first_Name }} {{ researcher.last_Name }}</h5>
+                      <p class="card-text">
+                        <strong>University:</strong> {{ researcher.uv_name }}<br>
+                        <strong>Department:</strong> {{ researcher.dept_name }}<br>
+                        <strong>Interests:</strong> {{ researcher.interested_domain }}<br>
+                        <strong>Experiences:</strong> {{ researcher.experiences }}<br>
+                        <strong>Session:</strong> {{ researcher.session }}
+                      </p>
+                      <div class="social_icons">
+                        {% if researcher.github_url %}
+                        <a href="{{ researcher.github_url }}" target="_blank"><i class="fa fa-github"></i></a>
+                        {% endif %}
+                        {% if researcher.personal_website %}
+                        <a href="{{ researcher.personal_website }}" target="_blank"><i class="fa fa-globe"></i></a>
+                        {% endif %}
+                        {% if researcher.linekdin_url %}
+                        <a href="{{ researcher.linekdin_url }}" target="_blank"><i class="fa fa-linkedin"></i></a>
+                        {% endif %}
+                        {% if researcher.google_scholar_url %}
+                        <a href="{{ researcher.google_scholar_url }}" target="_blank"><i class="fa fa-graduation-cap"></i></a>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+          <!-- Add Member Card for superusers/subadmins -->
+          {% if user.is_superuser or user.is_subadmin %}
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="card-container">
+              <div class="flip-card">
+                <div class="flip-card-side flip-card-front">
+                  <div class="card">
+                    <div class="card-body text-center">
+                      <img class="img-fluid" src="{% static 'images/add_icon.png' %}" alt="Add Member">
+                      <a href="{% url 'Researchers:info_form' %}" class="btn btn-primary">Add New Member</a>
+                      <p class="mt-2">
+                        <a href="{% url 'Researchers:recommend_form' %}" class="btn btn-primary btn-sm">Researchers Details</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="flip-card-side flip-card-back">
+                  <div class="card">
+                    <div class="card-body text-center">
+                      <h5 class="card-title">New Researcher</h5>
+                      <p class="card-text">Click below to add a new member.</p>
+                      <a href="{% url 'Researchers:info_form' %}" class="btn btn-primary">Add New Member</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
+{% endblock %}

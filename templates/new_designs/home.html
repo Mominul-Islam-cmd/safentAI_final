@@ -1,189 +1,223 @@
-{% extends 'base.html' %}
+{% extends 'base2.html' %}
 {% load static %}
 
 {% block title %}SAFENET.AI - AI and Quantum Research Community{% endblock %}
 
 {% block content %}
+<style>
+   .bannar_body{
+    background-image: url('{% static "img/5zati5qk.png" %}');
+  }
+  
+</style>
 <!-- Hero Section with Dark Background and Robot Animation -->
-<div class="bannar_body text-center">
-    <div class="bannar_items" id="main_about" style="background-color: transparent; align-items: center;">
-        <h1 style="font-family: 'Overpass', sans-serif; background: linear-gradient(90deg, #f7941e 0%, #0094ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 2px 2px 4px #000000;">SafeNet
-        </h1>
-        <h4 class="tpyebefore"> <span class="typing"
-                style="background: linear-gradient(90deg, #b1ae2b 0%, #adc7af 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 2px 2px 4px #e4dada;">Quantum & AI </span>
-        </h4>
-    </div>
-</div>
 
-<main class="hero-section py-5">
-    <div class="container">
-        <div class="row align-items-center">
-            <!-- Text Column -->
-            <div class="col-lg-6 col-12 hero-content mb-5 mb-lg-0">
-                <h1 class="hero-title">Empowering Research, Enabling Innovation</h1>
-                <p class="hero-subtitle mt-4">
-                    Join a collaborative platform for AI, NLP, and Computer Vision research and projects. 
-                    Whether you're a student, researcher, or industry professional, there's a place for you here.
-                </p>
-                <div class="cta-buttons">
-                    {% if not user.is_authenticated %}
-                        <a href="{% url 'register' %}" class="btn btn-primary cta-button me-3">Get Started</a>
-                        <a href="{% url 'login' %}" class="btn btn-secondary cta-button">Sign In</a>
-                    {% else %}
-                        <a href="{% url 'research_paper_create' %}" class="btn btn-primary cta-button me-3">Submit Research</a>
-                        <a href="{% url 'profile' %}" class="btn btn-secondary cta-button">My Dashboard</a>
-                    {% endif %}
-                </div>
+
+    
+</main>
+<div class="container" style="margin-top: 20px;" >
+    <div class="row align-items-center">
+        <!-- Text Column -->
+        <div class="col-lg-6 col-12 hero-content mb-5 mb-lg-0" >
+            <h1 class="hero-title">Empowering Research, Enabling Innovation</h1>
+            <p class="hero-subtitle mt-4">
+                Join a collaborative platform for AI, NLP, and Computer Vision research and projects. 
+                Whether you’re a student, researcher, or industry professional, there’s a place for you here.
+            </p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary cta-button me-3">Get Started</a>
+                <a href="#" class="btn btn-secondary cta-button">Sign In</a>
             </div>
-            <!-- Animation Icons Column -->
-            <div class="col-lg-6 col-12 d-flex justify-content-center align-items-center" style="margin-top: 200px;">
-                <div id="robotContainer" class="robot-container" style="max-width: 100%; height: auto;">
-                    <div class="ai-illustration-container">
-                        <div class="gear-platform">
-                            <div class="spinning-group">
-                                <div class="gear">
-                                    <div class="gear-tooth top"></div>
-                                    <div class="gear-tooth bottom"></div>
-                                    <div class="gear-tooth left"></div>
-                                    <div class="gear-tooth right"></div>
-                                    <div class="gear-center">
-                                        <div class="gear-inner-circle"></div>
-                                    </div>
-                                </div>
-                                <div class="robot">
-                                    <div class="robot-body">
-                                        <div class="robot-head">
-                                            <div class="robot-eye left"></div>
-                                            <div class="robot-eye right"></div>
-                                            <div class="robot-antenna">
-                                                <div class="antenna-light"></div>
-                                            </div>
-                                            <div class="robot-visor"></div>
-                                        </div>
-                                        <div class="robot-arm left-1"></div>
-                                        <div class="robot-arm left-2"></div>
-                                        <div class="robot-arm right-1"></div>
-                                        <div class="robot-arm right-2"></div>
-                                        <div class="robot-button-main">
-                                            <div class="robot-button-inner"></div>
-                                        </div>
-                                        <div class="robot-control-1"></div>
-                                        <div class="robot-control-2"></div>
-                                    </div>
+        </div>
+        <!-- Animation Icons Column -->
+        <div class="col-lg-6 col-12 d-flex justify-content-center align-items-center" style="margin-top: 200px; ">
+            <div id="robotContainer" class="robot-container" style="max-width: 100%; height: auto;">
+                <div class="ai-illustration-container">
+                    <div class="gear-platform">
+                        <div class="spinning-group">
+                            <div class="gear">
+                                <div class="gear-tooth top"></div>
+                                <div class="gear-tooth bottom"></div>
+                                <div class="gear-tooth left"></div>
+                                <div class="gear-tooth right"></div>
+                                <div class="gear-center">
+                                    <div class="gear-inner-circle"></div>
                                 </div>
                             </div>
-                            <div class="ai-text-block">
-                                <span>AI</span>
+                            <div class="robot">
+                                <div class="robot-body">
+                                    <div class="robot-head">
+                                        <div class="robot-eye left"></div>
+                                        <div class="robot-eye right"></div>
+                                        <div class="robot-antenna">
+                                            <div class="antenna-light"></div>
+                                        </div>
+                                        <div class="robot-visor"></div>
+                                    </div>
+                                    <div class="robot-arm left-1"></div>
+                                    <div class="robot-arm left-2"></div>
+                                    <div class="robot-arm right-1"></div>
+                                    <div class="robot-arm right-2"></div>
+                                    <div class="robot-button-main">
+                                        <div class="robot-button-inner"></div>
+                                    </div>
+                                    <div class="robot-control-1"></div>
+                                    <div class="robot-control-2"></div>
+                                </div>
                             </div>
-                            <div class="Quantum-text-block">
-                                <span>Quantum</span>
-                            </div>
-                            <div class="data-bars">
-                                <div class="data-bar bar-1"></div>
-                                <div class="data-bar bar-2"></div>
-                                <div class="data-bar bar-3"></div>
-                                <div class="data-bar bar-4"></div>
-                            </div>
+                        </div>
+                        <div class="ai-text-block">
+                            <span>AI</span>
+                        </div>
+                        <div class="Quantum-text-block">
+                            <span>Quantum</span>
+                        </div>
+                        <div class="data-bars">
+                            <div class="data-bar bar-1"></div>
+                            <div class="data-bar bar-2"></div>
+                            <div class="data-bar bar-3"></div>
+                            <div class="data-bar bar-4"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </main>
 
-<!-- Welcome Section -->
-<div class="container mt-5 mb-5">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="card shadow-sm border-0">
-                <div class="card-body p-4">
-                    <h2 class="text-center mb-4" style="font-family: 'Overpass', sans-serif; color: #2c3e50;">Welcome to Our Community</h2>
-                    <p class="lead text-muted">
-                        We are more than just a website; we are a thriving community of researchers, scholars, and innovators committed to advancing knowledge in machine learning, AI, and cutting-edge AI models like LLM and GPT. Our mission is to make research accessible to all, bridging the gap between complex theories and practical applications e empower individuals to explore research and development, offering expert guidance and resources. With a foundation in research, we're expanding into development, focusing on data science, engineering, and AI solutions. Join us as we innovate and deliver comprehensive project-based services to our community and beyond.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<style>
+@media (max-width: 768px) {
+    .robot-container {
+        transform: scale(0.7); /* Reduce the size of the robot */
+        margin: 0 auto; /* Center horizontally */
+        margin-top: -190px; /* Adjust top margin */
+    }
+    .col-lg-6.col-12.d-flex.justify-content-center.align-items-center {
+        margin-left: -108px !important; /* Remove left gap */
+    }
+}
 
-<!-- Our Focus Section -->
-<div class="container mt-5 mb-5">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="card shadow-sm border-0">
-                <div class="card-body p-4">
-                    <h2 class="text-center mb-4" style="font-family: 'Overpass', sans-serif; color: #2c3e50;">Our Focus</h2>
-                    <ul class="list-unstyled">
-                        <li class="mb-3">
-                            <div class="d-flex align-items-start">
-                                <span class="badge bg-primary rounded-circle p-2 me-3 mt-1"><i class="fas fa-lightbulb"></i></span>
-                                <div>
-                                    <h5 class="fw-bold">Innovative Research</h5>
-                                    <p>We delve into the depths of machine learning and AI, exploring new frontiers and pushing the boundaries of what's possible.</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="mb-3">
-                            <div class="d-flex align-items-start">
-                                <span class="badge bg-success rounded-circle p-2 me-3 mt-1"><i class="fas fa-users"></i></span>
-                                <div>
-                                    <h5 class="fw-bold">Collaboration</h5>
-                                    <p>We believe in the power of teamwork. By bringing together brilliant minds, we foster a space for sharing ideas, sparking innovation, and driving progress.</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="mb-3">
-                            <div class="d-flex align-items-start">
-                                <span class="badge bg-info rounded-circle p-2 me-3 mt-1"><i class="fas fa-book-open"></i></span>
-                                <div>
-                                    <h5 class="fw-bold">Accessible Knowledge</h5>
-                                    <p>We aim to democratize research, ensuring that complex information is available and understandable for everyone.</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="mb-3">
-                            <div class="d-flex align-items-start">
-                                <span class="badge bg-warning rounded-circle p-2 me-3 mt-1"><i class="fas fa-cogs"></i></span>
-                                <div>
-                                    <h5 class="fw-bold">Development</h5>
-                                    <p>We don't just focus on research but also on development, specializing in data science, data engineering, web-based and AI-based software solutions.</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="d-flex align-items-start">
-                                <span class="badge bg-danger rounded-circle p-2 me-3 mt-1"><i class="fas fa-project-diagram"></i></span>
-                                <div>
-                                    <h5 class="fw-bold">Project-Based Services</h5>
-                                    <p>We provide comprehensive project-based services to our community and beyond, working on cutting-edge projects to deliver impactful solutions.</p>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@media (max-width: 576px) {
+    .robot-container {
+        transform: scale(0.6); /* Further reduce size for smaller screens */
+        margin: 0 auto; /* Center horizontally */
+        margin-top: 10px; /* Adjust top margin */
+    }
+}
+</style>
 
-<!-- Our Vision Section -->
-<div class="container mt-5 mb-5">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="card shadow-sm border-0">
-                <div class="card-body p-4">
-                    <h2 class="text-center mb-4" style="font-family: 'Overpass', sans-serif; color: #2c3e50;">Our Vision</h2>
-                    <p class="lead text-muted">
-                        We strive to build a collaborative community where both seasoned and new researchers can share knowledge, resources, and guidance. Our goal is to ensure that every member can conduct research efficiently and confidently, benefiting from the collective expertise of the group. Together, we aim to be a beacon for future researchers, providing a foundation for meaningful and impactful work in development and beyond.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<style>
+@media (max-width: 768px) {
+    .hero-section .row {
+        margin: 0; /* Remove gaps between columns */
+    }
+    .hero-content,
+    .robot-container {
+        margin-top: 0 !important; /* Remove top margin */
+    }
+    .hero-content {
+        margin-bottom: 10px; /* Reduce gap between hero-content and animation icons */
+    }
+}
+</style>
 
+    <style>
+      @media (max-width: 768px) {
+        .robot-container {
+          transform: scale(0.7); /* Reduce the size of the robot */
+          margin: 0 auto; /* Center horizontally */
+          margin-top: -190px; /* Adjust top margin */
+         
+        }
+
+        .ai-text-block span,
+        .Quantum-text-block span {
+          font-size: 1.5rem; /* Reduce font size for AI and Quantum text */
+          width: 100px;
+          height: 50px;
+        }
+
+        .ai-text-block span::before,
+        .Quantum-text-block span::before {
+          width: 100%;
+          height: 100%;
+        }
+
+        .gear-platform {
+          transform: scale(0.8); /* Adjust the gear platform size */
+        }
+
+        .data-bars .data-bar {
+          height: 10px; /* Reduce the height of data bars */
+        }
+      }
+
+      @media (max-width: 576px) {
+        .robot-container {
+          transform: scale(0.6); /* Further reduce size for smaller screens */
+          margin: 0 auto; /* Center horizontally */
+          margin-top: 10px; /* Adjust top margin */
+        }
+      }
+
+
+      
+    </style>
+    </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+<br><br><br><br><br><br>
+
+<style>
+    .section-title {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
+.section-intro {
+    color: #4a5568;
+    font-size: 1.1rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 2rem auto 3rem;
+    line-height: 1.7;
+    position: relative;
+    padding: 1rem;
+    background: linear-gradient(to right, #ffffff00, #f8f9fa 20%, #f8f9fa 80%, #ffffff00);
+}
+
+.section-intro:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #e2e8f0, transparent);
+}
+</style>
 <!-- Research Focus Areas -->
 <div class="research-container">
     <h1 class="section-title">Research Focus Areas</h1>
@@ -289,7 +323,7 @@
 <div class="container my-5">
     <div class="row">
         <div class="col-12">
-            <h2 class="text-center mb-4" style="font-family: 'Overpass', sans-serif; color: #2c3e50;">Research Dashboard</h2>
+            <h2 class="text-center mb-4" style="font-family: 'Overpass', sans-serif; background: linear-gradient(to right, #4383cc, #d6e266); -webkit-background-clip: text; color: transparent;">Research Dashboard</h2>
             <div class="title-underline mx-auto"></div>
         </div>
     </div>
@@ -366,7 +400,7 @@
                             {% endif %}
                         </div>
                         <span class="author-name">
-                            {{ paper.author.get_full_name|default:paper.author.username }}{% if paper.co_authors %} & {{ paper.co_authors }}{% endif %}
+                            {% if paper.co_authors %}  {{ paper.co_authors }}{% endif %}
                         </span>
                     </div>
                     <p class="paper-abstract">{{ paper.abstract|truncatewords:25 }}</p>
@@ -406,24 +440,24 @@
                         <div class="col-md-4">
                             <div class="text-center mb-4">
                                 <i class="fas fa-file-upload fa-3x mb-3 text-primary"></i>
-                                <h5>Share Your Research</h5>
-                                <p>Upload your latest papers on AI and Quantum computing.</p>
+                                <h5 style="color: #00b894;">Share Your Research</h5>
+                                <p style="color: #2a8b6e;">Upload your latest papers on AI and Quantum computing.</p>
                                 <a href="{% url 'research_paper_create' %}" class="btn btn-sm btn-outline-primary">Upload Paper</a>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="text-center mb-4">
                                 <i class="fas fa-lightbulb fa-3x mb-3 text-primary"></i>
-                                <h5>Propose Research Topics</h5>
-                                <p>Suggest new areas of exploration for the community.</p>
+                                <h5 style="color: #0b8676;">Propose Research Topics</h5>
+                                <p style="color: #811c1c;">Suggest new areas of exploration for the community.</p>
                                 <a href="{% url 'research_topic_create' %}" class="btn btn-sm btn-outline-primary">Add Topic</a>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="text-center mb-4">
                                 <i class="fas fa-edit fa-3x mb-3 text-primary"></i>
-                                <h5>Write a Blog Post</h5>
-                                <p>Share your insights and perspectives with the community.</p>
+                                <h5 style="color: #180852;">Write a Blog Post</h5>
+                                <p style="color: #14349e;">Share your insights and perspectives with the community.</p>
                                 <a href="{% url 'blog_create' %}" class="btn btn-sm btn-outline-primary">Write Post</a>
                             </div>
                         </div>
@@ -433,5 +467,7 @@
         </div>
     </div>
 </div>
+
+
 {% endif %}
 {% endblock %}

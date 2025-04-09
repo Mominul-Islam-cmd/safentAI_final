@@ -1,0 +1,277 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Research Project SAFENET.AI{% endblock %}
+
+{% block content %}
+<style>
+    /* General Styles */
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, #e9bd71 50%, #6fa1da 50%);
+        margin: 0;
+        overflow-x: hidden;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .section-title {
+        margin: 50px 0 20px;
+        text-align: center;
+        font-size: 2rem;
+        color: #000;
+        font-weight: bold;
+    }
+
+    /* Carousel Styling */
+    .carousel {
+        position: relative;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .scroll-container {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        gap: 15px;
+    }
+
+    .card {
+        min-width: 300px;
+        max-width: 300px;
+        background-color: #000;
+        color: #fff;
+        border-radius: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        flex-shrink: 0;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .card img {
+        border-radius: 20px 20px 0 0;
+        width: 100%;
+        height: 200px; /* Fixed height for images */
+        object-fit: cover; /* Maintain aspect ratio */
+    }
+
+    .card:hover {
+        background-color: #fff;
+        color: #000;
+        transform: scale(1.05);
+    }
+
+    .card .btn {
+        background-color: #d19f48;
+        color: #fff;
+        text-decoration: none;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        display: inline-block;
+        margin-top: 10px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .card .btn:hover {
+        background-color: #000;
+        color: #fff;
+    }
+
+    /* Arrow Buttons */
+    .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 1;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    .arrow:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .left-arrow {
+        left: 10px;
+    }
+
+    .right-arrow {
+        right: 10px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .card {
+            min-width: 80%;
+            max-width: 80%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .section-title {
+            font-size: 1.5rem;
+        }
+
+        .card {
+            min-width: 90%;
+            max-width: 90%;
+        }
+    }
+
+    .scroll-container {
+        display: flex;
+        gap: 15px; /* Add a consistent gap between cards */
+        overflow: hidden;
+        scroll-behavior: smooth; /* Enables smooth transitions */
+        white-space: nowrap; /* Prevents wrapping of elements */
+    }
+
+    .card {
+        flex-shrink: 0;
+        width: 22rem;
+        background-color: #000;
+        color: #fff;
+        border-radius: 20px;
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .scroll-container {
+        display: flex;
+        transition: none; /* Avoid conflicts with infinite scroll */
+        overflow: hidden;
+        scroll-behavior: smooth; /* For smoother manual navigation */
+        white-space: nowrap;
+    }
+
+    .card {
+        flex-shrink: 0;
+        width: 300px;
+        margin-right: 15px;
+    }
+</style>
+<link rel="stylesheet" type="text/css" href="{% static 'Publication_project/publication.css' %}">
+<div class="container-fluid">
+    <div class="container py-5">
+        <!-- Research Publications Section -->
+        <section>
+            <h2 class="section-title" style="color: aliceblue;">Projects</h2>
+            <div class="carousel">
+                <button class="arrow left-arrow">&lt;</button>
+                <div class="scroll-container">
+                    {% for p_items in project_iteams %}
+                    <div class="card">
+                        <img src="{% if p_items.project_pic %}{{ p_items.project_pic.url }}{% else %}{% static 'images/default_profile.png' %}{% endif %}" class="card-img-top"
+                            alt="Publication">
+                        <div class="card-body">
+                            <h5 class="card-title" style="word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">{{ p_items.project_title }}</h5>
+                            <a href="{{ p_items.Githuv_url }}" target="_blank"
+                                class="btn btn-dark">Paper Link</a>
+                            
+                                <a href="{% url 'PublicationProject:edit_project' id=p_items.id %}" class="btn btn-primary" style="margin-left: 70px;">Edit</a>
+                        </div>
+                    </div>  
+                    {% endfor %}
+                    <!-- Add new Paper Card -->
+                    <div class="card">
+                        <img src="/static/images/publication_icon.png" class="card-img-top" alt="Publication 2">
+                        <div class="card-body">
+                            <h5 class="card-title" style="word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">ADD PROJECT
+                            </h5>
+                            <a href="{% url 'PublicationProject:project_form' %}" target="_blank"
+                                class="btn btn-dark">ADD NEW Project</a>
+                        </div>
+                    </div>
+                </div>
+                <button class="arrow right-arrow">&gt;</button>
+            </div>
+        </section>
+    </div>
+    <script>
+        const carousels = document.querySelectorAll('.carousel');
+
+        carousels.forEach((carousel) => {
+            const scrollContainer = carousel.querySelector('.scroll-container');
+            const leftArrow = carousel.querySelector('.left-arrow');
+            const rightArrow = carousel.querySelector('.right-arrow');
+
+            let isAutoScrolling = false; // Tracks if auto-scroll is active
+            let autoScrollInterval;
+
+            // Clone cards for seamless infinite scrolling
+            const cloneCards = () => {
+                const cards = Array.from(scrollContainer.children);
+                cards.forEach((card) => {
+                    const clone = card.cloneNode(true);
+                    scrollContainer.appendChild(clone);
+                });
+            };
+
+            // Start auto-scroll
+            const startAutoScroll = () => {
+                if (isAutoScrolling) return; // Prevent multiple intervals
+                isAutoScrolling = true;
+                autoScrollInterval = setInterval(() => {
+                    scrollContainer.scrollLeft += 2; // Move 2px per interval for smoother scroll
+                    if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth / 2) {
+                        scrollContainer.scrollLeft = 0; // Reset to start for seamless loop
+                    }
+                }, 20); // Adjusted speed of auto-scroll for smoother transition
+            };
+
+            // Stop auto-scroll
+            const stopAutoScroll = () => {
+                isAutoScrolling = false;
+                clearInterval(autoScrollInterval);
+            };
+
+            // Handle manual navigation
+            const manualScroll = (direction) => {
+                stopAutoScroll();
+                const cardWidth = scrollContainer.querySelector('.card').offsetWidth + 15; // Card width + gap
+                if (direction === 'right') {
+                    scrollContainer.scrollLeft += cardWidth;
+                    if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth / 2) {
+                        scrollContainer.scrollLeft = 0; // Reset to start
+                    }
+                } else if (direction === 'left') {
+                    if (scrollContainer.scrollLeft <= 0) {
+                        scrollContainer.scrollLeft = scrollContainer.scrollWidth / 2; // Reset to end
+                    }
+                    scrollContainer.scrollLeft -= cardWidth;
+                }
+                setTimeout(startAutoScroll, 3000); // Restart auto-scroll after 3 seconds
+            };
+
+            // Event listeners for arrows
+            rightArrow.addEventListener('click', () => manualScroll('right'));
+            leftArrow.addEventListener('click', () => manualScroll('left'));
+
+            // Clone cards and initialize auto-scroll
+            cloneCards();
+            startAutoScroll();
+
+            // Pause auto-scroll on hover
+            scrollContainer.addEventListener('mouseover', stopAutoScroll);
+            scrollContainer.addEventListener('mouseleave', startAutoScroll);
+        });
+    </script>
+{% endblock %}

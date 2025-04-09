@@ -1,0 +1,502 @@
+{% extends "base3.html" %}
+{% load static %}
+{% block title %}Data Engineering Roadmap{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'guidelines/css/r.css' %}">
+<!-- <section class="hero-section">
+    <div class="container">
+        <h1 class="hero-title">Data Engineering Roadmap</h1>
+        <p class="hero-subtitle">Follow this roadmap to develop expertise in Data Engineering</p>
+    </div>
+</section> -->
+<div class="container-fluid" style="text-align: center;margin-bottom: 50px;background-color: black; border-radius: 10px; height: 250px; padding-top: 50px;">
+    <h1 class="hero-title">Data Engineering Roadmap</h1>
+        <p class="hero-subtitle">Follow this roadmap to develop expertise in Data Engineering</p>
+
+</div>
+<div class="timeline-container">
+    <div class="timeline-line"></div>
+    
+    <!-- Programming Fundamentals Card -->
+    <div class="domain-card left">
+        <div class="card-bg-overlay" style="background-image: url('{% static "guidelines/images/data_engineering.svg" %}');"></div>
+        <div class="domain-icon">
+            <i class="fas fa-code"></i>
+        </div>
+        <h3 class="domain-title">Programming Fundamentals</h3>
+        <p class="domain-description">
+            Master programming languages like Python, Java, or Scala, essential for building data pipelines and working with big data frameworks.
+        </p>
+        <a href="#programming-topics" class="explore-button" data-bs-toggle="modal" data-bs-target="#programmingModal">
+            Explore Topics <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+    
+    <!-- Database Systems Card -->
+    <div class="domain-card right">
+        <div class="card-bg-overlay" style="background-image: url('{% static "guidelines/images/data_engineering.svg" %}');"></div>
+        <div class="domain-icon">
+            <i class="fas fa-database"></i>
+        </div>
+        <h3 class="domain-title">Database Systems</h3>
+        <p class="domain-description">
+            Develop expertise in relational and NoSQL databases, SQL, data modeling, and database optimization techniques.
+        </p>
+        <a href="#database-topics" class="explore-button" data-bs-toggle="modal" data-bs-target="#databaseModal">
+            Explore Topics <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+    
+    <!-- Data Processing Card -->
+    <div class="domain-card left">
+        <div class="card-bg-overlay" style="background-image: url('{% static "guidelines/images/data_engineering.svg" %}');"></div>
+        <div class="domain-icon">
+            <i class="fas fa-cogs"></i>
+        </div>
+        <h3 class="domain-title">Data Processing</h3>
+        <p class="domain-description">
+            Learn batch and stream processing frameworks to handle large volumes of data efficiently and in real-time.
+        </p>
+        <a href="#processing-topics" class="explore-button" data-bs-toggle="modal" data-bs-target="#processingModal">
+            Explore Topics <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+    
+    <!-- Data Infrastructure Card -->
+    <div class="domain-card right">
+        <div class="card-bg-overlay" style="background-image: url('{% static "guidelines/images/data_engineering.svg" %}');"></div>
+        <div class="domain-icon">
+            <i class="fas fa-server"></i>
+        </div>
+        <h3 class="domain-title">Data Infrastructure</h3>
+        <p class="domain-description">
+            Gain skills in cloud platforms, containerization, and infrastructure as code to build scalable data systems.
+        </p>
+        <a href="#infrastructure-topics" class="explore-button" data-bs-toggle="modal" data-bs-target="#infrastructureModal">
+            Explore Topics <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+    
+    <!-- Data Pipelines Card -->
+    <div class="domain-card left">
+        <div class="card-bg-overlay" style="background-image: url('{% static "guidelines/images/data_engineering.svg" %}');"></div>
+        <div class="domain-icon">
+            <i class="fas fa-project-diagram"></i>
+        </div>
+        <h3 class="domain-title">Data Pipelines & Orchestration</h3>
+        <p class="domain-description">
+            Design robust ETL/ELT workflows and use orchestration tools to automate, monitor, and manage data pipeline execution.
+        </p>
+        <a href="#pipeline-topics" class="explore-button" data-bs-toggle="modal" data-bs-target="#pipelineModal">
+            Explore Topics <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</div>
+
+<!-- Programming Fundamentals Modal -->
+<div class="modal fade" id="programmingModal" tabindex="-1" aria-labelledby="programmingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content roadmap-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="programmingModalLabel">Programming Fundamentals</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Core Languages</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Python:</strong> Most widely used language in data engineering</li>
+                            <li><strong>Java:</strong> Common for enterprise data engineering applications</li>
+                            <li><strong>Scala:</strong> Functional programming language for Apache Spark</li>
+                            <li><strong>SQL:</strong> Essential for database operations and transformations</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Python Libraries</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Pandas:</strong> Data manipulation and analysis</li>
+                            <li><strong>NumPy:</strong> Numerical computing</li>
+                            <li><strong>PySpark:</strong> Python API for Apache Spark</li>
+                            <li><strong>SQLAlchemy:</strong> SQL toolkit and ORM</li>
+                            <li><strong>FastAPI/Flask:</strong> API development</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Software Engineering Practices</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Version Control:</strong> Git, GitHub, GitLab</li>
+                            <li><strong>Testing:</strong> Unit testing, integration testing, pytest</li>
+                            <li><strong>Documentation:</strong> Docstrings, README files, Sphinx</li>
+                            <li><strong>CI/CD:</strong> Continuous integration and deployment</li>
+                            <li><strong>Design Patterns:</strong> Software architecture for data systems</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Database Systems Modal -->
+<div class="modal fade" id="databaseModal" tabindex="-1" aria-labelledby="databaseModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content roadmap-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="databaseModalLabel">Database Systems</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Relational Databases</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>PostgreSQL:</strong> Advanced open-source RDBMS</li>
+                            <li><strong>MySQL/MariaDB:</strong> Popular open-source databases</li>
+                            <li><strong>SQL Server:</strong> Microsoft's enterprise database</li>
+                            <li><strong>Oracle:</strong> Enterprise-grade RDBMS</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>NoSQL Databases</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>MongoDB:</strong> Document store</li>
+                            <li><strong>Cassandra:</strong> Wide-column store for high scalability</li>
+                            <li><strong>Redis:</strong> In-memory key-value store</li>
+                            <li><strong>Neo4j:</strong> Graph database</li>
+                            <li><strong>Elasticsearch:</strong> Full-text search engine and document store</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Data Warehouses</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Snowflake:</strong> Cloud data warehouse</li>
+                            <li><strong>Amazon Redshift:</strong> AWS data warehouse</li>
+                            <li><strong>Google BigQuery:</strong> Google Cloud's serverless data warehouse</li>
+                            <li><strong>Azure Synapse:</strong> Microsoft's analytics service</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Data Modeling</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>ER Modeling:</strong> Entity-relationship diagrams</li>
+                            <li><strong>Star Schema:</strong> Dimensional modeling for analytics</li>
+                            <li><strong>Snowflake Schema:</strong> Extended star schema</li>
+                            <li><strong>Data Vault:</strong> Hybrid approach for enterprise data warehousing</li>
+                            <li><strong>Kimball vs. Inmon:</strong> Data warehouse methodologies</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Data Processing Modal -->
+<div class="modal fade" id="processingModal" tabindex="-1" aria-labelledby="processingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content roadmap-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="processingModalLabel">Data Processing</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Batch Processing</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Apache Hadoop:</strong> Distributed storage and processing</li>
+                            <li><strong>Apache Spark:</strong> In-memory data processing engine</li>
+                            <li><strong>Hive:</strong> Data warehouse software for Hadoop</li>
+                            <li><strong>Pig:</strong> High-level platform for Hadoop</li>
+                            <li><strong>MapReduce:</strong> Programming model for processing large datasets</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Stream Processing</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Apache Kafka:</strong> Distributed event streaming platform</li>
+                            <li><strong>Apache Flink:</strong> Stream processing framework</li>
+                            <li><strong>Spark Streaming:</strong> Extension of Spark for streaming</li>
+                            <li><strong>Apache Pulsar:</strong> Cloud-native distributed messaging</li>
+                            <li><strong>AWS Kinesis:</strong> Real-time streaming data service</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Data Transformation</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>ETL vs ELT:</strong> Extract, Transform, Load approaches</li>
+                            <li><strong>dbt:</strong> Data build tool for transformation in warehouses</li>
+                            <li><strong>Spark SQL:</strong> SQL interface for Spark</li>
+                            <li><strong>Data Quality:</strong> Validation, cleaning, standardization</li>
+                            <li><strong>Change Data Capture (CDC):</strong> Tracking data changes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Data Infrastructure Modal -->
+<div class="modal fade" id="infrastructureModal" tabindex="-1" aria-labelledby="infrastructureModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content roadmap-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="infrastructureModalLabel">Data Infrastructure</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Cloud Platforms</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>AWS:</strong> Amazon's cloud computing platform</li>
+                            <li><strong>Google Cloud Platform (GCP):</strong> Google's cloud services</li>
+                            <li><strong>Microsoft Azure:</strong> Microsoft's cloud computing service</li>
+                            <li><strong>Cloud Data Services:</strong> S3, GCS, Blob Storage, etc.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Containerization & Orchestration</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Docker:</strong> Containerization platform</li>
+                            <li><strong>Kubernetes:</strong> Container orchestration</li>
+                            <li><strong>Docker Compose:</strong> Multi-container applications</li>
+                            <li><strong>Helm:</strong> Kubernetes package manager</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Infrastructure as Code</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Terraform:</strong> Infrastructure provisioning</li>
+                            <li><strong>CloudFormation:</strong> AWS infrastructure as code</li>
+                            <li><strong>Ansible:</strong> Configuration management</li>
+                            <li><strong>Pulumi:</strong> Infrastructure as actual code</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Monitoring & Logging</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Prometheus:</strong> Monitoring and alerting</li>
+                            <li><strong>Grafana:</strong> Visualization and dashboards</li>
+                            <li><strong>ELK Stack:</strong> Elasticsearch, Logstash, Kibana</li>
+                            <li><strong>Datadog:</strong> Monitoring as a service</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Data Pipelines Modal -->
+<div class="modal fade" id="pipelineModal" tabindex="-1" aria-labelledby="pipelineModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content roadmap-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="pipelineModalLabel">Data Pipelines & Orchestration</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Orchestration Tools</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Apache Airflow:</strong> Workflow management platform</li>
+                            <li><strong>Luigi:</strong> Python package for building pipelines</li>
+                            <li><strong>Dagster:</strong> Data orchestrator for ML, analytics, and ETL</li>
+                            <li><strong>Prefect:</strong> Modern workflow management</li>
+                            <li><strong>AWS Step Functions:</strong> Serverless workflow service</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>ETL/ELT Tools</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Apache NiFi:</strong> Data ingestion and transformation</li>
+                            <li><strong>Informatica:</strong> Enterprise data integration</li>
+                            <li><strong>Talend:</strong> Data integration platform</li>
+                            <li><strong>Fivetran:</strong> Automated data integration</li>
+                            <li><strong>Stitch:</strong> Cloud ETL service</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Data Quality & Governance</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Great Expectations:</strong> Data validation</li>
+                            <li><strong>Apache Atlas:</strong> Data governance and metadata management</li>
+                            <li><strong>Collibra:</strong> Enterprise data governance</li>
+                            <li><strong>Alation:</strong> Data catalog</li>
+                            <li><strong>dbt Tests:</strong> Testing in transformation workflows</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="topic-container">
+                    <div class="topic-header" onclick="toggleContent(this)">
+                        <h3>Pipeline Design Patterns</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="topic-content">
+                        <ul>
+                            <li><strong>Idempotent Pipelines:</strong> Safe for multiple executions</li>
+                            <li><strong>End-to-End Testing:</strong> Testing entire pipelines</li>
+                            <li><strong>Backfilling:</strong> Reprocessing historical data</li>
+                            <li><strong>Incremental Processing:</strong> Handling only new/changed data</li>
+                            <li><strong>Error Handling:</strong> Managing pipeline failures</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Topic toggle functionality
+        const topicHeaders = document.querySelectorAll('.topic-header');
+        topicHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const isOpen = content.classList.contains('active');
+                
+                // Toggle active class
+                if (isOpen) {
+                    content.classList.remove('active');
+                    header.querySelector('i').className = 'fas fa-chevron-down';
+                } else {
+                    content.classList.add('active');
+                    header.querySelector('i').className = 'fas fa-chevron-up';
+                }
+            });
+        });
+    });
+    
+    // Functions from the original HTML files
+    function toggleAllContent(element) {
+        var contentBoxes = element.parentElement.querySelectorAll('.content-box');
+        contentBoxes.forEach(function(contentBox) {
+            if (contentBox.style.display === "none") {
+                contentBox.style.display = "block";
+            } else {
+                contentBox.style.display = "none";
+            }
+        });
+    }
+
+    function toggleContent(element) {
+        var content = element.nextElementSibling;
+        if (content.style.display === "none") {
+            content.style.display = "block";
+        } else {
+            content.style.display = "none";
+        }
+    }
+</script>
+{% endblock %}

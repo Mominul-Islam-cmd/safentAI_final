@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+ {% extends "base.html" %}
+ {% block body_block %}
+ {% load static %}
+    <title>AI/ML Engineer Roadmap</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: white;
+        }
+        .hero {
+            text-align: center;
+            padding: 2rem;
+            background-color: #333;
+        }
+        .content {
+            padding: 2rem;
+        }
+        .roadmap-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .roadmap-item {
+            padding: 1rem;
+            background: #444;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #1f1f1f;
+        }
+        .content-box {
+            margin-bottom: 1rem;
+            background-color: #555;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+        .clickable {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h2>Become an AI/ML Engineer</h2>
+        <p>A complete guide to learning Artificial Intelligence and Machine Learning.</p>
+    </section>
+
+    <section class="content">
+        <h2 style="text-align: center; font-size: 2rem; font-weight: bold;">AI/ML Learning Path</h2>
+        <div class="roadmap-container">
+            <div class="roadmap-item">
+                <h5 class="clickable" onclick="toggleAllContent(this)">1. Prerequisites (Before Jumping into AI/ML) <span style="font-size: 0.8rem;">(Click to expand)</span></h5>
+                <div class="content-box" style="display: none; background-color: rgb(2, 45, 82);">
+                    <h6 class="clickable" onclick="toggleContent(this)">Mathematics for ML & AI <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;" class="L">Linear Algebra: Vectors, Matrices, Tensors, Eigenvalues</li>
+                        <li style="color: #ffa500;" class="P">Probability & Statistics: Bayes Theorem, Probability Distributions</li>
+                        <li style="color: #32cd32;" class="C">Calculus: Derivatives, Integrals, Gradient Descent</li>
+                        <li style="color: #dfee0a;" class="O">Optimization: Convex Optimization, Lagrange Multipliers</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none; background-color: rgb(2, 45, 82);">
+                    <h6 class="clickable" onclick="toggleContent(this)">Programming Skills <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;" class="L">Python (NumPy, Pandas, Matplotlib, Seaborn)</li>
+                        <li style="color: #ffa500;" class="P">C++/Java (Optional but helpful for performance optimization)</li>
+                        <li style="color: #32cd32;" class="C">SQL (For working with databases)</li>
+                        <li style="color: #dfee0a;" class="O">Bash/Linux Commands (For deployment & automation)</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">Data Structures & Algorithms <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;" class="L">Lists, Stacks, Queues, HashMaps</li>
+                        <li style="color: #ffa500;" class="P">Sorting & Searching Algorithms</li>
+                        <li style="color: #32cd32;" class="C">Graphs & Trees (Important for AI Planning)</li>
+                        <li style="color: #dfee0a;" class="O">Dynamic Programming</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <h5 class="clickable" onclick="toggleAllContent(this)">2. Core Machine Learning Concepts <span style="font-size: 0.8rem;">(Click to expand)</span></h5>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">Supervised Learning <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;" class="L">Regression (Linear, Polynomial, Logistic)</li>
+                        <li style="color: #ffa500;" class="P">Classification (SVM, Decision Trees, kNN)</li>
+                        <li style="color: #32cd32;" class="C">Ensemble Methods (Random Forest, Gradient Boosting, XGBoost, LightGBM, CatBoost)</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">Unsupervised Learning <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;" class="L">Clustering (K-Means, DBSCAN, Hierarchical)</li>
+                        <li style="color: #ffa500;" class="P">Dimensionality Reduction (PCA, t-SNE, LDA, UMAP)</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">Reinforcement Learning <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;" class="L">Markov Decision Processes (MDP)</li>
+                        <li style="color: #ffa500;" class="P">Q-Learning, SARSA</li>
+                        <li style="color: #32cd32;" class="C">Deep Q-Networks (DQN), PPO, A3C</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">Deep Learning Foundations <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;" class="L">Feedforward Neural Networks (FNN)</li>
+                        <li style="color: #ffa500;" class="P">Backpropagation & Activation Functions</li>
+                        <li style="color: #32cd32;" class="C">Optimization Techniques (Adam, RMSprop)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <h5 class="clickable" onclick="toggleAllContent(this)">3. Important AI/ML Libraries & Frameworks <span style="font-size: 0.8rem;">(Click to expand)</span></h5>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">Data Processing & Manipulation <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;" class="L">NumPy, Pandas, OpenCV, Dask, PySpark</li>
+                        <li style="color: #ffa500;" class="P">Scraping Tools: Selenium, BeautifulSoup,Scrapy</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">Visualization Tools <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;" class="L">Matplotlib, Seaborn, Plotly, Power BI, Tableau</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">Machine Learning Frameworks <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;" class="L">Scikit-Learn</li>
+                        <li style="color: #ffa500;" class="P">TensorFlow</li>
+                        <li style="color: #32cd32;" class="C">PyTorch</li>
+                        <li style="color: #dfee0a;" class="O">Keras</li>
+                        <li style="color: #00ced1;" class="N">FastAI</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">Deep Learning & Computer Vision <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;" class="L">OpenCV</li>
+                        <li style="color: #ffa500;" class="P">YOLO, Detectron2, MMDetection</li>
+                        <li style="color: #32cd32;" class="C">Hugging Face (Transformers)</li>
+                        <li style="color: #dfee0a;" class="O">ONNX</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">Natural Language Processing (NLP) <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;" class="L">NLTK, spaCy</li>
+                        <li style="color: #ffa500;" class="P">Hugging Face Transformers (BERT, GPT)</li>
+                        <li style="color: #32cd32;" class="C">Gensim (Word2Vec, LDA, LSA)</li>
+                        <li style="color: #dfee0a;" class="O">FastText</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">Reinforcement Learning <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;" class="L">OpenAI Gym</li>
+                        <li style="color: #ffa500;" class="P">Stable Baselines3</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">Big Data & Cloud AI Services <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;" class="L">Apache Spark, Hadoop</li>
+                        <li style="color: #ffa500;" class="P">Google Cloud AI, AWS AI, Azure AI</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">MLOps & Model Deployment <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;" class="L">Docker, Kubernetes</li>
+                        <li style="color: #32cd32;" class="C">MLflow, DVC</li>
+                        <li style="color: #ffa500;" class="P">TensorFlow Serving, FastAPI, Flask</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <h5 class="clickable" onclick="toggleAllContent(this)">4. Advanced Topics in AI/ML <span style="font-size: 0.8rem;">(Click to expand)</span></h5>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">Generative AI & Foundation Models <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ffa500;" class="P">GANs (DCGAN, StyleGAN, CycleGAN)</li>
+                        <li style="color: #ff6347;" class="L">Diffusion Models (Stable Diffusion, DALLE-2)</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">Transformer-Based Architectures <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;" class="L">Attention Mechanism</li>
+                        <li style="color: #ffa500;" class="P">BERT, GPT, T5, Whisper, Llama</li>
+                        <li style="color: #32cd32;" class="C">Vision Transformers (ViT, Swin Transformer)</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">Graph Neural Networks (GNNs) <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ffa500;" class="P">GCN, GAT, GraphSAGE</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">AI Ethics & Responsible AI <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;">Fairness & Bias in AI</li>
+                        <li style="color: #ffa500;">Explainable AI (XAI)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <h5 class="clickable" onclick="toggleAllContent(this)">5. Hands-On Projects & Practical Applications <span style="font-size: 0.8rem;">(Click to expand)</span></h5>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">Beginner-Level Projects <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;">Spam Email Classifier</li>
+                        <li style="color: #ffa500;">Handwritten Digit Recognition (MNIST)</li>
+                        <li style="color: #32cd32;">Stock Price Prediction</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">Intermediate-Level Projects <span style="font-size: 0.8rem;">(Click to expand)</span></h4>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;">Sentiment Analysis (NLP)</li>
+                        <li style="color: #ffa500;">Object Detection with YOLOv8</li>
+                        <li style="color: #32cd32;">AI Chatbot using RNN/LSTM</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">Advanced-Level Projects <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;">Self-Driving Car Simulation (Reinforcement Learning)</li>
+                        <li style="color: #ffa500;">AI-based Resume Screening System</li>
+                        <li style="color: #32cd32;">Large-Scale LLM Training & Fine-Tuning</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <h5 class="clickable" onclick="toggleAllContent(this)"> 6. MLOps & Model Deployment <span style="font-size: 0.8rem;">(Click to expand)</span></h5>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">CI/CD for AI Models <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;">GitHub Actions</li>
+                        <li style="color: #ffa500;">Jenkins</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">Model Serving & Deployment <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;">Flask/FastAPI for API Development</li>
+                        <li style="color: #ffa500;">TensorFlow Serving, TorchServe</li>
+                        <li style="color: #32cd32;">Docker + Kubernetes for Scalable AI Apps</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">Model Monitoring & Logging <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;">MLflow, DVC, Weights & Biases</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <h5 class="clickable" onclick="toggleAllContent(this)"> 7. Learning Path & Roadmap <span style="font-size: 0.8rem;">(Click to expand)</span></h5>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">Beginner (0-6 Months) <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;">✅ Learn Python, NumPy, Pandas, Matplotlib</li>
+                        <li style="color: #ffa500;">✅ Study Probability, Statistics, Linear Algebra</li>
+                        <li style="color: #32cd32;">✅ Understand Supervised & Unsupervised Learning</li>
+                        <li style="color: #dfee0a;">✅ Work on simple ML projects</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">Intermediate (6-12 Months) <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;">✅ Master Deep Learning with TensorFlow/PyTorch</li>
+                        <li style="color: #ffa500;">✅ Work on NLP & Computer Vision Projects</li>
+                        <li style="color: #32cd32;">✅ Deploy ML Models using Flask, FastAPI</li>
+                        <li style="color: #dfee0a;">✅ Learn about MLOps tools</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">Advanced (12+ Months) <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;">✅ Study Advanced Topics (Transformers, GANs, RL)</li>
+                        <li style="color: #ffa500;">✅ Work on Large-Scale AI Models</li>
+                        <li style="color: #32cd32;">✅ Contribute to Open-Source AI Projects</li>
+                        <li style="color: #dfee0a;">✅ Research AI Ethics & Responsible AI</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <h5 class="clickable" onclick="toggleAllContent(this)"> 8. Where to Learn? (Best Courses & Books) <span style="font-size: 0.8rem;">(Click to expand)</span></h5>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">Online Courses <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;">📌 Machine Learning - Andrew Ng (Coursera)</li>
+                        <li style="color: #ffa500;">📌 Deep Learning Specialization - Andrew Ng</li>
+                        <li style="color: #32cd32;">📌 Fast.ai Deep Learning Course</li>
+                        <li style="color: #dfee0a;">📌 MIT 6.S191: Introduction to Deep Learning</li>
+                    </ul>
+                </div>
+                <div class="content-box" style="display: none;">
+                    <h6 class="clickable" onclick="toggleContent(this)">Books <span style="font-size: 0.8rem;">(Click to expand)</span></h6>
+                    <ul style="display: none;">
+                        <li style="color: #ff6347;">📘 Hands-on Machine Learning with Scikit-Learn, Keras, and TensorFlow - Aurélien Géron</li>
+                        <li style="color: #ffa500;">📘 Deep Learning - Ian Goodfellow</li>
+                        <li style="color: #32cd32;">📘 Pattern Recognition and Machine Learning - Christopher Bishop</li>
+                        <li style="color: #dfee0a;">📘 The Hundred-Page Machine Learning Book - Andriy Burkov</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Additional roadmap items can be added here -->
+        </div>
+    </section>
+
+    <section class="content">
+
+
+    </section>
+
+    <footer>
+        <p>© 2025 AI/ML Roadmap. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function toggleAllContent(element) {
+            var contentBoxes = element.parentElement.querySelectorAll('.content-box');
+            contentBoxes.forEach(function(contentBox) {
+                if (contentBox.style.display === "none") {
+                    contentBox.style.display = "block";
+                } else {
+                    contentBox.style.display = "none";
+                }
+            });
+        }
+
+        function toggleContent(element) {
+            var content = element.nextElementSibling;
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+{% endblock %}

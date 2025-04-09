@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Research Project SAFENET.AI{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'Publication_project/publication.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'Publication_project/project.css' %}">
+<body>
+    
+    <div class="container-fluid">
+
+        <div class="container-fluid">
+            <div class="container py-5">
+                <!-- Research Publications Section -->
+                <section>
+                    <h2 class="section-title" style="color: aliceblue;">Research Publications</h2>
+                    <div class="carousel">
+                        <button class="arrow left-arrow">&lt;</button>
+                        <div class="scroll-container">
+                            {% for items in publication_iteams %}
+                            <div class="card">
+                                <img src="{% if items.publication_pic %}{{ items.publication_pic.url }}{% else %}{% static 'images/default_profile.png' %}{% endif %}" class="card-img-top"
+                                    alt="Publication">
+                                <div class="card-body">
+                                    <h5 class="card-title" style="word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">{{ items.paper_title }}</h5>
+                                    <a href="{{ items.publication_url }}" target="_blank"
+                                        class="btn btn-dark">Paper Link</a>
+                                        {% if user.is_superuser  %}
+                                        <a href="{% url 'PublicationProject:edit_publication' id=items.id %}" class="btn btn-primary" style="margin-left: 70px;">Edit</a>
+                                        {% endif %}
+                                    </div>
+                            </div>  
+                            {% endfor %}
+                            <!-- ...... -->
+             <!-- Add new Paper Card -->
+             {% if user.is_superuser  %}
+                            <div class="card">
+                                <img src="/static/images/publication_icon.png" class="card-img-top" alt="Publication 2">
+                                <div class="card-body">
+                                    <h5 class="card-title" style="word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">ADD PUBLICATIO
+                                    </h5>
+                                    <a href="{% url 'PublicationProject:publication_form' %}" target="_blank"
+                                        class="btn btn-dark">ADD NEW PUBLICATION</a>
+                                </div>
+                            </div>
+                          
+                            
+                            {% endif %}
+            
+                        </div>
+                        <button class="arrow right-arrow">&gt;</button>
+                    </div>
+                </section>
+            </div>
+        
+        </div>
+        
+        
+        <!-- projects show -->
+        
+        
+        <div class="container-fluid">
+            <div class="container py-5">
+                <!-- Research Publications Section -->
+                <section>
+                    <h2 class="section-title" style="color: aliceblue;">Projects</h2>
+                    <div class="carousel">
+                        <button class="arrow left-arrow">&lt;</button>
+                        <div class="scroll-container">
+                            {% for p_items in project_iteams %}
+                            <div class="card">
+                                <img src="{% if p_items.project_pic %}{{ p_items.project_pic.url }}{% else %}{% static 'images/default_profile.png' %}{% endif %}" class="card-img-top"
+                                    alt="Publication">
+                                <div class="card-body">
+                                    <h5 class="card-title" style="word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">{{ p_items.project_title }}</h5>
+                                    <a href="{{ p_items.Githuv_url }}" target="_blank"
+                                        class="btn btn-dark">Paper Link</a>
+                                        {% if user.is_superuser  %}
+                                        <a href="{% url 'PublicationProject:edit_project' id=p_items.id %}" class="btn btn-primary" style="margin-left: 70px;">Edit</a>
+                                        {% endif %}
+                                    </div>
+                            </div>  
+                            {% endfor %}
+                            <!-- Add new Paper Card -->
+                            {% if user.is_superuser  %}
+                            <div class="card">
+                                <img src="/static/images/publication_icon.png" class="card-img-top" alt="Publication 2">
+                                <div class="card-body">
+                                    <h5 class="card-title" style="word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">ADD PROJECT
+                                    </h5>
+                                    <a href="{% url 'PublicationProject:project_form' %}" target="_blank"
+                                        class="btn btn-dark">ADD NEW Project</a>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <button class="arrow right-arrow">&gt;</button>
+                    </div>
+                </section>
+            </div>
+    
+    </div>
+</body>
+
+
+
+
+
+<script src="{% static 'Publication_project/publication.js' %}"></script>
+<script src="{% static 'Publication_project/project.js' %}"></script>
+
+{% endblock %}

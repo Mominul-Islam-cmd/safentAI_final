@@ -1,0 +1,546 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}AI/ML Roadmap{% endblock %}
+
+{% block content %}
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'guidelines/css/r.css' %}">
+  <style>
+    /* Ensure topics are collapsed by default */
+    .topic-content {
+      display: none;
+      transition: all 0.3s ease;
+    }
+    .topic-content.active {
+      display: block;
+    }
+  </style>
+
+<!-- <section class="hero-section">
+    <div class="container">
+        <h1 class="hero-title">AI/ML Expert Roadmap</h1>
+        <p class="hero-subtitle">Follow this roadmap to develop expertise in AI and Machine Learning</p>
+    </div>
+</section> -->
+<div class="container-fluid" style="text-align: center;margin-bottom: 50px;background-color: black; border-radius: 10px; height: 250px; padding-top: 50px;">
+    <h1 class="hero-title">AI/ML Expert Roadmap</h1>
+        <p class="hero-subtitle">Follow this roadmap to develop expertise in AI and Machine Learning</p>
+</div>
+
+
+<div class="timeline-container">
+    <div class="timeline-line"></div>
+    
+    <!-- Machine Learning Card -->
+    <div class="domain-card left"> 
+        <div class="card-bg-overlay" style="background-image: url('{% static "guidelines/images/machine_learning.svg" %}');"></div>
+        <div class="domain-icon">
+            <i class="fas fa-brain"></i>
+        </div>
+        <h3 class="domain-title">Machine Learning</h3>
+        <p class="domain-description">
+            Machine Learning focuses on developing algorithms that allow computers to learn patterns and make decisions from data without explicit programming.
+        </p>
+        <a href="#ml-topics" class="explore-button" data-bs-toggle="modal" data-bs-target="#mlModal">
+            Explore Topics <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+    
+    <!-- Deep Learning Card -->
+    <div class="domain-card right">
+        <div class="card-bg-overlay" style="background-image: url('{% static "guidelines/images/deep_learning.svg" %}');"></div>
+        <div class="domain-icon">
+            <i class="fas fa-network-wired"></i>
+        </div>
+        <h3 class="domain-title">Deep Learning</h3>
+        <p class="domain-description">
+            Deep Learning leverages neural networks to solve complex problems by mimicking the human brain, enabling advancements in image recognition, NLP, and more.
+        </p>
+        <a href="#dl-topics" class="explore-button" data-bs-toggle="modal" data-bs-target="#dlModal">
+            Explore Topics <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+    
+    <!-- Computer Vision Card -->
+    <div class="domain-card left">
+        <div class="card-bg-overlay" style="background-image: url('{% static "guidelines/images/computer_vision.svg" %}');"></div>
+        <div class="domain-icon">
+            <i class="fas fa-eye"></i>
+        </div>
+        <h3 class="domain-title">Computer Vision</h3>
+        <p class="domain-description">
+            Computer Vision enables machines to interpret and understand visual information from the world, powering applications from facial recognition to autonomous vehicles.
+        </p>
+        <a href="#cv-topics" class="explore-button" data-bs-toggle="modal" data-bs-target="#cvModal">
+            Explore Topics <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+    
+    <!-- NLP Card -->
+    <div class="domain-card right">
+        <div class="card-bg-overlay" style="background-image: url('{% static "guidelines/images/nlp.svg" %}');"></div>
+        <div class="domain-icon">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+        <h3 class="domain-title">Natural Language Processing</h3>
+        <p class="domain-description">
+            NLP bridges the gap between human language and computer understanding, enabling applications like chatbots, translation, and sentiment analysis.
+        </p>
+        <a href="#nlp-topics" class="explore-button" data-bs-toggle="modal" data-bs-target="#nlpModal">
+            Explore Topics <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+    
+    <!-- Reinforcement Learning Card -->
+    <div class="domain-card left">
+        <div class="card-bg-overlay" style="background-image: url('{% static "guidelines/images/reinforcement_learning.svg" %}');"></div>
+        <div class="domain-icon">
+            <i class="fas fa-gamepad"></i>
+        </div>
+        <h3 class="domain-title">Reinforcement Learning</h3>
+        <p class="domain-description">
+            Reinforcement Learning trains agents to make decisions by rewarding desired behaviors, enabling AI systems that can play games, control robots, and optimize processes.
+        </p>
+        <a href="#rl-topics" class="explore-button" data-bs-toggle="modal" data-bs-target="#rlModal">
+            Explore Topics <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</div>
+
+<!-- Machine Learning Modal -->
+<div class="modal fade" id="mlModal" tabindex="-1" aria-labelledby="mlModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content roadmap-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mlModalLabel">Machine Learning Topics</h5>
+                <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-timeline-container">
+                    <div class="modal-timeline-line"></div>
+                    
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h3>Fundamentals</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="topic-content">
+                            <ul>
+                                <li><strong>Mathematics:</strong> Linear algebra, calculus, probability, statistics</li>
+                                <li><strong>Programming:</strong> Python, data structures, algorithms</li>
+                                <li><strong>Data Manipulation:</strong> Pandas, NumPy, data cleaning techniques</li>
+                                <li><strong>Data Visualization:</strong> Matplotlib, Seaborn, visualization principles</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h3>Supervised Learning</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="topic-content">
+                            <ul>
+                                <li><strong>Regression:</strong> Linear regression, polynomial regression, regularization (Ridge, Lasso)</li>
+                                <li><strong>Classification:</strong> Logistic regression, decision trees, SVM, KNN</li>
+                                <li><strong>Ensemble Methods:</strong> Random forests, gradient boosting, XGBoost</li>
+                                <li><strong>Model Evaluation:</strong> Cross-validation, precision-recall, ROC curves</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h3>Unsupervised Learning</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="topic-content">
+                            <ul>
+                                <li><strong>Clustering:</strong> K-means, hierarchical clustering, DBSCAN</li>
+                                <li><strong>Dimensionality Reduction:</strong> PCA, t-SNE, UMAP</li>
+                                <li><strong>Association Rules:</strong> Apriori algorithm, frequent pattern mining</li>
+                                <li><strong>Anomaly Detection:</strong> Isolation Forest, One-Class SVM</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h3>Tools & Frameworks</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="topic-content">
+                            <ul>
+                                <li><strong>Scikit-learn:</strong> General-purpose ML library in Python</li>
+                                <li><strong>Feature Engineering:</strong> Feature selection, extraction, creation</li>
+                                <li><strong>MLOps:</strong> Model versioning, deployment, monitoring</li>
+                                <li><strong>Experiment Tracking:</strong> MLflow, Weights & Biases</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Deep Learning Modal -->
+<div class="modal fade" id="dlModal" tabindex="-1" aria-labelledby="dlModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content roadmap-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="dlModalLabel">Deep Learning Topics</h5>
+                <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-timeline-container">
+                    <div class="modal-timeline-line"></div>
+                    
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h3>Neural Network Fundamentals</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="topic-content">
+                            <ul>
+                                <li><strong>Perceptrons:</strong> Single layer networks, activation functions</li>
+                                <li><strong>Multilayer Networks:</strong> Feed-forward networks, backpropagation</li>
+                                <li><strong>Loss Functions:</strong> MSE, cross-entropy, custom loss functions</li>
+                                <li><strong>Optimization:</strong> Gradient descent, learning rate, momentum</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h3>Deep Learning Architectures</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="topic-content">
+                            <ul>
+                                <li><strong>Convolutional Neural Networks (CNNs):</strong> For image processing tasks</li>
+                                <li><strong>Recurrent Neural Networks (RNNs):</strong> LSTM, GRU for sequential data</li>
+                                <li><strong>Transformers:</strong> Self-attention, multi-head attention mechanisms</li>
+                                <li><strong>Autoencoders:</strong> Dimensionality reduction, feature learning</li>
+                                <li><strong>Generative Models:</strong> GANs, VAEs for content generation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h3>Deep Learning Frameworks</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="topic-content">
+                            <ul>
+                                <li><strong>TensorFlow:</strong> Google's end-to-end ML platform</li>
+                                <li><strong>PyTorch:</strong> Facebook's research-oriented DL framework</li>
+                                <li><strong>Keras:</strong> High-level API for building neural networks</li>
+                                <li><strong>JAX:</strong> For high-performance machine learning research</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h3>Advanced Topics</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="topic-content">
+                            <ul>
+                                <li><strong>Transfer Learning:</strong> Using pre-trained models for new tasks</li>
+                                <li><strong>Regularization Techniques:</strong> Dropout, batch normalization</li>
+                                <li><strong>Hyperparameter Tuning:</strong> Grid search, random search, Bayesian optimization</li>
+                                <li><strong>Edge Deployment:</strong> Model compression, quantization, optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Computer Vision Modal -->
+<div class="modal fade" id="cvModal" tabindex="-1" aria-labelledby="cvModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content roadmap-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cvModalLabel">Computer Vision Topics</h5>
+                <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-timeline-container">
+                    <div class="modal-timeline-line"></div>
+                    
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h3>Image Processing Fundamentals</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="topic-content">
+                            <ul>
+                                <li><strong>Image Representation:</strong> Pixels, channels, color spaces</li>
+                                <li><strong>Image Transformations:</strong> Scaling, rotation, filters</li>
+                                <li><strong>Feature Extraction:</strong> Edges, corners, SIFT, SURF</li>
+                                <li><strong>Image Enhancement:</strong> Contrast, sharpening, denoising</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h3>Core CV Tasks</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="topic-content">
+                            <ul>
+                                <li><strong>Image Classification:</strong> Assigning labels to images</li>
+                                <li><strong>Object Detection:</strong> YOLO, R-CNN, SSD models</li>
+                                <li><strong>Image Segmentation:</strong> Semantic, instance, panoptic segmentation</li>
+                                <li><strong>Face Recognition:</strong> Face detection, verification, identification</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h3>Advanced Computer Vision</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="topic-content">
+                            <ul>
+                                <li><strong>3D Vision:</strong> Depth estimation, 3D reconstruction</li>
+                                <li><strong>Video Analysis:</strong> Action recognition, tracking</li>
+                                <li><strong>Pose Estimation:</strong> Human pose, hand pose tracking</li>
+                                <li><strong>Scene Understanding:</strong> Context recognition, relationship modeling</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h3>Libraries & Tools</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="topic-content">
+                            <ul>
+                                <li><strong>OpenCV:</strong> Comprehensive computer vision library</li>
+                                <li><strong>PIL/Pillow:</strong> Python Imaging Library</li>
+                                <li><strong>TorchVision:</strong> Computer vision package for PyTorch</li>
+                                <li><strong>CUDA/cuDNN:</strong> GPU acceleration for deep learning</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- NLP Modal -->
+<div class="modal fade" id="nlpModal" tabindex="-1" aria-labelledby="nlpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content roadmap-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="nlpModalLabel">Natural Language Processing Topics</h5>
+                <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-timeline-container">
+                    <div class="modal-timeline-line"></div>
+                    
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h3>Text Processing Fundamentals</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="topic-content">
+                            <ul>
+                                <li><strong>Text Preprocessing:</strong> Tokenization, stemming, lemmatization</li>
+                                <li><strong>Text Representation:</strong> Bag of words, TF-IDF, n-grams</li>
+                                <li><strong>Word Embeddings:</strong> Word2Vec, GloVe, FastText</li>
+                                <li><strong>Language Models:</strong> N-gram models, statistical models</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h3>Core NLP Tasks</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="topic-content">
+                            <ul>
+                                <li><strong>Text Classification:</strong> Sentiment analysis, topic classification</li>
+                                <li><strong>Named Entity Recognition:</strong> Identifying entities in text</li>
+                                <li><strong>POS Tagging:</strong> Part-of-speech labeling</li>
+                                <li><strong>Dependency Parsing:</strong> Grammatical structure analysis</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h3>Advanced NLP & Transformers</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="topic-content">
+                            <ul>
+                                <li><strong>Transformer Architecture:</strong> Self-attention mechanisms</li>
+                                <li><strong>Pre-trained Models:</strong> BERT, GPT, T5, RoBERTa</li>
+                                <li><strong>Fine-tuning:</strong> Adapting pre-trained models for specific tasks</li>
+                                <li><strong>Prompt Engineering:</strong> Designing effective prompts for LLMs</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h3>Applications & Tools</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="topic-content">
+                            <ul>
+                                <li><strong>Machine Translation:</strong> Neural machine translation systems</li>
+                                <li><strong>Question Answering:</strong> Extractive and generative QA</li>
+                                <li><strong>Chatbots:</strong> Task-oriented and open-domain dialogue systems</li>
+                                <li><strong>Libraries:</strong> spaCy, NLTK, Hugging Face Transformers</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Reinforcement Learning Modal -->
+<div class="modal fade" id="rlModal" tabindex="-1" aria-labelledby="rlModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content roadmap-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="rlModalLabel">Reinforcement Learning Topics</h5>
+                <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-timeline-container">
+                    <div class="modal-timeline-line"></div>
+                
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h3>RL Fundamentals</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="topic-content">
+                            <ul>
+                                <li><strong>Markov Decision Processes:</strong> States, actions, rewards, transitions</li>
+                                <li><strong>Value Functions:</strong> State value, action value functions</li>
+                                <li><strong>Policies:</strong> Deterministic vs. stochastic policies</li>
+                                <li><strong>Exploration vs. Exploitation:</strong> Balancing learning and optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h3>RL Algorithms</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="topic-content">
+                            <ul>
+                                <li><strong>Dynamic Programming:</strong> Policy iteration, value iteration</li>
+                                <li><strong>Temporal Difference Learning:</strong> Q-learning, SARSA</li>
+                                <li><strong>Policy Gradient Methods:</strong> REINFORCE, A2C, PPO</li>
+                                <li><strong>Deep RL:</strong> DQN, DDPG, TD3</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h3>Advanced RL</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="topic-content">
+                            <ul>
+                                <li><strong>Multi-Agent RL:</strong> Cooperative and competitive environments</li>
+                                <li><strong>Imitation Learning:</strong> Learning from expert demonstrations</li>
+                                <li><strong>Meta RL:</strong> Learning to learn across tasks</li>
+                                <li><strong>Model-Based RL:</strong> Learning environment dynamics</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-container">
+                        <div class="topic-header">
+                            <h3>Tools & Environments</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="topic-content">
+                            <ul>
+                                <li><strong>OpenAI Gym:</strong> Standard interface for RL environments</li>
+                                <li><strong>Stable Baselines:</strong> Reliable implementations of RL algorithms</li>
+                                <li><strong>MuJoCo:</strong> Physics simulator for robotics research</li>
+                                <li><strong>Game Environments:</strong> Atari, StarCraft, board games</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Expand first topic in each modal by default
+    document.querySelectorAll('.modal-timeline-container').forEach(container => {
+        const firstTopicContent = container.querySelector('.topic-container:first-child .topic-content');
+        if (firstTopicContent) {
+            firstTopicContent.classList.add('active');
+            const header = firstTopicContent.previousElementSibling;
+            if (header && header.querySelector('i')) {
+                header.querySelector('i').className = 'fas fa-chevron-up';
+            }
+        }
+    });
+
+    // Add click listener to all topic headers for toggling content
+    const topicHeaders = document.querySelectorAll('.topic-header');
+    topicHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            const content = this.nextElementSibling;
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                this.querySelector('i').className = 'fas fa-chevron-down';
+            } else {
+                content.classList.add('active');
+                this.querySelector('i').className = 'fas fa-chevron-up';
+            }
+        });
+    });
+});
+</script>
+{% endblock %}
